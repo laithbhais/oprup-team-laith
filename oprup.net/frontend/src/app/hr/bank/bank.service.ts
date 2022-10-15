@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { JobTitle } from '../job-title/job-title';
 import { Bank } from './bank';
 
 @Injectable({
@@ -20,6 +21,9 @@ export class BankService {
 
   public getAllBanks(): Observable<Bank[]>{
     return this.http.get<Bank[]>(`${this.apiServerUrl}/bank/all`)
+  }
+  public getAllJobtitls(): Observable<JobTitle[]>{
+    return this.http.get<JobTitle[]>(`${this.apiServerUrl}/jobTitle/all`)
   }
 
   public getBankById(bankId: any): Observable<Bank[]>{
