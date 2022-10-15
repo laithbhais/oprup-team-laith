@@ -249,15 +249,15 @@
     </div>
     <div class="modal-footer">
 
-      <button type="button" style="background-color:#4ca86a;" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">{{'close' | translate}}</button>
-      <button class="btn bg-black-8 text-white" (click)="addItemRequestDetails();modal.close()" type="button">{{'save' | translate}}</button>
+      <button type="button" style="background-color:#84ba95;" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">{{'close' | translate}}</button>
+      <button  style="background-color:#4ca86a;"  class="btn bg-black-8 text-white" (click)="addItemRequestDetails();modal.close()" type="button">{{'save' | translate}}</button>
     </div>
 
   </ng-template>
   <ng-template #select2modal2 let-modal>
     <!-- Select2 modal -->
     <div class="modal-header">
-      <h6 class="modal-title">تعديل بيانات المادة</h6>
+      <h6 class="modal-title"> {{ "update" | translate}}</h6>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       </button>
     </div>
@@ -350,8 +350,8 @@
       </div>
 
     <div class="modal-footer">
-      <button type="button" class="btn bg-black-4 text-white" (click)="modal.close('Close click')">{{'close' | translate}}</button>
-      <button class="btn bg-black-8 text-white" (click)="addItemRequestDetails();modal.close()" type="button">{{'save' | translate}} </button>
+      <button type="button"  style="background-color:#84ba95;"  class="btn bg-black-4 text-white" (click)="modal.close('Close click')">{{'close' | translate}}</button>
+      <button  style="background-color:#4ca86a;"  class="btn bg-black-8 text-white" (click)="addItemRequestDetails();modal.close()" type="button">{{'save' | translate}} </button>
     </div>
 
   </ng-template>

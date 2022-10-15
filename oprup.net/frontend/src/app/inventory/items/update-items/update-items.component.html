@@ -322,10 +322,11 @@
                 <br>
 
 
+
                 <div class="col-lg align-items-center row">
 
                   <label for="" class="mg-b-10 tx-semibold col-lg-5">{{ 'expiryDate' | translate }}</label>
-                  <mat-form-field appearance="fill" class="col-md-7 p-0 my-1">
+                  <mat-form-field appearance="outline" class="col-md-7 p-0 my-1">
                     <mat-label>{{'DD/MM/YYYY' | translate}}</mat-label>
                     <input id="expiryDate" name="expiryDate" #expiryDate  [(ngModel)]="items.expiryDate" [ngModelOptions]="{standalone: true}" matInput [matDatepicker]="picker">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

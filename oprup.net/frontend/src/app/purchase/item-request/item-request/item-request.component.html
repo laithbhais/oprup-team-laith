@@ -39,13 +39,13 @@
                   <tbody class="table-group-divider">
                     <tr *ngFor="let itemRequests of itemRequest">
 
-                      <td>{{itemRequests.itemRequestId}}</td>
-                      <td>{{itemRequests.itemRequestDate}}</td>
+                      <td>{{itemRequests.itemRequest.itemRequestId}}</td>
+                      <td>{{itemRequests.itemRequest.itemRequestDate}}</td>
 
 
 
                       <td data-html2canvas-ignore="true" class="noPrint">
-                        <a class="btn btn-icon-text" routerLink="../update-itemRequest/{{itemRequests.itemRequestId}}"><i class="fe fe-edit text-black bd-black" ngbTooltip="{{'update'|translate}}"></i></a>
+                        <a class="btn btn-icon-text" routerLink="../update-itemRequest/{{itemRequests.itemRequest.itemRequestId}}"><i class="fe fe-edit text-black bd-black" ngbTooltip="{{'update'|translate}}"></i></a>
                         <button class="btn btn-icon-text" (click)="deleteItemRequest(itemRequests)"><i class="fe fe-trash-2 text-black bd-black" ngbTooltip="{{'delete'|translate}}"></i></button>
                       </td>
                     </tr>
