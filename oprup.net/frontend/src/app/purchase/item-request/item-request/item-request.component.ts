@@ -105,8 +105,8 @@ export class ItemRequestComponent implements OnInit {
   }
 
   public getAllItemRequest(): void {
-    this.itemRequestService.getAllItemRequest().subscribe(
-      (response: ItemRequest[]) => {
+    this.itemRequestService.getAllItemRequestDetails().subscribe(
+      (response) => {
         this.itemRequest = response;
         console.log(response);
       },

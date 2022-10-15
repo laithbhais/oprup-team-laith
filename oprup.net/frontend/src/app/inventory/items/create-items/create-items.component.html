@@ -10,7 +10,6 @@
             <div class="row">
               <div class="col-lg-6">
 
-
                 <div class="col-lg my-2 mg-t-10 mg-t-10 row">
                   <p class="mg-b-10 tx-semibold col-lg-5">
                     {{ "itemCode" | translate
@@ -29,7 +28,7 @@
 
                 <div class="col-lg my-2 mg-t-10 mg-t-10 row">
                   <p class="mg-b-10 tx-semibold col-lg-5">
-                    {{ "itemName" | translate
+                    {{ "itemNameAr" | translate
                     }}<span class="tx-danger">*</span>
                   </p>
                   <input class="form-control input col-7" type="text" name="itemName" id="itemName"
@@ -157,19 +156,6 @@
                         <button class="btn bg-black-8 text-white" (click)="barcodeAutoGenerate();modal.close()" type="button">{{ "save" | translate }}</button>
                       </div>
                     </ng-template>
-
-<!-- <div class="newBarcode col-5" id="newBarcode">
-  <ngx-barcode  [bc-value]="itemsData.barCode"   [bc-line-color]="lineColor"
-   bc-element-type="svg"
-  [bc-width]="width" [bc-height]="height" [bc-display-value]="displayValue" [bc-font-options]="fontOptions" [bc-font]="font"
-  [bc-text-align]="textAlign" [bc-text-position]="textPosition" [bc-text-margin]="textMargin"
-  [bc-font-size]="fontSize" [bc-background]="background"
-  [bc-margin]="margin" [bc-margin-top]="marginTop"
-  [bc-margin-bottom]="marginBottom" [bc-margin-left]="marginLeft"
-  [bc-margin-right]="marginRight"></ngx-barcode>
-  <span style="font:2px; color:rgb(14, 12, 12);">{{itemsData.barCode}}</span>
-</div> -->
-
                   </div>
                 </div>
               </div>

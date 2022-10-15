@@ -81,7 +81,7 @@ export class AddCompanyComponent implements OnInit {
 
   filenames: string[] = [];
   fileStatus = { status: '', requestType: '', percent: 0 };
-  
+
 // $event.target.files
   // define a function to upload files
   onUploadFiles(files: File[]): void {
@@ -108,7 +108,7 @@ export class AddCompanyComponent implements OnInit {
             this.filenames.unshift(filename);
           }
         } else {
-          saveAs(new File([httpEvent.body!], httpEvent.headers.get('File-Name')!, 
+          saveAs(new File([httpEvent.body!], httpEvent.headers.get('File-Name')!,
                   {type: `${httpEvent.headers.get('Content-Type')};charset=utf-8`}));
         }
         this.fileStatus.status = 'done';
@@ -116,7 +116,7 @@ export class AddCompanyComponent implements OnInit {
         default:
           // console.log(httpEvent);
           break;
-      
+
     }
   }
 // upload img
@@ -155,7 +155,7 @@ export class AddCompanyComponent implements OnInit {
     })
   }
 
- 
+
   public addPartner(): void{
     this.companyService.addPartner(this.partnerData).subscribe(
       () => {this.getAllPartner()}
