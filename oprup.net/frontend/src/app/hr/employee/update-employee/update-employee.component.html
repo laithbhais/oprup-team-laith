@@ -1,0 +1,105 @@
+<app-page-header title="تعديل بيانات الموظف" [items]="['الموظف']" [active_item]="'add'|translate"></app-page-header>
+<div class="row row-sm">
+  <div class="col-lg-12 col-md-12">
+    <div class="card custom-card">
+      <div class="card-body">
+        <form>
+          <div class="row align-items-start border m-2 p-4">
+            <div class="col-lg-6 row mb-3">
+
+              <p class="mg-b-10 tx-sm col-lg-4">رقم الموظف</p>
+                <input class="form-control   col-lg-8 mb-2"  type="text"
+                [(ngModel)]="employee.employeeCode" name="employeeCode" id="employeeCode">
+
+
+
+                <p class="mg-b-10 tx-sm col-lg-4">{{'nameAr'|translate}}</p>
+               <input class="form-control   col-lg-8 mb-2" type="text"
+                  [(ngModel)]="employee.employeeNameAr" name="employeeNameAr" id="employeeNameAr">
+
+                  <div class="mg-b-10 tx-sm col-lg-4">{{'name'|translate}}</div>
+                  <input class="form-control   col-lg-8 mb-2" type="text"
+                   [(ngModel)]='employee.employeeName' name="employeeName" id="employeeName">
+
+                   <p class="mg-b-10 tx-sm col-lg-4">تاريخ الانضمام</p>
+                   <input class="form-control   col-lg-8 mb-2" type="text"
+                 [(ngModel)]='employee.dateOfJoin' name="dateOfJoin" id="dateOfJoin">
+
+
+                 <p class="mg-b-10 tx-sm col-lg-4">الحالة الوظيفية</p>
+              <input class="form-control   col-lg-8 mb-2" type="text"
+               [(ngModel)]='employee.jobStatus' name="jobStatus" id="jobStatus">
+
+
+               <p class="mg-b-10 tx-sm col-lg-4">الجنس</p>
+               <input class="form-control   col-lg-8 mb-2" type="text"
+               [(ngModel)]='employee.gender' name="gender" id="gender">
+
+               <p class="mg-b-10 tx-sm col-lg-4">الجنسية</p>
+               <ng-select form controlName="nationality" [(ngModel)]='employee.nationality' name="nationality"  class=" col-lg-8 mb-2">
+                <span >
+                  <ng-option *ngFor="let item of countryList" value="{{item.code}}">
+                    {{item.name}}
+                  </ng-option>
+                </span>
+
+              </ng-select>
+              <p class="mg-b-10 tx-sm col-lg-4">نوع الموظف</p>
+              <!-- <input class="form-control   col-lg-8 mb-2" type="text"> -->
+              <ng-select formControlName="employeeTypeId" (change)="getEmployeeType($event)" [(ngModel)]="employee.employeeType.employeeTypeId" name="employeeTypeId" id="employeeTypeId" class="   col-lg-8 mb-2">
+                <ng-option *ngFor="let employee of employeeType" value="{{employee.employeeTypeId}}">
+                  {{employee.employeeTypeName}}
+                </ng-option>
+              </ng-select>
+
+
+
+
+
+
+            </div>
+            <div class="col-lg-6 row mb-3 ">
+              <div >
+                <ngx-dropzone [multiple]="false" (change)="onPreviewFileSelect($event)" class="h-75 w-25 mg-l-120 mb-4 col-8" >
+                  <ngx-dropzone-label>
+                    <div>
+                      <h3>add your photo</h3>
+                    </div>
+                  </ngx-dropzone-label>
+                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of filesPreview"
+                    [file]="f" [removable]="true" (removed)="onPreviewFileRemove(f)" >
+
+                  </ngx-dropzone-image-preview>
+                </ngx-dropzone>
+              </div>
+              <p class="mg-b-10 tx-sm col-lg-5 mg-l-15">تاريخ الميلاد</p>
+                <input class="form-control col-lg-7 mb-2 " type="text"
+                 [(ngModel)]='employee.dateOfBirth'name="dateOfBirth" id="dateOfBirth">
+
+                 <p class="mg-b-10 tx-sm col-lg-5 mg-l-15">مكان الولادة</p>
+                 <!-- <input class="form-control   col-lg-8 mb-2 " type="text"
+                 [ngModelOptions]="{standalone: true}" [(ngModel)]='employeeData.placeOfBirth'> -->
+                 <ng-select form controlName="nationality" [ngModelOptions]="{standalone: true}" [(ngModel)]='employee.placeOfBirth' name="dateOfBirth" id="dateOfBirth" class="btn  col-7 mb-2">
+                   <span >
+                     <ng-option *ngFor="let item of countryList" value="{{item.code}}">
+                       {{item.name}}
+                     </ng-option>
+                   </span>
+
+                 </ng-select>
+
+                 <p class="mg-b-10 tx-sm col-lg-5 mg-l-15">الديانة</p>
+                 <input class="form-control  col-7 mb-2 " type="text"
+                 [ngModelOptions]="{standalone: true}" [(ngModel)]='employee.religion' name="religion" id="religion">
+
+                 <p class="mg-b-10 tx-sm col-lg-5 mg-l-15">الحالة الاجتماعية</p>
+                 <input class="form-control col-7 mb-2" type="text"
+                 [ngModelOptions]="{standalone: true}" [(ngModel)]='employee.maritalStatus' name="maritalStatus" id="maritalStatus">
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

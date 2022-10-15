@@ -1,0 +1,23 @@
+.li{
+  border-bottom: 2px solid #ddda66;
+
+  th{
+  padding: 15px 0 !important;
+  }
+}
+tbody{
+  td{
+      padding: 0;
+      text-align: center;
+  }
+}
+@media print {
+  .noPrint{
+    display:  none !important;
+
+  }
+
+}
+
+
+

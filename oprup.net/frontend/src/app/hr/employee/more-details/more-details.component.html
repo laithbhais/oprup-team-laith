@@ -1,0 +1,480 @@
+<app-page-header title="معلومات اضافية" [items]="['الموظف']" [active_item]="'moreDetails'|translate"></app-page-header>
+
+<div class="row row-sm">
+    <div class="col-lg-12 col-md-12">
+        <div class="card custom-card">
+            <!-- <div class="d-flex justify-content-between bg-black-2 align-items-center px-4 rounded-top">
+                <h4 class="main-content-label text-black tx-24 py-3">{{'Add_Medical_insurance_company'|translate}}</h4>
+            </div> -->
+            <div class="card-body">
+
+                <form [formGroup]="form"*ngIf="employeeInfo">
+                    <div class="row border m-2 p-4">
+                        <!-- <h5 class="border-bottom py-2 mb-4 mt-2">{{'basicInformation'|translate}}</h5> -->
+                        <div class="col-lg-11 row">
+                            <div class="mb-2 row mb-3 col-lg-6">
+                                <p class="mg-b-10 tx-semibold col-lg-4">  الاسم بالعربية  :</p>
+                                <!-- <input class="form-control col-lg-8" type="text" [(ngModel)]='employeeData.arabicName'> -->
+                                <p class="col-lg-3">{{employeeInfo.employeeNameAr}}</p>
+                            </div>
+                            <div class="mb-2 row col-lg-6">
+                                <p class="mg-b-10 tx-semibold col-lg-4">   الاسم بالانجليزية  : </p>
+                                <!-- <input class="form-control col-lg-8" type="text" [(ngModel)]='employeeData.employeeName'> -->
+                                <p class="col-lg-3">{{employeeInfo.employeeName}}</p>
+                              </div>
+                            <div class="mb-2 row mb-3 col-lg-6">
+                                <p class="mg-b-10 tx-semibold col-lg-4">الرمز الوظيفي : </p>
+                                <!-- <input class="form-control col-lg-8" type="text"[(ngModel)]='employeeData.employeeCode'> -->
+                                <p class="col-lg-3">{{employeeInfo.employeeCode}}</p>
+                              </div>
+                            <div class="mb-2 row mb-3 col-lg-6">
+                                <p class="mg-b-10 tx-semibold col-lg-4">الجنس  : </p>
+                                <!-- <input class="form-control col-lg-8" type="text" [(ngModel)]='employeeData.gender'> -->
+                                <p class="col-lg-3">{{employeeInfo.gender}}</p>
+                              </div>
+                        </div>
+                        <div class="row col-lg-1 card ">
+                            <img [src]="employeeData.image" alt="">
+                        </div>
+                    </div>
+
+                    <div class="card custom-card" id="basic-alert">
+                        <div class="card-body px-0">
+
+
+                            <div class="text-wrap">
+                                <div class="example">
+                                    <div class="panel panel-primary tabs-style-1">
+                                        <div class=" tab-menu-heading">
+                                            <div class="tabs-menu1">
+                                                <!-- Tabs -->
+                                                <ul ngbNav #nav="ngbNav" [activeId]="1" class="panel-tabs main-nav-line">
+                                                    <li [ngbNavItem]="1">
+                                                      <a ngbNavLink>Banks</a>
+                                                      <ng-template ngbNavContent>
+
+
+                                                        <button class="btn bg-black-8 text-white mb-2 float-end" (click)="Select2Open(select2modal)" type="submit">{{'add'|translate}}</button>
+
+                                                        <table class="table table-bordered table-shopping-cart" #TABLE #table id="bankprint" #bankprint>
+                                                            <tr class="p-4 text-center table-header-line">
+                                                              <th scope="col">{{'number'|translate}}</th>
+                                                              <th scope="col" (sort)="onSort($event)">{{'banks'|translate}}</th>
+                                                              <th scope="col" (sort)="onSort($event)">{{'الفرع'|translate}}</th>
+                                                              <th  class="noprint" scope="col" (sort)="onSort($event)">{{'action'|translate}}</th>
+                                                            </tr>
+                                                            <tbody class="table-group-divider">
+                                                              <tr *ngFor="let  of ;">
+
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td class="noprint">
+                                                                  <a class="btn btn-icon-text" routerLink=""><i class="fe fe-edit text-dark bd-black "ngbTooltip="{{'Update'|translate}}"></i></a>
+                                                                  <button class="btn btn-icon-text" ><i class="fe fe-trash-2 text-dark bd-black"ngbTooltip="{{'delete'|translate}}"></i></button>
+                                                                </td>
+                                                              </tr>
+                                                            </tbody>
+                                                          </table>
+                                                      </ng-template>
+                                                    </li>
+                                                    <li [ngbNavItem]="2">
+                                                      <a ngbNavLink>Major</a>
+                                                      <ng-template ngbNavContent>
+                                                        <button class="btn bg-black-8 text-white mb-2 float-end" (click)="Select2Open(select3modal)" type="submit">{{'add'|translate}}</button>
+                                                        <table class="table table-striped border" #TABLE #table id="bankprint" #bankprint>
+                                                            <tr class="p-4 text-center ">
+                                                              <th scope="col">{{'number'|translate}}</th>
+                                                              <th scope="col" (sort)="onSort($event)">{{'major'|translate}}</th>
+                                                              <th  class="noprint" scope="col" (sort)="onSort($event)">{{'action'|translate}}</th>
+                                                            </tr>
+                                                            <tbody class="table-group-divider">
+                                                              <tr *ngFor="let  of ;">
+
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td class="noprint">
+                                                                  <a class="btn btn-icon-text" routerLink=""><i class="fe fe-edit text-dark bd-black "ngbTooltip="{{'Update'|translate}}"></i></a>
+                                                                  <button class="btn btn-icon-text" ><i class="fe fe-trash-2 text-dark bd-black"ngbTooltip="{{'delete'|translate}}"></i></button>
+                                                                </td>
+                                                              </tr>
+                                                            </tbody>
+                                                          </table>
+                                                      </ng-template>
+                                                    </li>
+                                                    <li [ngbNavItem]="3">
+                                                      <a ngbNavLink>Univarsity</a>
+                                                      <ng-template ngbNavContent>
+                                                        <button class="btn bg-black-8 text-white mb-2 float-end" (click)="Select2Open(select4modal)" type="submit">{{'add'|translate}}</button>
+                                                        <table class="table table-striped border" #TABLE #table id="bankprint" #bankprint>
+                                                            <tr class="p-4 text-center ">
+                                                              <th scope="col">{{'number'|translate}}</th>
+                                                              <th scope="col" (sort)="onSort($event)">{{'universities'|translate}}</th>
+                                                              <th  class="noprint" scope="col" (sort)="onSort($event)">{{'action'|translate}}</th>
+                                                            </tr>
+                                                            <tbody class="table-group-divider">
+                                                              <tr *ngFor="let  of ;">
+
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td class="noprint">
+                                                                  <a class="btn btn-icon-text" routerLink=""><i class="fe fe-edit text-dark bd-black "ngbTooltip="{{'Update'|translate}}"></i></a>
+                                                                  <button class="btn btn-icon-text" ><i class="fe fe-trash-2 text-dark bd-black"ngbTooltip="{{'delete'|translate}}"></i></button>
+                                                                </td>
+                                                              </tr>
+                                                            </tbody>
+                                                          </table>
+                                                      </ng-template>
+                                                    </li>
+                                                    <li [ngbNavItem]="4">
+                                                        <a ngbNavLink>Insurance Company</a>
+                                                        <ng-template ngbNavContent>
+                                                          <button class="btn bg-black-8 text-white mb-2 float-end" (click)="Select2Open(select5modal)" type="submit">{{'add'|translate}}</button>
+                                                          <table class="table table-striped border" #TABLE #table id="bankprint" #bankprint>
+                                                              <tr class="p-4 text-center ">
+                                                                <th scope="col">{{'number'|translate}}</th>
+                                                                <th scope="col" (sort)="onSort($event)">{{'insuranceCompany'|translate}}</th>
+                                                                <th  class="noprint" scope="col" (sort)="onSort($event)">{{'action'|translate}}</th>
+                                                              </tr>
+                                                              <tbody class="table-group-divider">
+                                                                <tr *ngFor="let  of ;">
+
+                                                                  <td></td>
+                                                                  <td></td>
+                                                                  <td></td>
+                                                                  <td class="noprint">
+                                                                    <a class="btn btn-icon-text" routerLink=""><i class="fe fe-edit text-dark bd-black "ngbTooltip="{{'Update'|translate}}"></i></a>
+                                                                    <button class="btn btn-icon-text" ><i class="fe fe-trash-2 text-dark bd-black"ngbTooltip="{{'delete'|translate}}"></i></button>
+                                                                  </td>
+                                                                </tr>
+                                                              </tbody>
+                                                            </table>
+                                                        </ng-template>
+                                                    </li>
+                                                    <li [ngbNavItem]="5">
+                                                        <a ngbNavLink>Salary Object</a>
+                                                        <ng-template ngbNavContent>
+                                                          <button class="btn bg-black-8 text-white mb-2 float-end" (click)="Select2Open(select6modal)" type="submit">{{'add'|translate}}</button>
+                                                          <table class="table table-striped border" #TABLE #table id="bankprint" #bankprint>
+                                                              <tr class="p-4 text-center ">
+                                                                <th scope="col">{{'number'|translate}}</th>
+                                                                <th scope="col" (sort)="onSort($event)">{{'salaryObject'|translate}}</th>
+                                                                <th  class="noprint" scope="col" (sort)="onSort($event)">{{'action'|translate}}</th>
+                                                              </tr>
+                                                              <tbody class="table-group-divider">
+                                                                <tr *ngFor="let  of ;">
+
+                                                                  <td></td>
+                                                                  <td></td>
+                                                                  <td></td>
+                                                                  <td class="noprint">
+                                                                    <a class="btn btn-icon-text" routerLink=""><i class="fe fe-edit text-dark bd-black "ngbTooltip="{{'Update'|translate}}"></i></a>
+                                                                    <button class="btn btn-icon-text" ><i class="fe fe-trash-2 text-dark bd-black"ngbTooltip="{{'delete'|translate}}"></i></button>
+                                                                  </td>
+                                                                </tr>
+                                                              </tbody>
+                                                            </table>
+                                                        </ng-template>
+                                                    </li>
+                                                    <li [ngbNavItem]="6">
+                                                        <a ngbNavLink>Managements </a>
+                                                        <ng-template ngbNavContent>
+                                                          <button class="btn bg-black-8 text-white mb-2 float-end" (click)="Select2Open(select7modal)" type="submit">{{'add'|translate}}</button>
+                                                          <table class="table table-striped border" #TABLE #table id="bankprint" #bankprint>
+                                                              <tr class="p-4 text-center ">
+                                                                <th scope="col">{{'number'|translate}}</th>
+                                                                <th scope="col" (sort)="onSort($event)">{{'management'|translate}}</th>
+                                                                <th  class="noprint" scope="col" (sort)="onSort($event)">{{'action'|translate}}</th>
+                                                              </tr>
+                                                              <tbody class="table-group-divider">
+                                                                <tr *ngFor="let  of ;">
+
+                                                                  <td></td>
+                                                                  <td></td>
+                                                                  <td></td>
+                                                                  <td class="noprint">
+                                                                    <a class="btn btn-icon-text" routerLink=""><i class="fe fe-edit text-dark bd-black "ngbTooltip="{{'Update'|translate}}"></i></a>
+                                                                    <button class="btn btn-icon-text" ><i class="fe fe-trash-2 text-dark bd-black"ngbTooltip="{{'delete'|translate}}"></i></button>
+                                                                  </td>
+                                                                </tr>
+                                                              </tbody>
+                                                            </table>
+                                                        </ng-template>
+                                                    </li>
+                                                    <li [ngbNavItem]="7">
+                                                        <a ngbNavLink>Qualifications </a>
+                                                        <ng-template ngbNavContent>
+                                                          <button class="btn bg-black-8 text-white mb-2 float-end" (click)="Select2Open(select8modal)" type="submit">{{'add'|translate}}</button>
+                                                          <table class="table table-striped border" #TABLE #table id="bankprint" #bankprint>
+                                                              <tr class="p-4 text-center ">
+                                                                <th scope="col">{{'number'|translate}}</th>
+                                                                <th scope="col" (sort)="onSort($event)">{{'qualifications'|translate}}</th>
+                                                                <th  class="noprint" scope="col" (sort)="onSort($event)">{{'action'|translate}}</th>
+                                                              </tr>
+                                                              <tbody class="table-group-divider">
+                                                                <tr *ngFor="let  of ;">
+
+                                                                  <td></td>
+                                                                  <td></td>
+                                                                  <td></td>
+                                                                  <td class="noprint">
+                                                                    <a class="btn btn-icon-text" routerLink=""><i class="fe fe-edit text-dark bd-black "ngbTooltip="{{'Update'|translate}}"></i></a>
+                                                                    <button class="btn btn-icon-text" ><i class="fe fe-trash-2 text-dark bd-black"ngbTooltip="{{'delete'|translate}}"></i></button>
+                                                                  </td>
+                                                                </tr>
+                                                              </tbody>
+                                                            </table>
+                                                        </ng-template>
+                                                    </li>
+                                                  </ul>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body tabs-menu-body main-content-body-right border-top-0 border">
+                                            <div [ngbNavOutlet]="nav"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="col-lg-6 mg-t-10 mg-t-10 row">
+                            <p class="mg-b-10 tx-semibold col-lg-3">تاريخ الميلاد</p>
+                            <div class="input-group col-lg-9">
+                                <div class="input-group-text">
+                                    <i class="typcn typcn-calendar-outline tx-24 lh--9 op-6"></i>
+                                </div>
+                                <input class="form-control" value="2020-20-10" (click)="a.toggle()"
+                                    placeholder="yyyy-mm-dd" [(ngModel)]='employeeData.BOD' ngbDatepicker
+                                    #a="ngbDatepicker">
+                            </div>
+                        </div>
+
+
+                        <div class="">
+                            <div class="mb-2 row mb-3">
+                                <p class="mg-b-10 tx-semibold col-lg-3">الجنسية</p>
+                                <input class="form-control col-lg-8" type="text" [(ngModel)]='employeeData.arabicName'>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="mb-2 row mb-3">
+                                <p class="mg-b-10 tx-semibold col-lg-3">الحالة الاجتماعية</p>
+                                <input class="form-control col-lg-8" type="text" [(ngModel)]='employeeData.arabicName'>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="mb-2 row mb-3">
+                                <p class="mg-b-10 tx-semibold col-lg-3">البريد الاكتروني</p>
+                                <input class="form-control col-lg-8" type="text" [(ngModel)]='employeeData.arabicName'>
+                            </div>
+                        </div> -->
+
+
+
+                        <hr class="border border-3" style="color:#ccc;height:1px">
+
+                    <div class="">
+                        <button class="btn bg-black-8 text-white" type="submit">{{'Save'|translate}}</button>
+                        <a routerLink="/employee/view" class="btn bg-black-3 text-white mx-2"
+                            type="submit">{{'Cancel'|translate}}</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <ng-template #select2modal let-modal>
+        <!-- Select2 modal -->
+        <div class="modal-header">
+          <h6 class="modal-title">اضافة بنك للموظف</h6>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          </button>
+        </div>
+        <!-- <div class="modal-body">
+          <div class="mb-2 row" >
+            <p class="mg-b-10 tx-semibold col-4"> البنك</p>
+            <ng-select >
+
+              <ng-option formControlName="countryOfOrigin">jjhui</ng-option>
+            </ng-select>
+          </div>
+          <div class="mb-2 row">
+            <p class="mg-b-10 tx-semibold col-4">الفرع</p>
+            <ng-select >
+
+              <ng-option ></ng-option>
+            </ng-select>
+          </div>
+
+
+        </div> -->
+
+        <div class="col-lg row">
+          <p class="mg-b-10 tx-semibold col-lg-5">
+            {{ "bank" | translate  }}<span class="tx-danger">*</span>
+          </p>
+          <ng-select formControlName="bankId" [(ngModel)]='employeeData.banks.bankId' name="categoryId" id="categoryId" name="bankId" id="bankId"
+            class="p-0 my-1 col-7 ">
+            <ng-option
+            *ngFor="let bank of banks" value="{{banks.bankId}}">
+              {{banks.bankName}}
+            </ng-option>
+          </ng-select>
+
+        </div>
+        <div class="col-lg row">
+          <p class="mg-b-10 tx-semibold col-lg-5">
+            الفرع<span class="tx-danger">*</span>
+          </p>
+          <ng-select formControlName="categoryId" name="categoryId" id="categoryId"
+            class="p-0 my-1 col-7">
+            <ng-option >
+            jkk
+            </ng-option>
+          </ng-select>
+
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
+          <button class="btn bg-black-8 text-white"  type="button">Save </button>
+        </div>
+
+      </ng-template>
+    <!-- End Row -->
+    <ng-template #select3modal let-modal>
+        <!-- Select2 modal -->
+        <div class="modal-header">
+          <h6 class="modal-title">اضافة تخصص للموظف</h6>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-2 row">
+            <!-- <div>{{partnerById.partnerName}}</div> -->
+            <p class="mg-b-10 tx-semibold col-4"> التخصص</p>
+            <input class="form-control col-8" >
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
+          <button class="btn bg-black-8 text-white"  type="button">Save </button>
+        </div>
+
+      </ng-template>
+    <!-- End Row -->
+    <ng-template #select4modal let-modal>
+        <!-- Select2 modal -->
+        <div class="modal-header">
+          <h6 class="modal-title">اضافة جامعة للموظف</h6>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-2 row">
+            <!-- <div>{{partnerById.partnerName}}</div> -->
+            <p class="mg-b-10 tx-semibold col-4"> الجامعة</p>
+            <input class="form-control col-8" >
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
+          <button class="btn bg-black-8 text-white"  type="button">Save </button>
+        </div>
+
+      </ng-template>
+    <!-- End Row -->
+    <ng-template #select5modal let-modal>
+        <!-- Select2 modal -->
+        <div class="modal-header">
+          <h6 class="modal-title">اضافة شركة تامين للموظف</h6>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-2 row">
+            <!-- <div>{{partnerById.partnerName}}</div> -->
+            <p class="mg-b-10 tx-semibold col-4"> شركة التامين</p>
+            <input class="form-control col-8" >
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
+          <button class="btn bg-black-8 text-white"  type="button">Save </button>
+        </div>
+
+      </ng-template>
+    <!-- End Row -->
+    <ng-template #select6modal let-modal>
+        <!-- Select2 modal -->
+        <div class="modal-header">
+          <h6 class="modal-title">اضافة عناصر الراتب للموظف</h6>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-2 row">
+            <!-- <div>{{partnerById.partnerName}}</div> -->
+            <p class="mg-b-10 tx-semibold col-4">  عناصر الراتب</p>
+            <input class="form-control col-8" >
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
+          <button class="btn bg-black-8 text-white"  type="button">Save </button>
+        </div>
+
+      </ng-template>
+    <!-- End Row -->
+    <ng-template #select7modal let-modal>
+        <!-- Select2 modal -->
+        <div class="modal-header">
+          <h6 class="modal-title">اضافة ادارة للموظف</h6>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-2 row">
+            <!-- <div>{{partnerById.partnerName}}</div> -->
+            <p class="mg-b-10 tx-semibold col-4">  الادارة </p>
+            <input class="form-control col-8" >
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
+          <button class="btn bg-black-8 text-white"  type="button">Save </button>
+        </div>
+
+      </ng-template>
+    <!-- End Row -->
+    <ng-template #select8modal let-modal>
+        <!-- Select2 modal -->
+        <div class="modal-header">
+          <h6 class="modal-title">اضافة مؤهل للموظف</h6>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-2 row">
+            <!-- <div>{{partnerById.partnerName}}</div> -->
+            <p class="mg-b-10 tx-semibold col-4">  المؤهل </p>
+            <input class="form-control col-8" >
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
+          <button class="btn bg-black-8 text-white"  type="button">Save </button>
+        </div>
+
+      </ng-template>
+    <!-- End Row -->

@@ -1,0 +1,29 @@
+.li{
+  border-bottom: 2px solid #4ca86a;;
+
+  th{
+  padding: 15px 0 !important;
+  }
+}
+tbody{
+  td{
+      padding: 0;
+      text-align: center;
+  }
+}
+@media print {
+  .noPrint{
+    display:  none !important;
+
+  }
+
+  .faisal{
+    color:#000 !important;
+  }
+
+  .faisal2{
+    margin-right: 0px !important;
+
+  }
+
+}

@@ -1,0 +1,153 @@
+{
+
+
+
+    "category" : "المجموعة",
+    "error" : "خطأ",
+    "categoryName" : "اسم المجموعة",
+    "description" : "الوصف",
+    "action" : "الاجراء",
+    "S.No" : "الرقم ",
+    "save" : "حفظ",
+    "addItem" : "إضافة مادة",
+    "itemRequestDate" : "تاريخ الطلب",
+    "requestNumber" : "رقم الطلب",
+    "quantityPackage" : "عدد الطرود",
+    "generate" : "إنشاء",
+    "itemNameEn" : "اسم المادة بالانجليزي",
+    "clickheretoaddapicture" : "انقر هنا لإضافة صورة",
+
+    "enterOnlyNumbers":"أرقام فقط",
+    "errorwhiledeletingData" : "تم حذف البيانات",
+    "cancel" : "إلغاء",
+    "store" : "المستودع",
+    "success" : "تم ",
+    "unit" : "الوحدة",
+    "dataisDeleted" : "تم حذف البيانات",
+    "vendor" : "الموردون",
+    "contactPerson" : "الشخص المسؤول",
+    "vendorName" : "اسم المورد",
+    "contactNumber" : "رقم الاتصال",
+    "view" : "عرض",
+    "expiryDate" : "تاريخ الانتهاء",
+    "edit" : "تعديل",
+    "lastBuyingPrice" : "اخر سعر شراء",
+    "buyingPrice" : "سعر الشراء",
+    "sellingPrice" : "سعر البيع",
+    "barCode" : "الباركود",
+    "itemCode" : "رمز المادة",
+    "itemName" : "اسم المادة",
+    "countryOfOrigin" : "بلد المنشأ",
+    "items" : "المادة",
+    "upload" : "تحميل",
+    "vendorAccountant" : "رقم حساب المورد",
+    "unitName" : "اسم الوحدة",
+    "storekeeper" : "امين المستودع",
+    "stroeCode" : "رمز المستودع",
+    "storePlace" : "مكان المستودع",
+    "storeContact" : "معلومات الاتصال بالمخزن",
+    "subcategory" : "الفئة  ",
+    "subcategoryName" : "اسم الفئة  ",
+    "areyousuretodeletetherecord" : "هل انت متاكد من حذف السجل؟",
+    "qualification" : "المؤهلات",
+    "search" : "بحث",
+    "yes" : "نعم",
+    "no" : "لا",
+    "tax" : "الضريبة",
+    "quantity" : "الكمية",
+    "netprice" : "السعر مع الضريبة",
+    "taxfree" : "معفي من الضريبة",
+    "ItemPicture" : "صورة المادة",
+    "loading..." : "تحميل ... ",
+    "insurance company" : "شركات التأمين ",
+
+
+
+
+
+  "insuranceCompany" : "شركات التأمين ",
+
+  "update":"تعديل",
+  "isRequired":"مطلوب",
+  "delete":"حذف",
+
+
+  "bankName":"اسم البنك",
+  "updateBank":"تعديل البنك",
+
+  "addBank":"اضافة بنك",
+  "add":"اضافة",
+  "number":"الرقم التسلسلي",
+  "name":"الاسم",
+  "gender":"الجنس",
+  "city":"المدينة",
+  "managment":"الادارة",
+
+  "fullTextSearch":"بحث:",
+
+  "insuranceCompanyName":"اسم شركة التأمين ",
+  "addAInsuranceCompany":"اضافة شركة تأمين ",
+  "updateIInsuranceCompany":"تعديل شركة التأمين ",
+
+
+
+  "salaryObjectName":"اسم عنصر الراتب ",
+  "salaryObject":" عناصر الراتب ",
+  "addSalaryObject":"اضافة عنصر راتب",
+
+
+
+
+  "startDate":"تاريخ بداية الادارة",
+  "endDate":"تاريخ انتهاء الادارة",
+
+
+  "management":" الادارة",
+  "mangmentName":"اسم الادارة",
+  "higherManagement":"الادارةالعليا",
+  "Administrative_Affairs":"الشؤون الادارية",
+  "administrativeAffairs":"الادارة المالية",
+  "financialManagement":"الشؤون القانونية" ,
+  "salesAdministration":"ادارة المبيعات",
+  "purchaseManagement":"ادارة المشتريات",
+  "followUpDepartment":"ادارة المتابعة",
+  "yyyy_mm_dd":"سنة-شهر-يوم",
+  "loading":"...جاري التحميل",
+
+
+
+  "major":"التخصصات",
+  "addMajor":"اضافة تخصص",
+  "majorName":"اسم التخصص",
+  "updateMajor":"تعديل التخصص",
+
+
+
+
+
+  "qualifications":"المؤهلات",
+  "qualificationsName":"اسم المؤهل",
+
+  "universities":"الجامعات",
+  "universityName":"اسم الجامعة",
+  "country":"الدولة",
+  "universityType":"نوع الجامعة",
+
+
+  "topManagement":"الادارة العليا",
+  "basicInformation":"المعلومات الاساسية",
+  "companyName":"اسم الشركة",
+  "commercialFeature":"السمة التجارية",
+  "companyLogo":"شعار الشركة",
+  "commercialRegistrationInformation":"معلومات السجل التجاري",
+  "CommerciaNo":"رقم السجل التجاري ",
+  "commercialname":"الاسم التجاري",
+  "releaseDate":"ناريخ الاصدار",
+  "municipalLicenseInformation":"معلومات رخصة البلدية"
+
+
+
+
+
+  }
+

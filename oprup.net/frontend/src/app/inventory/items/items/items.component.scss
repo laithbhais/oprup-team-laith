@@ -1,0 +1,27 @@
+.li{
+  border-bottom: 2px solid #ddda66;
+
+  th{
+  padding: 15px 0 !important;
+  }
+}
+tbody{
+  td{
+      padding: 0;
+      text-align: center;
+  }
+}
+@media print {
+  .noPrint{
+    display:  none !important;
+  }
+
+}
+.ngx-barcode .barcode .svg{
+  width: 200px;
+  height: 112px;
+}
+
+
+
+

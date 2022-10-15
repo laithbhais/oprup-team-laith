@@ -1,0 +1,137 @@
+<app-page-header title="معلومات الموظف" [items]="['الموظف']" [active_item]="'add'|translate"></app-page-header>
+
+<div class="row row-sm">
+  <div class="col-lg-12 col-md-12">
+    <div class="card custom-card">
+
+      <div class="card-body">
+        <form>
+          <div class="row align-items-start border m-2 p-4">
+            <!-- <button (click)="onUpload()">{{'upload'|translate}}</button> -->
+
+
+            <div class="col-lg-6 row mb-3">
+                <p class="mg-b-10 tx-sm col-lg-4">رقم الموظف</p>
+                <input class="form-control input-sm col-lg-8 mb-2"  type="text"
+                [(ngModel)]='employeeData.employeeCode' [ngModelOptions]="{standalone: true}">
+
+               <p class="mg-b-10 tx-sm col-lg-4">{{'nameAr'|translate}}</p>
+               <input class="form-control input-sm col-lg-8 mb-2" type="text"
+                  [(ngModel)]='employeeData.employeeNameAr' [ngModelOptions]="{standalone: true}">
+
+                  <div class="mg-b-10 tx-sm col-lg-4">{{'name'|translate}}</div>
+                  <input class="form-control input-sm col-lg-8 mb-2" type="text"
+                   [(ngModel)]='employeeData.employeeName' [ngModelOptions]="{standalone: true}">
+
+
+                   <p class="mg-b-10 tx-sm col-lg-4">تاريخ الانضمام</p>
+              <input class="form-control input-sm col-lg-8 mb-2" type="text"
+              [ngModelOptions]="{standalone: true}" [(ngModel)]='employeeData.dateOfJoin'>
+
+              <p class="mg-b-10 tx-sm col-lg-4">الحالة الوظيفية</p>
+              <input class="form-control input-sm col-lg-8 mb-2" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]='employeeData.jobStatus'>
+
+              <p class="mg-b-10 tx-sm col-lg-4">الجنس</p>
+              <input class="form-control input-sm col-lg-8 mb-2" type="text"
+              [(ngModel)]='employeeData.gender' [ngModelOptions]="{standalone: true}">
+
+              <p class="mg-b-10 tx-sm col-lg-4">الجنسية</p>
+              <!-- <input class="form-control input-sm col-lg-8 mb-2" type="text"
+              [ngModelOptions]="{standalone: true}" [(ngModel)]='employeeData.nationality'> -->
+              <ng-select form controlName="nationality" [ngModelOptions]="{standalone: true}" [(ngModel)]='employeeData.nationality' class="btn  btn-sm col-lg-8 mb-2">
+                <span >
+                  <ng-option *ngFor="let item of countryList" value="{{item.code}}">
+                    {{item.name}}
+                  </ng-option>
+                </span>
+
+              </ng-select>
+
+              <p class="mg-b-10 tx-sm col-lg-4">نوع الموظف</p>
+              <!-- <input class="form-control input-sm col-lg-8 mb-2" type="text"> -->
+              <ng-select formControlName="employeeTypeId" (change)="getEmployeeType($event)" [(ngModel)]="employeeData.employeeType.employeeTypeId" name="employeeTypeId" id="employeeTypeId" class=" input-sm col-lg-8 mb-2">
+                <ng-option *ngFor="let employee of employeeType" value="{{employee.employeeTypeId}}">
+                  {{employee.employeeTypeName}}
+                </ng-option>
+              </ng-select>
+
+
+
+                <!-- <ng-select formControlName="employeeTypeId"  name="employeeTypeId" id="employeeType"
+            class="p-0 my-1 col-4">
+            <ng-option *ngFor="let employeeType of employee ">
+
+            </ng-option>
+          </ng-select> -->
+            </div>
+
+
+            <!-- <div class="col-lg-6 row mb-3" >
+
+            </div>-->
+
+
+            <!-- <div class="col-lg-8 row mb-3">
+              <p class="tx-semibold col-lg-3">employee type</p>
+              <input class="form-control-sm  col-lg-8" type="text"
+               [(ngModel)]='employeeData.'[ngModelOptions]="{standalone: true}">
+            </div> -->
+
+
+            <div class="col-lg-6 row mb-3 ">
+              <!-- <p class="mg-b-10 tx-sm col-lg-4 "style="font: 1em ;">الصورة الشخصية</p> -->
+              <div >
+                <ngx-dropzone [multiple]="false" (change)="onPreviewFileSelect($event)" class="h-75 w-50 mg-l-50 tx-sm mb-2 col-lg-4" >
+                  <ngx-dropzone-label>
+                    <div>
+                      <h3>add your photo</h3>
+                    </div>
+                  </ngx-dropzone-label>
+                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of filesPreview"
+                    [file]="f" [removable]="true" (removed)="onPreviewFileRemove(f)" >
+
+                  </ngx-dropzone-image-preview>
+                </ngx-dropzone>
+              </div>
+
+                <p class="mg-b-10 tx-sm col-lg-4 mg-l-15">تاريخ الميلاد</p>
+                <input class="form-control input-sm col-lg-8 mb-2 " type="text"
+                [ngModelOptions]="{standalone: true}" [(ngModel)]='employeeData.dateOfBirth'>
+
+                <p class="mg-b-10 tx-sm col-lg-4 mg-l-15">مكان الولادة</p>
+                <!-- <input class="form-control input-sm col-lg-8 mb-2 " type="text"
+                [ngModelOptions]="{standalone: true}" [(ngModel)]='employeeData.placeOfBirth'> -->
+                <ng-select form controlName="nationality" [ngModelOptions]="{standalone: true}" [(ngModel)]='employeeData.placeOfBirth' class="btn  btn-sm col-lg-8 mb-2">
+                  <span >
+                    <ng-option *ngFor="let item of countryList" value="{{item.code}}">
+                      {{item.name}}
+                    </ng-option>
+                  </span>
+
+                </ng-select>
+
+
+
+                <p class="mg-b-10 tx-sm col-lg-4 mg-l-15">الديانة</p>
+                <input class="form-control input-sm col-lg-8 mb-2 " type="text"
+                [ngModelOptions]="{standalone: true}" [(ngModel)]='employeeData.religion'>
+
+                <p class="mg-b-10 tx-sm col-lg-4 mg-l-15">الحالة الاجتماعية</p>
+                <input class="form-control input-sm col-lg-8 mb-2" type="text"
+                [ngModelOptions]="{standalone: true}" [(ngModel)]='employeeData.maritalStatus'>
+              </div>
+
+
+          </div>
+
+          <hr class="border border-3" style="color:#ccc;height:1px">
+          <div class="">
+            <button class="btn bg-black-8 text-white" type="submit" (click)="addEmployee()">{{'Save'|translate}}</button>
+            <a routerLink="/employee/view" class="btn bg-black-3 text-white mx-2" type="submit">{{'Cancel'|translate}}</a>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End Row -->

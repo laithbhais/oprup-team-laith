@@ -1,0 +1,150 @@
+{
+
+
+    "action" : "Action",
+    "save" : "Save",
+    "clickheretoaddapicture" : "Click here to add a picture",
+    "errorwhiledeletingData" : "Error while deleting Data",
+    "dataisDeleted" : "Data is Deleted",
+    "yes" : "Yes",
+    "addItem" : "Add Item",
+    "itemRequestDate" : "Request Date",
+    "requestNumber" : "Request Number",
+    "quantityPackage" : "Quantity Package",
+    "generate" : "Generate",
+    "itemNameEn" : "Item NameEn",
+    "success" : "Success",
+    "no" : "No",
+    "tax" : "Tax",
+    "taxfree" : "Tax Free",
+    "netprice" : "Total Price",
+    "search" : "Search",
+    "quantity" : "Quantity",
+    "upload" : "Upload",
+    "ItemPicture" : "Item Picture",
+    "store" : "Store",
+    "subcategory" : "Sub Category",
+    "stroeCode" : "Store Code",
+    "storePlace" : "Store Place",
+    "storekeeper" : "Store keeper",
+    "storeContact" : "Store Contact",
+    "description" : "Description",
+    "categoryName" : "Category Name",
+    "unit" : "Unit",
+    "items" : "Items",
+    "lastBuyingPrice" : "Last Buying Price",
+    "expiryDate" : "Expiry Date",
+    "sellingPrice" : "Selling Price",
+    "buyingPrice" : "Buying Price",
+    "view" : "View",
+    "itemCode" : "Item Code",
+    "itemName" : "Item Name",
+    "barCode" : "BarCode",
+    "countryOfOrigin" : "Country Of Origin",
+    "edit" : "Edit",
+    "loading..." : "Loading...",
+    "vendor" : "Vendor",
+    "contactNumber" : "Contact Number",
+    "contactNumber " : "Vendor",
+    "contactPerson" : "Contact Person",
+    "vendorName" : "Vendor Name",
+    "vendorAccountant": "Vendor Accountant",
+
+    "unitName" : "Unit Name",
+    "S.No" : "S.No ",
+    "areyousuretodeletetherecord" : "Are you sure to delete the record?",
+    "qualification" : "ََQualification",
+    "insurance company" : "Insurance Company",
+
+    "enterOnlyNumbers":"Only Numbers",
+
+
+
+  "insuranceCompany" : "Insurance Company",
+
+  "cancel":"Cancel",
+
+  "managment":"Managment",
+
+  "update":"Update",
+  "delete":"Delete",
+
+
+  "bankName":"Bank Name",
+
+  "addBank":"Add Bank",
+  "updateBank":"Update Bank",
+  "number":"S.No",
+  "Name":"Name",
+  "Gender":"Gender",
+  "City":"City",
+  "OP":"OP",
+  "isRequired":"Is required",
+  "add":"Add",
+
+  "fullTextSearch":"Full text search:",
+
+
+  "insuranceCompanyName":"Insurance Company Name",
+  "addAInsuranceCompany":"Add a insurance company",
+  "updateIInsuranceCompany":"Update a insurance company",
+
+
+
+  "salaryObjectName":"Salary object Name",
+  "salaryObject":"Salary objects ",
+  "addSalaryObject":"Add Salary object",
+
+
+  "startDate":"Start Date",
+  "endDate":"End Date ",
+
+
+  "management":" Management",
+  "mangmentName":"Mangment Name",
+  "higherManagement":"Higher Management",
+  "administrativeAffairs":"Administrative_Affairs",
+  "financialManagement":"financial management",
+  "salesAdministration":"Sales Administration",
+  "purchaseManagement":"Purchase management",
+  "followUpDepartment":"Follow-up management",
+  "yyyy_mm_dd":"yyyy-mm-dd",
+  "loading":"Loading...",
+  "topManagement":"Top Management",
+
+
+
+
+  "major":"Majors",
+  "addMajor":"Add Major",
+  "majorName":"Major Name",
+  "updateMajor":"Update Major",
+
+
+
+  "qualifications":"Qualifications",
+  "qualificationsName":"Qualifications Name",
+
+  "univarsity":"Univarsity",
+
+  "universities":"Universities",
+  "universityName":"University Name",
+  "country":"Country",
+  "universityType":"University Type",
+  "basicInformation":"Basic Information",
+  "companyName":"Company name",
+  "commercialFeature":"Commercial feature",
+  "companyLogo":"Company logo",
+  "commercialRegistrationInformation":"Commercial registration information",
+  "CommerciaNo":"Commercia No",
+  "commercialname":"Commercial name",
+  "releaseDate":"Release date",
+  "municipalLicenseInformation":"Municipal license information"
+
+
+
+
+
+
+  }
+
