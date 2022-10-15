@@ -10671,6 +10671,11 @@ body.dark-theme *:hover::-webkit-scrollbar-thumb {
   background-color:#3c3f4e !important;
 
 }
+.cls0{fill:#f4f4f4;}
+.cls01{fill:#c4c4c4;}
+.dark-theme .cls0{fill:#333;}
+.dark-theme .cls01{fill:#010101;}
+
 
 
 /*# sourceMappingURL=dark-style.css.map */

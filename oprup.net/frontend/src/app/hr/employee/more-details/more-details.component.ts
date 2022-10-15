@@ -1,11 +1,22 @@
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as saveAs from 'file-saver';
 import { SortEvent } from 'src/app/shared/directives/soratable.directive';
 import { EmployeeService } from '../employee.service';
+import { UniversityService } from '../../university/university.service';
+import { QualificationService } from '../../qualification/qualification.service';
+import { BankService } from '../../bank/bank.service';
+import { DepartmentService } from '../../department/department.service';
+import { SectionService } from '../../section/section.service';
+import { InsuranceCompanyService } from '../../insurance-company/insurance-company.service';
+import { ActivatedRoute } from '@angular/router';
+import { EmployeeBank, EmployeeInsuranceCompany, EmployeeQualification, Address, EmployeeJobInformation } from '../employee';
+import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
+import { MajorService } from '../../major/major.service';
 
 @Component({
   selector: 'app-more-details',
@@ -20,29 +31,146 @@ export class MoreDetailsComponent implements OnInit {
   img: any;
   headers: any;
   service: any;
-  employees: any;
-  employeeInfo:any;
-  banks:any;
+  
+  count = 1;
+  counter(){
+    this.count = this.count + 1
+  }
 
   constructor(
     public fb: FormBuilder,
     public employeeService: EmployeeService,
     private modalService: NgbModal,
     private activateRoute:ActivatedRoute,
+    private qualificationService: QualificationService,
+    private universityService: UniversityService,
+    private bankService: BankService,
+    private departmentService: DepartmentService,
+    private sectionService: SectionService,
+    private insuranceCompanyService: InsuranceCompanyService,
+    private translate: TranslateService,
+    private toaster:ToastrService,
+    private majorService: MajorService,
+    
+
+
+
+
 
   ) { }
   employeeData = {
-    arabicName: '',
+    employeeNameAr: '',
     employeeName: '',
-    employeeNameAr:'',
     employeeCode: '',
+    gender: '',
     image: '',
-    gender:'',
-    banks:{
-      bankId:''
-
-    },
+    BOD: ''
   }
+
+  employeeQualificationData = {
+    employee: {
+      employeeId: this.employeeId
+    },
+    qualification: {
+        qualificationId: ''
+    },
+    university: {
+      universityId: ''
+    },
+    major: {
+        majorId: ''
+    }
+  }
+
+  employeeJobInfoData = {
+    employee: {
+      employeeId: this.employeeId
+    },
+    department: {
+      departmentId: ''
+    },
+    section: {
+      sectionId: ''
+    },
+    jobTitle: {
+      jobTitleId: ''
+    }
+  }
+
+  employeeBankData = {
+    employee: {
+      employeeId: this.employeeId
+    },
+    bank: {
+        bankId: ''
+    }
+  }
+  employeeInsuranceCompanyData = {
+    employee: {
+      employeeId: this.employeeId
+    },
+    insuranceCompany: {
+      insuranceCompanyId: ''
+    },
+    insurancePolicyNum: '',
+    insurancePolicyType: '',
+    issueDate: '',
+    expiryData: '',
+    insurancePolicyDegree: ''
+
+  }
+  employeeJobTitleData = {
+    employee: {
+      employeeId: this.employeeId
+    },
+    jobTitle: {
+      jobTitleId: ''
+    }
+  }
+  employeeUniversityData = {
+    employee: {
+      employeeId: this.employeeId
+    },
+    university: {
+      universityId: ''
+    }
+  }
+  employeeMajorData = {
+    employee: {
+      employeeId: this.employeeId
+    },
+    major: {
+      majorId: ''
+    }
+  }
+
+  addressData= {
+    employee: {
+      employeeId: this.employeeId
+    },
+    addressName: '',
+    email: '',
+    phoneNumber: ''
+  }
+
+  qualification!: any;
+  banks!:any;
+  empBanks:any;
+  insuranceCompanies!:any;
+  empInsuranceCompanies:any;
+  jobTitles:any;
+  qualifications:any;
+  empQualifications: any;
+  empJobsInformation: any;
+  universities:any;
+  majors:any;
+  employees:any;
+  addresses: any;
+  departments: any;
+  sections: any;
+
+  
+
   onSort({column, direction}: SortEvent | any) {
     // resetting other headers
     this.headers.forEach((header: { sortable: any; direction: string; }) => {
@@ -122,7 +250,7 @@ export class MoreDetailsComponent implements OnInit {
   form: FormGroup = new FormGroup({
 
     bankName:new FormControl(''),
-    bankDescription:new FormControl(''),
+    
 
   });
 
@@ -131,18 +259,281 @@ export class MoreDetailsComponent implements OnInit {
     return this.form.controls;
   }
   
-
-  getEmployeeById=()=>{
-    this.employeeService.getEmployeeById(this.employeeId).subscribe(data=>{
-     this.employeeInfo=data
-     console.log("aaaaa",this.employeeInfo)
-     
-    })
-   }
   ngOnInit(): void {
-    this.getEmployeeById();
-
+    this.getAllQualifications()
+    this.getAllBanks()
+    this.getAllSections()
+    this.getAllDepartments()
+    this.getAllInsuranceCompanies()
+    this.getBanksByEmployeeId()
+    this.getInsuranceCompaniesByEmployeeId()
+    this.getAllUniversities()
+    this.getAllMajors()
+    this.getEmployeeByEmployeeId()
+    this.getAllJobTitles()
+    this.getQualificationsByEmployeeId()
+    this.getJobsInformationByEmployeeId()
+    this.getAddressById()
   }
+
+  addQualification(){
+    console.log(this.employeeQualificationData);
+    this.employeeService.addEmployeeQualification(this.employeeQualificationData).subscribe(() => {
+    }),
+      (error: HttpErrorResponse) => {     };
+  }
+
+  addJobInfo(){
+    console.log(this.employeeJobInfoData);
+    this.employeeService.addJobInfo(this.employeeJobInfoData).subscribe(() => {
+      this.getJobsInformationByEmployeeId()
+    }),
+      (error: HttpErrorResponse) => {     };
+  }
+
+  addAddress(){
+    console.log(this.addressData);
+    this.employeeService.addAddress(this.addressData).subscribe(() => {
+      this.getAddressById()
+    }),
+      (error: HttpErrorResponse) => {     };
+  }
+
+  addJobTitle(){
+    console.log(this.employeeJobTitleData);
+    this.employeeService.addEmployeeJobTitle(this.employeeJobTitleData).subscribe(() => {
+    }),
+      (error: HttpErrorResponse) => {     };
+  }
+
+
+  addBank(){
+    this.employeeService.addEmployeeBank(this.employeeBankData).subscribe(() => {
+      // this.router.navigate(['/items/items']);
+      this.getBanksByEmployeeId()
+    }),
+    (error: HttpErrorResponse) => {
+      
+    };
+    console.log(this.employeeBankData);
+  }
+  
+  addInsuranceCompany(){
+    this.employeeService.addEmployeeInsuranceCompany(this.employeeInsuranceCompanyData).subscribe(() => {
+      // this.router.navigate(['/items/items']);
+      this.getInsuranceCompaniesByEmployeeId()
+    }),
+    (error: HttpErrorResponse) => {
+      
+    };
+    console.log(this.employeeInsuranceCompanyData);
+  }
+  getBanksByEmployeeId=()=>{
+    this.employeeService.getBanksByEmployeeId(this.employeeId).subscribe(data=>{
+     this.empBanks=data   
+    })
+    console.log(this.empBanks)
+   }
+
+   getQualificationsByEmployeeId=()=>{
+    this.employeeService.getQualificationsByEmployeeId(this.employeeId).subscribe(data=>{
+     this.empQualifications=data   
+    })
+    console.log(this.empQualifications)
+   }
+
+   getJobsInformationByEmployeeId=()=>{
+    this.employeeService.getJobsInformationByEmployeeId(this.employeeId).subscribe(data=>{
+      this.empJobsInformation=data   
+     })
+     console.log(this.empJobsInformation)
+   }
+   
+   getEmployeeByEmployeeId=()=>{
+    this.employeeService.getEmployeeById(this.employeeId).subscribe(data=>{
+     this.employees=data   
+    })
+    console.log(this.empBanks)
+   }
+   getInsuranceCompaniesByEmployeeId=()=>{
+    this.employeeService.getInsuranceCompaniesByEmployeeId(this.employeeId).subscribe(data=>{
+     this.empInsuranceCompanies=data   
+    })
+    console.log(this.empInsuranceCompanies)
+   }
+
+  getAllQualifications(){
+    this.qualificationService.getAllQualifications()
+    .subscribe(data => this.qualification = data)
+    console.log(this.qualification)
+  }
+  getAllJobTitles(){
+    this.employeeService.getAllJobTitles()
+    .subscribe(data => this.jobTitles = data)
+    console.log(this.jobTitles)
+  }
+  getAllUniversities(){
+     this.universityService.getAllUniversities()
+     .subscribe(data => this.universities = data)
+   }
+
+   getAllMajors(){
+    this.majorService.getAllMajors()
+    .subscribe(data => this.majors = data)
+  }
+
+  getAllBanks(){
+    this.bankService.getAllBanks()
+    .subscribe(data => this.banks = data)
+    console.log(this.banks)
+  }
+
+  getAllDepartments(){
+    this.departmentService.getAllDepartments()
+    .subscribe(data => this.departments = data)
+    console.log(this.departments)
+  }
+
+  getAllSections(){
+    this.sectionService.getAllSections()
+    .subscribe(data => this.sections = data)
+    console.log(this.sections)
+  }
+  getAddressById(){
+    this.employeeService.getAddressById()
+    .subscribe(data => this.addresses = data)
+    console.log(this.addresses)
+  }
+  
+  getAllInsuranceCompanies(){
+    this.insuranceCompanyService.getAllInsuranceCompanies()
+    .subscribe(data => this.insuranceCompanies = data)
+    console.log(this.insuranceCompanies)
+  }
+  sectionByDepartment:any;
+  getSectionByDepartment = (event: any) => {
+    this.sectionByDepartment = this.sections.filter((element: any) => {
+      return element.department.departmentId == event && element.deleteFlag != 0;
+    });
+  };
+
+  public deleteJobInformation(employeeJobInformationId: EmployeeJobInformation){
+    Swal.fire({
+      icon: 'info',
+      title: this.translate.instant('Are you Sure to delete The Record'),
+      confirmButtonText:  'Delete',
+      showCancelButton: true,
+    }).then((result) => {
+      if(result.isConfirmed){
+        this.employeeService.deleteJobInformation(employeeJobInformationId).subscribe(
+          (response) => {
+            Swal.fire(this.translate.instant('success'), this.translate.instant('Data Is Deleted'), 'success')
+           this.toaster.success('success')
+           this.getJobsInformationByEmployeeId()
+          },
+          (error) => {
+            Swal.fire(this.translate.instant('Error'), this.translate.instant('Error while Deleting Data'), 'error')
+            this.toaster.error('Error')
+          }
+        );
+      }
+    })
+}
+  public deleteQualification(employeeQualificationId: EmployeeQualification){
+    Swal.fire({
+      icon: 'info',
+      title: this.translate.instant('Are you Sure to delete The Record'),
+      confirmButtonText:  'Delete',
+      showCancelButton: true,
+    }).then((result) => {
+      if(result.isConfirmed){
+        this.employeeService.deleteEmpQualification(employeeQualificationId).subscribe(
+          (response) => {
+            Swal.fire(this.translate.instant('success'), this.translate.instant('Data Is Deleted'), 'success')
+           this.toaster.success('success')
+           this.getQualificationsByEmployeeId()
+          },
+          (error) => {
+            Swal.fire(this.translate.instant('Error'), this.translate.instant('Error while Deleting Data'), 'error')
+            this.toaster.error('Error')
+          }
+        );
+      }
+    })
+}
+
+  public deleteInsuranceCompany(insuranceCompanyId: EmployeeInsuranceCompany){
+    Swal.fire({
+      icon: 'info',
+      title: this.translate.instant('Are you Sure to delete The Record'),
+      confirmButtonText:  'Delete',
+      showCancelButton: true,
+    }).then((result) => {
+      if(result.isConfirmed){
+        this.employeeService.deleteEmpInsurCom(insuranceCompanyId).subscribe(
+          (response) => {
+            Swal.fire(this.translate.instant('success'), this.translate.instant('Data Is Deleted'), 'success')
+           this.toaster.success('success')
+           this.getInsuranceCompaniesByEmployeeId()
+          },
+          (error) => {
+            Swal.fire(this.translate.instant('Error'), this.translate.instant('Error while Deleting Data'), 'error')
+            this.toaster.error('Error')
+          }
+        );
+      }
+    })
+}
+
+public deleteBank(empBankId: EmployeeBank){
+  Swal.fire({
+    icon: 'info',
+    title: this.translate.instant('Are you Sure to delete The Record'),
+    confirmButtonText:  'Delete',
+    showCancelButton: true,
+  }).then((result) => {
+    if(result.isConfirmed){
+      this.employeeService.deleteEmpBank(empBankId).subscribe(
+        (response) => {
+          Swal.fire(this.translate.instant('success'), this.translate.instant('Data Is Deleted'), 'success')
+         this.toaster.success('success')
+         this.getBanksByEmployeeId()
+        },
+        (error) => {
+          Swal.fire(this.translate.instant('Error'), this.translate.instant('Error while Deleting Data'), 'error')
+          this.toaster.error('Error')
+        }
+      );
+    }
+
+
+  })
+}
+
+public deleteAddress(addressId: Address){
+  Swal.fire({
+    icon: 'info',
+    title: this.translate.instant('Are you Sure to delete The Record'),
+    confirmButtonText:  'Delete',
+    showCancelButton: true,
+  }).then((result) => {
+    if(result.isConfirmed){
+      this.employeeService.deleteAddress(addressId).subscribe(
+        (response) => {
+          Swal.fire(this.translate.instant('success'), this.translate.instant('Data Is Deleted'), 'success')
+         this.toaster.success('success')
+         this.getAddressById()
+        },
+        (error) => {
+          Swal.fire(this.translate.instant('Error'), this.translate.instant('Error while Deleting Data'), 'error')
+          this.toaster.error('Error')
+        }
+      );
+    }
+
+
+  })
+}
 
 
 }

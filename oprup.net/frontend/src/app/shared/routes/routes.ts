@@ -129,6 +129,18 @@ export const content: Routes = [
   {
     path:'itemRequest',
     loadChildren: () => import('../../purchase/item-request/itemRrequest.module').then(m => m.ItemRequestModule)
-  }
+  },
+  {
+    path:'department',
+    loadChildren: () => import('../../hr/department/department.module').then(m => m.DepartmentModule)
+  },
+  {
+    path:'section',
+    loadChildren: () => import('../../hr/section/section.module').then(m => m.SectionModule)
+  },
+  {
+    path:'job-title',
+    loadChildren: () => import('../../hr/job-title/job-title.module').then(m => m.JobTitleModule)
+  },
 
 ];
