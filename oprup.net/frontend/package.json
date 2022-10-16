@@ -75,6 +75,7 @@
     "ng-table": "^4.0.0",
     "ng2-charts": "^4.0.0",
     "ng2-dragula": "^2.1.1",
+    "ng2-search-filter": "^0.5.1",
     "ng2-tel-input": "^2.3.0",
     "ngb-table": "^1.4.3",
     "ngx-barcode": "^0.3.0",

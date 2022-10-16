@@ -24,6 +24,7 @@ export class StoreComponent implements OnInit {
   countries$: Observable<Country[]>;
   total$: Observable<number>;
   store!: any;
+  searchText:any;
   @ViewChild('storeprint') storeElement!: ElementRef;
   pdfTable!: ElementRef;
 

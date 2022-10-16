@@ -13,6 +13,7 @@ import * as XLSX from 'xlsx';
 import html2canvas from 'html2canvas';
 import { ItemRequestService } from '../item-request.service';
 import { ItemRequest } from '../itemRquest';
+import { ItemRequestDetails } from '../ItemRequestDetails';
 
 @Component({
   selector: 'app-item-request',
@@ -21,6 +22,7 @@ import { ItemRequest } from '../itemRquest';
   providers: [CountryService, DecimalPipe],
 })
 export class ItemRequestComponent implements OnInit {
+  searchText:any;
   year:any;
   isPrinting = true;
   elementType = 'svg';
@@ -116,7 +118,7 @@ export class ItemRequestComponent implements OnInit {
     );
   }
 
-  public deleteItemRequest(ItemRequestId:ItemRequest){
+  public deleteItemRequest(ItemRequestId:ItemRequestDetails){
     Swal.fire({
       icon: 'info',
       title: this.translate.instant('areyousuretodeletetherecord'),
@@ -126,7 +128,7 @@ export class ItemRequestComponent implements OnInit {
     }).then((result) => {
       if(result.isConfirmed){
 
-        this.itemRequestService.deleteItemRequest(ItemRequestId).subscribe(
+        this.itemRequestService.deleteItemRequestDetails(ItemRequestId).subscribe(
           (response) => {
             Swal.fire(this.translate.instant('success'), this.translate.instant('dataisDeleted'), 'success')
 
@@ -169,5 +171,26 @@ export class ItemRequestComponent implements OnInit {
   }
 
 
+  public search(key: string): void {
+    const results: ItemRequest[] = [];
 
+    for (const itemRequestDetails of this.itemRequest) {
+      if (
+        itemRequestDetails.itemRequest.itemRequestId.indexOf(key) !== -1 ||
+        itemRequestDetails.itemRequest.itemRequestDate.indexOf(key) !==-1
+
+      ) {
+        results.push(itemRequestDetails);
+      }
+    }
+    if (results.length === 0 || !key) {
+      this.getAllItemRequest();
+    }
+  }
+
+  filterData(event: any){
+  console.log(event.target.value);
+
+
+}
 }

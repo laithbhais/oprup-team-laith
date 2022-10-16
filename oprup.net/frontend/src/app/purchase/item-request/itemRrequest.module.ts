@@ -8,7 +8,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatNativeDateModule } from '@angular/material/core';
+import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -37,12 +37,18 @@ import { AdvancedFormService } from 'src/app/components/forms/advanced-forms/adv
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ItemRequestRoutingModule } from './itemRequest-routing.module';
 import { NgxBarcodeModule } from 'ngx-barcode';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AppComponent } from 'src/app/app.component';
+import { DateFormat } from 'src/app/inventory/items/DateFormat ';
+import { searchFilterPipe } from './search-filter.pipe';
+
 
 @NgModule({
   declarations: [
     ItemRequestComponent,
     CreateItemRequestComponent,
-    UpdateItemRequestComponent
+    UpdateItemRequestComponent,
+    searchFilterPipe,
   ],
   imports: [
     CommonModule,
@@ -97,12 +103,21 @@ import { NgxBarcodeModule } from 'ngx-barcode';
     NgxBarcodeModule,
 
 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
   ],
   providers:[
     AdvancedFormService,
-    ToastrService
-  ]
+    ToastrService,
+    { provide: DateAdapter, useClass: DateFormat }
+  ],
+
+  bootstrap: [AppComponent]
+
 
 })
-export class ItemRequestModule { }
+export class ItemRequestModule {
+  constructor(private dateAdapter: DateAdapter<Date>) {
+    dateAdapter.setLocale("en-in"); // DD/MM/YYYY
+  }
+}

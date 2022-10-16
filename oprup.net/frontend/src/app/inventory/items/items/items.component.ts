@@ -32,6 +32,7 @@ import { ToastrService } from 'ngx-toastr';
   providers: [CountryService, DecimalPipe],
 })
 export class ItemsComponent implements OnInit {
+  searchText:any;
   year:any;
   isPrinting = true;
   elementType = 'svg';

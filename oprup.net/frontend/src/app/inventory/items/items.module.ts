@@ -40,6 +40,8 @@ import { AdvancedFormService } from 'src/app/components/forms/advanced-forms/adv
 import { NgxBarcodeModule } from 'ngx-barcode';
 import { DateFormat } from './DateFormat ';
 import { AppComponent } from 'src/app/app.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { searchFilterPipe } from './search-filter.pipe';
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { AppComponent } from 'src/app/app.component';
     ItemsComponent,
     CreateItemsComponent,
     UpdateItemsComponent,
-    PrintItemsComponent
+    PrintItemsComponent,
+    searchFilterPipe
   ],
   imports: [
     CommonModule,
@@ -105,7 +108,8 @@ import { AppComponent } from 'src/app/app.component';
 
 
     ReactiveFormsModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    Ng2SearchPipeModule
 
   ],
   providers:[

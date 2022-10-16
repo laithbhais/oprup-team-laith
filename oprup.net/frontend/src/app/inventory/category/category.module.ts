@@ -36,6 +36,8 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { AdvancedFormService } from 'src/app/components/forms/advanced-forms/advanced-form.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CategoryComponent } from './category/category.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { searchFilterPipe } from './search-filter.pipe';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { CategoryComponent } from './category/category.component';
     CreateCategoryComponent,
     UpdateCategoryComponent,
     PrintCategoryComponent,
-    CategoryComponent
+    CategoryComponent,
+    searchFilterPipe,
   ],
   imports: [
     CommonModule,
@@ -98,7 +101,9 @@ import { CategoryComponent } from './category/category.component';
     AngularEditorModule,
 
 
-    ReactiveFormsModule
+
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
   ],
   providers:[
     AdvancedFormService,

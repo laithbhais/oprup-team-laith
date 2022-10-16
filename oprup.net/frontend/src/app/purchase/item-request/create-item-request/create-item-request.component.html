@@ -32,8 +32,8 @@
 
 
                   <label for="" class="mg-b-10 tx-semibold col-lg-5">{{ 'itemRequestDate' | translate }}</label>
-                  <mat-form-field appearance="outline" class="col-md-6 p-0 my-1 ">
-                    <mat-label>{{'DD/MM/YYYY' | translate}}</mat-label>
+                  <mat-form-field appearance="fill" class="col-md-6 p-0 my-1 ">
+                    <mat-label>{{'DD/MM/YYYY'| translate}}</mat-label>
                     <input id="itemRequestDate" name="itemRequestDate" #itemRequestDate
                       [(ngModel)]="itemRequestData.itemRequestDate" [ngModelOptions]="{standalone: true}" matInput
                       [matDatepicker]="picker">
@@ -75,20 +75,15 @@
                 <table class="table table-striped border">
 
                   <tr class="text-center ">
-                    <!-- <th scope="col" >S.No</th> -->
 
-                    <!-- <td scope="col" >{{'ItemPicture' | translate}}</td> -->
                     <td scope="col" >{{'quantityPackage' | translate}}</td>
+                    <td scope="col" >{{'quantity' | translate}}</td>
                     <td scope="col" >{{'itemName' | translate}}</td>
 
-                    <!-- <td scope="col" >{{'countryOfOrigin' | translate}}</td> -->
+
                     <td scope="col" >{{'category' | translate}}</td>
                     <td scope="col" >{{'unit' | translate}}</td>
-                    <!-- <td scope="col" >{{'subcategory' | translate}}</td> -->
-                    <!-- <td scope="col" >{{'expiryDate' | translate}}</td> -->
-                    <!-- <td scope="col" >{{'sellingPrice' | translate}}</td> -->
-                    <!-- <td scope="col" >{{'buyingPrice' | translate}}</td> -->
-                    <!-- <td scope="col" >{{'lastBuyingPrice' | translate}}</td> -->
+
                     <td scope="col" >{{'vendor' | translate}}</td>
                     <td scope="col" >{{'barCode' | translate}}</td>
                     <td scope="col"  data-html2canvas-ignore="true" class="noPrint">{{'action' | translate}}</td>
@@ -96,19 +91,11 @@
 
                   <tbody class="table-group-divider">
                     <tr *ngFor="let item of itemsDetailsById">
-
-                       <!-- <td class="d-flex justify-content-center m-sm-3"><img src="{{item.img}}" alt="" class="rounded" height="80" width="90"></td> -->
                        <td>{{item.quantityPackage}}</td>
+                       <td>{{item.quantity}}</td>
                        <td>{{item.items.itemName}}</td>
-
-                      <!-- <td>{{item.countryOfOrigin}}</td> -->
                       <td>{{item.items.category.categoryName}}</td>
                       <td>{{item.items.unit.unitName}}</td>
-                      <!-- <td>{{item.subCategory.subcategoryName}}</td> -->
-                      <!-- <td>{{item.expiryDate}}</td> -->
-                      <!-- <td>{{item.sellingPrice}}</td> -->
-                      <!-- <td>{{item.buyingPrice}}</td> -->
-                      <!-- <td>{{item.lastBuyingPrice}}</td> -->
                       <td>{{item.items.vendor.vendorName}}</td>
 
                       <td ><ngx-barcode  [bc-value]="item.items.barCode"   [bc-line-color]="lineColor"
@@ -119,7 +106,7 @@
                        [bc-margin]="margin" [bc-margin-top]="marginTop"
                        [bc-margin-bottom]="marginBottom" [bc-margin-left]="marginLeft"
                        [bc-margin-right]="marginRight"></ngx-barcode>
-                       <span style="font:2px; color:rgb(23, 23, 23);">{{item.barCode}}</span></td>
+                       <span style="font:2px; color:rgb(23, 23, 23);">{{item.items.barCode}}</span></td>
 
                       <td data-html2canvas-ignore="true" class="noPrint">
                         <a class="btn btn-icon-text" (click)="Select2Update(select2modal2,item)"><i
@@ -231,6 +218,7 @@
                 placeholder="  {{'categoryName' | translate}}" type="text" readonly
                 [value]='itemsDetails.category.categoryName'>
             </div>
+            
             <div class="col-lg my-1 row align-items-center">
               <p class="mg-b-10 tx-semibold col-lg-5">{{'vendorName' | translate}}</p>
               <input class="form-control input col-lg-7 my-1" name="vendorName" id="vendorName"
