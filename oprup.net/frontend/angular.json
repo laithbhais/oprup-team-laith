@@ -54,7 +54,7 @@
               "sweetalert2",
               "chartist"
             ],
-            "outputPath": "dist/preview",
+            "outputPath": "dist/demo2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
