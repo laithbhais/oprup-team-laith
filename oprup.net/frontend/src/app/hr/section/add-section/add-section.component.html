@@ -1,5 +1,4 @@
 <app-page-header  [items]="['section'|translate]" [active_item]="'add'|translate"></app-page-header>
-<button (click)="getAllDepartments()">aaa</button>
 <div class="row row-sm">
     <div class="col-lg-12 col-md-12">
         <div class="card custom-card">
@@ -8,7 +7,7 @@
 
                 <form [formGroup]="form" >
                     <div class="border m-2 p-2">
-                        <div class="col-lg row">
+                        <div class="col-lg row my-4 ">
                             <p class="mg-b-10 tx-semibold col-lg-3">
                               {{ "department" | translate }}<span class="tx-danger">*</span>
                             </p>
@@ -20,7 +19,7 @@
                           </div>
                         <div class="col-lg row my-4">
                             <p class="mg-b-10 tx-semibold col-lg-3">{{'sectionName'|translate}}<span style="color:red ;"> *</span></p>
-                            <input class="form-control col-lg-4" name="sectionName" id="sectionName" placeholder="{{'sectionName'|translate}}" type="text" formControlName="sectionName"
+                            <input class="form-control col-lg-5" name="sectionName" id="sectionName" placeholder="{{'sectionName'|translate}}" type="text" formControlName="sectionName"
                             [ngClass]="{ 'is-invalid': submitted && f['sectionName'].errors }"   [(ngModel)]='sectionData.sectionName'>
                             <div *ngIf="submitted && f['sectionName'].errors" class="invalid-feedback col-lg-11">
                                 <div class="text-center"ass="" *ngIf="f['sectionName'].errors['required']">{{'isRequired'|translate}}</div>

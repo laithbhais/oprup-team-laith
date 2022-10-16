@@ -22,17 +22,17 @@
                         <p class="mg-b-10 tx-semibold col-lg-2" >{{'country'|translate}}<span style="color:red ;"> *</span></p>
                         <input class="form-control col-lg-4" placeholder="{{'country'|translate}}" name="Country" id="country" rows="3" formControlName="country"
                         [ngClass]="{ 'is-invalid': submitted && f['country'].errors }"  [(ngModel)]='universityData.country'  >
-                        <div *ngIf="submitted && f['country'].errors" class="invalid-feedback col-lg-10">
-                            <div class="text-end"
+                        <div *ngIf="submitted && f['country'].errors" class="invalid-feedback col-lg-11">
+                            <div class="text-center"
                             *ngIf="f['country'].errors['required']">{{'isRequired'|translate}}</div>
                           </div>
                     </div>
                     <div class="col-lg my-4 row">
                         <p class="mg-b-10 tx-semibold col-lg-2" >{{'universityType'|translate}}<span style="color:red ;"> *</span></p>
-                        <input class="form-control col-lg-4" placeholder="{{'universityType'|translate}}" name="universityType" id="universityType" rows="3" formControlName="universityType"
+                        <input class="form-control col-lg-4" placeholder="{{'universityType'|translate}}" name="universityType" id="universityType"  formControlName="universityType"
                         [ngClass]="{ 'is-invalid': submitted && f['universityType'].errors }"  [(ngModel)]='universityData.universityType'  >
-                        <div *ngIf="submitted && f['universityType'].errors" class="invalid-feedback col-lg-10">
-                            <div class="text-end"
+                        <div *ngIf="submitted && f['universityType'].errors" class="invalid-feedback col-lg-11">
+                            <div class="text-center"
                             *ngIf="f['universityType'].errors['required']">{{'isRequired'|translate}}</div>
                           </div>
                     </div>

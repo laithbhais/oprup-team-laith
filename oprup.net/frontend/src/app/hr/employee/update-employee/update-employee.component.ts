@@ -167,7 +167,7 @@ en=false
   }
  employeeUpdate=()=>{
   this.employeeService.updateEmployee(this.employee).subscribe(
-    () =>{location.assign('../employee/view')}
+    () =>{}
   )
  }
 

@@ -16,7 +16,6 @@ export class UpdateSectionComponent implements OnInit {
   form: FormGroup = new FormGroup({
 
     sectionName: new FormControl(''),
-    sectionDescription: new FormControl(''),
 
     });
     
@@ -34,13 +33,8 @@ export class UpdateSectionComponent implements OnInit {
        
         sectionName: [null, Validators.compose([
           Validators.required,
-          // Validators.pattern('^([a-zA-Z\s]+)$')
         ])],
-        sectionDescription: [null, Validators.compose([
-          Validators.nullValidator,
-          // Validators.pattern('^([a-zA-Z\s]+)$')
-        ])],
-
+       
 
 
       }

@@ -166,27 +166,12 @@ employee:any
       return element.employeeType.employeeTypeId == event && element.deleteFlag != 0;
     });
   };
-  // public addEmployee(): void{
-
-  //   this.submitted = true;
-  //   if (this.form.invalid) {
-  //     return;
-  //   }
-  //   this.employeeService.addEmployee(this.employeeData).subscribe(
-  //     () => {location.assign('../employee/view')}
-  //   )
-  //   console.log(this.employeeData)
-
-  // }
+  
   public addEmployee(): void{
     this.employeeService.addEmployee(this.employeeData).subscribe(
-      () => {location.assign('/../employee/view')}
+      () => {}
     )
     console.log(this.employeeData)
   }
-  // getEmployeeByemployeeTypeId = (event: any) => {
-  //   this.employeeService.getEmployeeByemployeeTypeId(this.employeeTypeId) = this.employeeTypeId.filter((element: any) => {
-  //     return element.employeeType.employeeTypeId == event && element.deleteFlag != 0;
-  //   });
-  // };
+
 }
