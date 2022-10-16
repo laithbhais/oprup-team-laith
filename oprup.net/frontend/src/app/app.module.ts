@@ -61,7 +61,7 @@ export function HttpLoaderFactory(http: HttpClient){
   HttpClient,
 
   {provide:MAT_DATE_LOCALE , useValue:'en-GB'},
- 
+
 
   ],
   bootstrap: [AppComponent],

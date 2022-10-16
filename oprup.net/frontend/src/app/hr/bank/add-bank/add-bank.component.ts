@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { BankService } from '../bank.service';
 
@@ -19,6 +20,7 @@ export class AddBankComponent implements OnInit {
 
   
   constructor(
+    private router: Router,
     private bankService:BankService,
     private translate:TranslateService,
     public fb: FormBuilder, // Form Builder service for Reactive forms
@@ -62,9 +64,11 @@ export class AddBankComponent implements OnInit {
       return;
     }
     this.bankService.addBank(this.bankData).subscribe(
-      () => {location.assign('../bank/view')}
+      () => {
+            }
     )
     console.log(this.bankData)
+
 
   }
 

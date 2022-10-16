@@ -67,7 +67,7 @@ export class UpdateBankComponent implements OnInit {
       return;
     }
     this.bankService.updateBank(this.bank).subscribe(
-      () => {location.assign('../bank/view')}
+      () => {}
       )
   }
 }

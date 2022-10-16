@@ -262,8 +262,6 @@ export class CreateItemRequestComponent implements OnInit {
 
   Select2Open(select2modal:any) {
 
-
-
     this.modalService.open(select2modal);
 
   }

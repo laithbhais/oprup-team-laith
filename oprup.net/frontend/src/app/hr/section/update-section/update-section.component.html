@@ -1,18 +1,17 @@
 <app-page-header  [items]="['section '|translate]" [active_item]="'update'|translate"></app-page-header>
 <button (click)="getSectionById()">aaa</button>
 
+
 <div class="row row-sm">
     <div class="col-lg-12 col-md-12">
         <div class="card custom-card">
-            <!-- <div class="d-flex justify-content-between bg-black-2 align-items-center px-4 rounded-top">
-                <h4 class="main-content-label text-black tx-24 py-3">{{'updateISection'|translate}}</h4>
-            </div> -->
+
             <div class="card-body" *ngIf="section">
                 <form [formGroup]="form" >
                     <div class="border m-2 p-2">
                     <div class="col-lg row my-4">
                         <p class="mg-b-10 tx-semibold col-lg-3">{{'sectionName'|translate}}<span style="color:red ;"> *</span></p>
-                        <input class="form-control col-lg-4" name="sectionName" id="sectionName" placeholder="{{'section_Name'|translate}}" type="text" formControlName="sectionName"
+                        <input class="form-control col-lg-4" name="sectionName" id="sectionName" placeholder="{{'sectionName'|translate}}" type="text" formControlName="sectionName"
                         [ngClass]="{ 'is-invalid': submitted && f['sectionName'].errors }"   [(ngModel)]='section.sectionName'>
                         <div *ngIf="submitted && f['sectionName'].errors" class="invalid-feedback col-lg-11">
                             <div class="text-center"*ngIf="f['sectionName'].errors['required']">{{'isRequired'|translate}}</div>

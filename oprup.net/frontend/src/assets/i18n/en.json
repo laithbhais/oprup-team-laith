@@ -5,7 +5,7 @@
     "save" : "Save",
     "clickheretoaddapicture" : "Click here to add a picture",
     "errorwhiledeletingData" : "Error while deleting Data",
-    "dataisDeleted" : "Data is Deleted",
+    
     "yes" : "Yes",
     "addItem" : "Add Item",
     "itemRequestDate" : "Request Date",
@@ -14,6 +14,7 @@
     "generate" : "Generate",
     "itemNameEn" : "Item NameEn",
     "success" : "Success",
+   "deleteData":"Data Is Deleted",
     "no" : "No",
     "tax" : "Tax",
     "taxfree" : "Tax Free",
@@ -63,6 +64,10 @@
   "insuranceCompany" : "Insurance Company",
 
   "cancel":"Cancel",
+  "DD/MM/YYYY":"DD/MM/YYYY",
+  "close":"Close",
+  "itemRequest":"Item Request",
+  "itemNameAr":"Item NameAr",
 
   "managment":"Managment",
 
@@ -71,7 +76,7 @@
 
 
   "bankName":"Bank Name",
-
+  
   "addBank":"Add Bank",
   "updateBank":"Update Bank",
   "number":"S.No",
@@ -139,12 +144,24 @@
   "CommerciaNo":"Commercia No",
   "commercialname":"Commercial name",
   "releaseDate":"Release date",
-  "municipalLicenseInformation":"Municipal license information"
+  "municipalLicenseInformation":"Municipal license information",
 
 
+  "Are you Sure to delete The Record":"Are you Sure to delete The Record",
+  "Error while Deleting Data":"Error while Deleting Data",
+  "Data Is Deleted" : "Data is Deleted",
+  "employeeType":"employeeType",
+  "bank":"bank",
+  "department":"Department",
+  "departmentName":"Department Name ",
+  "jobTitle":"Job Title",
+  "jobTitleName":"Job Title Name",
+  "sections":"Sections",
+  "section":"Section",
+  "sectionName":"Section Name"
 
 
-
+  
 
   }
 

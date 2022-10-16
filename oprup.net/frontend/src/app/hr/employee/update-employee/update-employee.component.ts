@@ -170,6 +170,7 @@ en=false
   this.employeeService.updateEmployee(this.employee).subscribe(
     () => {this.router.navigate(['employee/view'])}
     )
+
  }
 
 }

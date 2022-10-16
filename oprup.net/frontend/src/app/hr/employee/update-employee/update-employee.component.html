@@ -45,17 +45,11 @@
 
               </ng-select>
               <p class="mg-b-10 tx-sm col-lg-4">نوع الموظف</p>
-              <!-- <input class="form-control   col-lg-8 mb-2" type="text"> -->
               <ng-select formControlName="employeeTypeId" (change)="getEmployeeType($event)" [(ngModel)]="employee.employeeType.employeeTypeId" name="employeeTypeId" id="employeeTypeId" class="   col-lg-8 mb-2">
                 <ng-option *ngFor="let employee of employeeType" value="{{employee.employeeTypeId}}">
                   {{employee.employeeTypeName}}
                 </ng-option>
               </ng-select>
-
-
-
-
-
 
             </div>
             <div class="col-lg-6 row mb-3 ">
@@ -77,8 +71,7 @@
                  [(ngModel)]='employee.dateOfBirth'name="dateOfBirth" id="dateOfBirth">
 
                  <p class="mg-b-10 tx-sm col-lg-5 mg-l-15">مكان الولادة</p>
-                 <!-- <input class="form-control   col-lg-8 mb-2 " type="text"
-                 [ngModelOptions]="{standalone: true}" [(ngModel)]='employeeData.placeOfBirth'> -->
+                
                  <ng-select form controlName="nationality" [ngModelOptions]="{standalone: true}" [(ngModel)]='employee.placeOfBirth' name="dateOfBirth" id="dateOfBirth" class="btn  col-7 mb-2">
                    <span >
                      <ng-option *ngFor="let item of countryList" value="{{item.code}}">

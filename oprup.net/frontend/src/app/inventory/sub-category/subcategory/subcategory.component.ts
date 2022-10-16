@@ -22,6 +22,7 @@ import html2canvas from 'html2canvas';
   providers: [CountryService, DecimalPipe],
 })
 export class SubcategoryComponent implements OnInit {
+  searchText:any;
   countries$: Observable<Country[]>;
   total$: Observable<number>;
   Subcategory!: any;

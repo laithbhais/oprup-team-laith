@@ -22,6 +22,7 @@ import {font} from './font'
   providers: [CountryService, DecimalPipe],
 })
 export class CategoryComponent implements OnInit {
+  searchText:any;
   countries$: Observable<Country[]>;
   total$: Observable<number>;
   category!: any;

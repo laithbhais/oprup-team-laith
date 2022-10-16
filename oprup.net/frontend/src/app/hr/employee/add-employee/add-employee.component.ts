@@ -171,12 +171,9 @@ employee:any
   public addEmployee(): void{
     this.employeeService.addEmployee(this.employeeData).subscribe(
       () => {this.router.navigate(['employee/view'])}
+
     )
     console.log(this.employeeData)
   }
-  // getEmployeeByemployeeTypeId = (event: any) => {
-  //   this.employeeService.getEmployeeByemployeeTypeId(this.employeeTypeId) = this.employeeTypeId.filter((element: any) => {
-  //     return element.employeeType.employeeTypeId == event && element.deleteFlag != 0;
-  //   });
-  // };
+
 }

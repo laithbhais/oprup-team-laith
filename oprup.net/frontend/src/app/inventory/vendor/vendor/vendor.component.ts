@@ -22,6 +22,7 @@ import html2canvas from 'html2canvas';
 
 })
 export class VendorComponent implements OnInit {
+  searchText:any;
 
   countries$: Observable<Country[]>;
   total$: Observable<number>;
