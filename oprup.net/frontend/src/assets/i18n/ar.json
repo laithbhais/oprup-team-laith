@@ -22,6 +22,7 @@
     "cancel" : "إلغاء",
     "store" : "المستودع",
     "success" : "تم ",
+    
     "unit" : "الوحدة",
     "dataisDeleted" : "تم حذف البيانات",
     "vendor" : "الموردون",
@@ -74,7 +75,7 @@
 
   "bankName":"اسم البنك",
   "updateBank":"تعديل البنك",
-
+ 
   "addBank":"اضافة بنك",
   "add":"اضافة",
   "number":"الرقم التسلسلي",
@@ -143,11 +144,23 @@
   "CommerciaNo":"رقم السجل التجاري ",
   "commercialname":"الاسم التجاري",
   "releaseDate":"ناريخ الاصدار",
-  "municipalLicenseInformation":"معلومات رخصة البلدية"
+  "municipalLicenseInformation":"معلومات رخصة البلدية",
 
 
+  "Are you Sure to delete The Record":"هل انت متاكد من عملية الحذف   ",
+  "Error while Deleting Data":"خطأ في عملية الحذف",
+  "Data Is Deleted":"تم الحذف بنجاح ",
+  "employeeType":"نوع الوظيفة",
+  "bank":"البنوك",
+  "department":"الدائرة",
+  "departmentName":"اسم الدائرة",
+  "jobTitle":"المسمى الوظيفي",
+  "jobTitleName":"المسمى الوظيفي",
+  "sections":"الاقسام",
+  "section":"القسم",
+  "sectionName":"القسم "
 
-
+  
 
   }
 

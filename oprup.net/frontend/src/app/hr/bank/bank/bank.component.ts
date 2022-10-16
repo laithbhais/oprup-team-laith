@@ -81,14 +81,15 @@ export class BankComponent implements OnInit {
     Swal.fire({
       icon: 'info',
       title: this.translate.instant('Are you Sure to delete The Record'),
-      confirmButtonText:  'Delete',
+      confirmButtonText: this.translate.instant('delete'),
+      cancelButtonText:this.translate.instant('cancel'),
       showCancelButton: true,
     }).then((result) => {
       if(result.isConfirmed){
         this.bankService.deleteBank(bankId).subscribe(
           (response) => {
             Swal.fire(this.translate.instant('success'), this.translate.instant('Data Is Deleted'), 'success')
-           this.toaster.success('success')
+           this.toaster.success(this.translate.instant('success'))
             this.getAllBanks();
           },
           (error) => {

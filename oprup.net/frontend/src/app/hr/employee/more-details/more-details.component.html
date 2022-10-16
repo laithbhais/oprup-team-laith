@@ -197,6 +197,35 @@
                               </table>
                             </ng-template>
                           </li>
+                          <li [ngbNavItem]="6">
+                            <a ngbNavLink> Experience</a>
+                            <ng-template ngbNavContent>
+                              <button class="btn bg-black-8 text-white mb-2 float-end"
+                                (click)="Select2Open(select5modal)" type="submit">{{'add'|translate}}</button>
+                              <table class="table table-striped border" #TABLE #table id="bankprint" #bankprint>
+                                <tr class="p-4 text-center ">
+                                  <th scope="col">{{'number'|translate}}</th>
+                                  <th scope="col" (sort)="onSort($event)">{{'company'|translate}}</th>
+                                  <th scope="col" (sort)="onSort($event)">{{'startDate'|translate}}</th>
+                                  <th scope="col" (sort)="onSort($event)">{{'endDate'|translate}}</th>
+                                  <th scope="col" (sort)="onSort($event)">{{'position'|translate}}</th>
+                                  <th class="noprint" scope="col" (sort)="onSort($event)">{{'action'|translate}}</th>
+                                </tr>
+                                <tbody class="table-group-divider">
+                                  <tr *ngFor="let experience of empexperience;let i = index">
+                                    <td>{{i + 1}}</td>
+                                    <td>{{experience.section.department.departmentName}}</td>
+                                    <td>{{experience.section.sectionName}}</td>
+                                    <td>{{experience.jobTitle.jobTitleName}}</td>
+                                    <td class="noprint">
+                                      <!-- <a class="btn btn-icon-text" routerLink=""><i class="fe fe-edit text-dark bd-black "                                          ngbTooltip="{{'Update'|translate}}"></i></a> -->
+                                      <button class="btn btn-icon-text" (click)="deleteJobInformation(experience.employeeJobInformationId)"><i class="fe fe-trash-2 text-dark bd-black" ngbTooltip="{{'delete'|translate}}"></i></button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </ng-template>
+                          </li>
                         </ul>
                       </div>
                     </div>

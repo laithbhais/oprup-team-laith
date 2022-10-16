@@ -153,6 +153,15 @@ export class MoreDetailsComponent implements OnInit {
     phoneNumber: ''
   }
 
+  experienceData= {
+    employee: {
+      employeeId: this.employeeId
+    },
+    company: '',
+    startDate: '',
+    endDate: ''
+  }
+
   qualification!: any;
   banks!:any;
   empBanks:any;
@@ -168,6 +177,7 @@ export class MoreDetailsComponent implements OnInit {
   addresses: any;
   departments: any;
   sections: any;
+  empexperience:any;
 
   
 
