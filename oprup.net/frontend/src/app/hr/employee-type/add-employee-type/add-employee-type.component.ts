@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { EmployeeTypeService } from '../employee-type.service';
 
@@ -22,6 +23,7 @@ export class AddEmployeeTypeComponent implements OnInit {
     private employeeTypeService:EmployeeTypeService,
     private translate:TranslateService,
     public fb: FormBuilder, // Form Builder service for Reactive forms
+    private router: Router
     ) { }
 
   employeeTypeData = {
@@ -62,7 +64,7 @@ export class AddEmployeeTypeComponent implements OnInit {
       return;
     }
     this.employeeTypeService.addEmployeeType(this.employeeTypeData).subscribe(
-      () => {location.assign('../employeeType/view')}
+      () => {this.router.navigate(['employeeType/view'])}
     )
     console.log(this.employeeTypeData)
 

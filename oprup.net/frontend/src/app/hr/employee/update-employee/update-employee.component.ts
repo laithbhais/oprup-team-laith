@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as saveAs from 'file-saver';
 import { EmployeeType } from '../../employee-type/employee-type';
 import { EmployeeTypeService } from '../../employee-type/employee-type.service';
@@ -50,7 +50,8 @@ employeeId: any ;
 
   constructor(
     private employeeTypeService:EmployeeTypeService,
-    private employeeService:EmployeeService,private activateRoute:ActivatedRoute) { }
+    private employeeService:EmployeeService,private activateRoute:ActivatedRoute,
+    private router: Router) { }
 
   // upload img
   onPreviewFileSelect(event:any) {
@@ -167,8 +168,8 @@ en=false
   }
  employeeUpdate=()=>{
   this.employeeService.updateEmployee(this.employee).subscribe(
-    () =>{location.assign('../employee/view')}
-  )
+    () => {this.router.navigate(['employee/view'])}
+    )
  }
 
 }

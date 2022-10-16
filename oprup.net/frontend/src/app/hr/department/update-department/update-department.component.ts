@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DepartmentService } from '../department.service';
 
@@ -24,7 +24,8 @@ export class UpdateDepartmentComponent implements OnInit {
     public fb: FormBuilder,
     private departmentService: DepartmentService,
     private activateRoute:ActivatedRoute,
-    private translat :TranslateService
+    private translat :TranslateService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -66,7 +67,7 @@ export class UpdateDepartmentComponent implements OnInit {
       return;
     }
     this.departmentService.updateDepartment(this.department).subscribe(
-      () => {location.assign('../department/view')}
+      () => {this.router.navigate(['department/view'])}
     )
   }
 }

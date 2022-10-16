@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from
 import { TranslateService } from '@ngx-translate/core';
 import { SectionService } from '../section.service';
 import { DepartmentService } from '../../department/department.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,9 @@ export class AddSectionComponent implements OnInit {
   public fb: FormBuilder, // Form Builder service for Reactive forms
   private sectionService:SectionService,
   private translate:TranslateService,
-  private departmentService: DepartmentService
+  private departmentService: DepartmentService,
+  private router: Router
+
   ) 
   { }
 
@@ -58,6 +61,7 @@ export class AddSectionComponent implements OnInit {
       return;
     }
     this.sectionService.addSection(this.sectionData).subscribe(
+      () => {this.router.navigate(['section/view'])}
     )
   }
 

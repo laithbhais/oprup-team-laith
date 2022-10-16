@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { EmployeeTypeService } from '../employee-type.service';
 
@@ -24,7 +24,8 @@ export class UpdateEmployeeTypeComponent implements OnInit {
     public fb: FormBuilder, // Form Builder service for Reactive forms
     private employeeTypeService: EmployeeTypeService,
     private activateRoute:ActivatedRoute,
-    private translate:TranslateService
+    private translate:TranslateService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -67,7 +68,7 @@ export class UpdateEmployeeTypeComponent implements OnInit {
       return;
     }
     this.employeeTypeService.updateEmployeeType(this.employeeType).subscribe(
-      () => {location.assign('../employeeType/view')}
+      () => {this.router.navigate(['employeeType/view'])}
       )
   }
 }

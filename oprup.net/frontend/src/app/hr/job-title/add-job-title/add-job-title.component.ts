@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { JobTitleService } from '../job-title.service';
 
@@ -18,7 +19,8 @@ export class AddJobTitleComponent implements OnInit {
   constructor(
     public fb: FormBuilder, // Form Builder service for Reactive forms
     private jobTitleService:JobTitleService,
-    private translate:TranslateService) { }
+    private translate:TranslateService,
+    private router:Router) { }
 
   jobTitleData = {
     jobTitleName: '',
@@ -52,7 +54,7 @@ export class AddJobTitleComponent implements OnInit {
       return;
     }
     this.jobTitleService.addJobTitle(this.jobTitleData).subscribe(
-      () => {location.assign('../job-title/view')}
+      () => {this.router.navigate(['job-title/view'])}
     )
   }
 

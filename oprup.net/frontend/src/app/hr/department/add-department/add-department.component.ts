@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DepartmentService } from '../department.service';
 
@@ -17,7 +18,8 @@ export class AddDepartmentComponent implements OnInit {
   constructor(
   public fb: FormBuilder, // Form Builder service for Reactive forms
   private departmentService:DepartmentService,
-  private translate:TranslateService) 
+  private translate:TranslateService,
+  private router: Router) 
   { }
 
   departmentData = {
@@ -47,6 +49,8 @@ export class AddDepartmentComponent implements OnInit {
       return;
     }
     this.departmentService.addDepartment(this.departmentData).subscribe(
+      () => {this.router.navigate(['department/view'])}
+
     )
   }
 

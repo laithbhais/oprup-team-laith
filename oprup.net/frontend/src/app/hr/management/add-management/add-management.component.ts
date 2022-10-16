@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ManagementService } from '../management.service';
 
@@ -24,6 +25,8 @@ export class AddManagementComponent implements OnInit {
     private managementService:ManagementService,
     private translate:TranslateService,
     public fb: FormBuilder, // Form Builder service for Reactive forms
+    private router: Router
+
     ) { }
 
   managementData = {
@@ -72,7 +75,7 @@ export class AddManagementComponent implements OnInit {
       return;
     }
     this.managementService.addManagement(this.managementData).subscribe(
-      () => {location.assign('../management/view')}
+      () => {this.router.navigate(['management/view'])}
     )
     console.log(this.managementData)
 
