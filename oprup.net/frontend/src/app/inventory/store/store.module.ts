@@ -37,13 +37,16 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { QuillModule } from 'ngx-quill';
 import { AdvancedFormService } from 'src/app/components/forms/advanced-forms/advanced-form.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { searchFilterPipe } from './search-filter.pipe';
 
 
 @NgModule({
   declarations: [
     StoreComponent,
     CreateStoreComponent,
-    UpdateStoreComponent
+    UpdateStoreComponent,
+    searchFilterPipe,
   ],
   imports: [
     CommonModule,
@@ -96,9 +99,10 @@ import { AdvancedFormService } from 'src/app/components/forms/advanced-forms/adv
     QuillModule.forRoot(),
     CKEditorModule,
     AngularEditorModule,
-    
 
-    ReactiveFormsModule
+
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
   ],
   providers:[
     AdvancedFormService,

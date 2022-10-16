@@ -14,12 +14,12 @@
             <form class="pos-relative p-4">
                 <div  class="form-group noPrint form-inline d-flex justify-content-between">
                     <div>
-                      {{'fullTextSearch' | translate}} <input class="form-control ms-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
+                      {{'fullTextSearch' | translate}} <input class="form-control ms-2" type="text" name="searchTerm" [(ngModel)]="searchText"/>
                       <span class="ml-3" *ngIf="service.loading$ | async">{{'loading...' | translate}}</span>
                     </div>
                     <div class="table-btns">
 
-                      <button _ngcontent-xjy-c134="" type="button" [routerLink]="['../create-items']" class="faisal2 btn my-2 px-2 btn-icon-text " style="margin-left:0px; padding: 0px;background-color:#ddda66; "><i _ngcontent-xjy-c134=""
+                      <button _ngcontent-xjy-c134="" type="button" [routerLink]="['../create-items']" class="faisal2 m-2 btn my-2 px-2 btn-icon-text " style="padding: 0px;background-color:#ddda66; "><i _ngcontent-xjy-c134=""
                         class="fe fe-plus  px-2 bg-transparent text-black" style="margin: 0 0 ;"></i><span class="faisal text-black" >{{'add' | translate}}</span></button>
 
                       <button (click)="generatePDF()" _ngcontent-xjy-c134="" type="button" class="btn my-2 btn-icon-text text-black" style="margin-right: 5px; padding: 5px; background-color:#fcf6b6 ; "><i _ngcontent-aph-c190="" class="mdi mdi-file-pdf text-black bg-transparent fs-18 p-0 me-1"></i>PDF</button>
@@ -54,7 +54,7 @@
                   </tr>
 
                   <tbody class="table-group-divider">
-                    <tr *ngFor="let item of items">
+                    <tr *ngFor="let item of items | searchFilter:searchText">
 
                        <td class="d-flex justify-content-center m-sm-3"><img src="{{item.img}}" alt="" class="rounded" height="80" width="90"></td>
                        <td>{{item.itemName}}</td>
@@ -92,19 +92,11 @@
                   </tbody>
                 </table>
 
-                <div class="d-flex noPrint justify-content-between p-2">
-                  <ngb-pagination
-                    [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
-                  </ngb-pagination>
-
-
-                  <ng-select class="hhhhhhhhhhhh" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
-                    <ng-option ng-option-selected value="0">--Select--</ng-option>
-                    <ng-option value="2">2 items</ng-option>
-                    <ng-option value="4">4 items</ng-option>
-                    <ng-option value="6">6 items</ng-option>
-                  </ng-select>
-                </div>
+                <mat-paginator #paginator
+                [pageSize]="5"
+                [pageSizeOptions]="[5, 10, 25,50, 100]"
+                 >
+               </mat-paginator>
 
               </form>
           </div>

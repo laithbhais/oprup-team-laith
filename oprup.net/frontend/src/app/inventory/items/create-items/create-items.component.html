@@ -61,115 +61,19 @@
 
 
 
-                <div class=" form-inline col-lg my-2 mg-t-10 mg-t-10 row">
-                  <div class="form-group mb-2">
-                  <p class="mg-b-10 tx-semibold col-5">
-                    {{ "barCode" | translate
-                    }}
-                  </p>
-                  <input class="form-control input col-5" type="text"
-                  formControlName="barCode" [ngClass]="{
-                    'is-invalid': submitted && f['barCode'].errors
-                  }"
-                     [(ngModel)]="itemsData.barCode"  placeholder='{{ "barCode" | translate
-                    }}' />
 
-
-                    <button style="background-color:#ddda66;" type="submit" (click)="Select2Open(select2modal)" class="btn">{{ "generate" | translate
-                    }}</button>
-
-
-                    <div class="modal-body text-center">
-                      <ngx-barcode [bc-value]="itemsData.barCode" [bc-display-value]="true"
-                      [bc-height]="height" ></ngx-barcode>
-                    </div>
-
-                    <ng-template #select2modal let-modal>
-                      <!-- Select2 modal -->
-                      <div class="modal-header">
-                        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                        </button>
-                      </div>
-
-                      <div class="col-lg my-2 mg-t-10 mg-t-10 row">
-                        <p class="mg-b-10 tx-semibold col-lg-5">
-                          {{ "itemCode" | translate
-                          }}<span class="tx-danger">*</span>
-                        </p>
-                        <input readonly (change)="getitemCode($event)" class="form-control input col-7" type="text" formControlName="itemCode" [ngClass]="{
-                            'is-invalid': submitted && f['itemCode'].errors
-                          }" [(ngModel)]="itemsData.itemCode" placeholder="Input box" placeholder='{{ "itemCode" | translate
-                        }}' />
-                        <div *ngIf="submitted && f['itemCode'].errors" class="invalid-feedback">
-                          <div class="text-end"  *ngIf="f['itemCode'].errors['required']">
-                            {{'isRequired'|translate}}
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg my-2 mg-t-10 mg-t-10 row">
-                        <p class="mg-b-10 tx-semibold col-lg-5">
-                          {{ "itemNameAr" | translate
-                          }}<span class="tx-danger">*</span>
-                        </p>
-                        <input class="form-control input col-7" type="text" name="itemName" id="itemName"
-                           type="text" formControlName="itemName" [ngClass]="{
-                            'is-invalid': submitted && f['itemName'].errors
-                          }" [(ngModel)]="itemsData.itemName" placeholder=' {{ "itemName" | translate
-                        }}' />
-                        <div *ngIf="submitted && f['itemName'].errors" class="invalid-feedback">
-                          <div class="text-end" *ngIf="f['itemName'].errors['required']">
-                            {{'isRequired'|translate}}
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg my-2 mg-t-10 mg-t-10 row">
-                        <p class="mg-b-10 tx-semibold col-lg-5">
-                          {{ "itemNameEn" | translate
-                          }}<span class="tx-danger">*</span>
-                        </p>
-                        <input class="form-control input col-7" type="text" name="itemNameEn" id="itemNameEn"
-                           type="text" formControlName="itemNameEn" [ngClass]="{
-                            'is-invalid': submitted && f['itemNameEn'].errors
-                          }" [(ngModel)]="itemsData.itemNameEn" placeholder=' {{ "itemNameEn" | translate
-                        }}' />
-                        <div *ngIf="submitted && f['itemNameEn'].errors" class="invalid-feedback">
-                          <div class="text-end" *ngIf="f['itemNameEn'].errors['required']">
-                            {{'isRequired'|translate}}
-                          </div>
-                        </div>
-                      </div>
-
-
-
-                      <div class="col-lg my-2 mg-t-10 mg-t-10 row">
-                        <p class="mg-b-10 tx-semibold col-lg-5">
-                          {{ "sellingPrice" | translate }}
-                          <span class="tx-danger">*</span>
-                        </p>
-                        <input class="form-control input col-7" type="tex" formControlName="sellingPrice" [ngClass]="{
-                          'is-invalid': submitted && f['sellingPrice'].errors
-                        }" [(ngModel)]="itemsData.sellingPrice" placeholder='{{ "sellingPrice" | translate }}' />
-
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">{{ "close" | translate }}</button>
-                        <button class="btn bg-black-8 text-white" (click)="barcodeAutoGenerate();modal.close()" type="button">{{ "save" | translate }}</button>
-                      </div>
-                    </ng-template>
-                  </div>
-                </div>
               </div>
               <div class="col-lg-6">
                 <div class="col-lg my-2 mg-t-10 mg-t-10 row">
-                  <p class="mg-b-10 tx-semibold col-4"></p>
+                  <p class="mg-b-10 tx-semibold col-lg-4"></p>
                   <div class="col-7">
                     {{ "ItemPicture" | translate
                     }}<span class="tx-danger">*</span>
                   </div>
                 </div>
                 <div class="col-lg my-30 mg-t-10 mg-t-10 row">
-                  <p class="mg-b-10 tx-semibold col-4"></p>
-                  <div class="col-5">
+                  <p class="mg-b-10 tx-semibold col-lg-4"></p>
+                  <div class="col-lg-5">
                     <ngx-dropzone [multiple]="false" (change)="onPreviewFileSelect($event)" >
                       <ngx-dropzone-label>
                         <div>
@@ -192,17 +96,14 @@
             <div class="row">
               <div class="col-lg-6">
 
-
-
                 <div class="col-lg row">
                   <p class="mg-b-10 tx-semibold col-lg-5">
-                    {{ "countryOfOrigin" | translate
-                    }}<span class="tx-danger">*</span>
+                    {{ "countryOfOrigin" | translate}}<span class="tx-danger">*</span>
                   </p>
 
                   <ng-select formControlName="countryOfOrigin"
                     [ngClass]="{ 'is-invalid': submitted && f['countryOfOrigin'].errors }"
-                    [(ngModel)]="itemsData.countryOfOrigin" name="countryOfOrigin" class="p-0 my-1 col-7"
+                    [(ngModel)]="itemsData.countryOfOrigin" name="countryOfOrigin" class="p-0 my-2 col-7"
                     placeholder="-- {{'countryOfOrigin' | translate }} --">
                     <span *ngIf="this.translate.currentLang=='ar'">
                       <ng-option *ngFor="let item of countryList" value="{{item.name}}">
@@ -232,7 +133,7 @@
                   <ng-select formControlName="categoryId" (change)="getSubCategoryByCategory($event)" [ngClass]="{
                       'is-invalid': submitted && f['categoryId'].errors
                     }" [(ngModel)]="itemsData.category.categoryId" name="categoryId" id="categoryId"
-                    class="p-0 my-1 col-7">
+                    class="p-0 my-2 col-7">
                     <ng-option *ngFor="let item of category" value="{{ item.categoryId }}">
                       {{ item.categoryName }}
                     </ng-option>
@@ -252,7 +153,7 @@
                   <ng-select formControlName="subcategoryId" [ngClass]="{
                       'is-invalid': submitted && f['subcategoryId'].errors
                     }" [(ngModel)]="itemsData.subCategory.subcategoryId" name="subcategoryId" id="subcategoryId"
-                    class="p-0 my-1 col-7">
+                    class="p-0 my-2 col-7">
                     <ng-option *ngFor="let Subcategories of SubcategoryByCategory"
                       [value]="Subcategories.subcategoryId">
                       {{ Subcategories.subcategoryName }}
@@ -272,7 +173,7 @@
                   </p>
                   <ng-select formControlName="unitId" [ngClass]="{
                       'is-invalid': submitted && f['unitId'].errors
-                    }" [(ngModel)]="itemsData.unit.unitId" name="unitId" id="unitId" class="p-0 my-1 col-7">
+                    }" [(ngModel)]="itemsData.unit.unitId" name="unitId" id="unitId" class="p-0 my-2 col-7">
                     <ng-option *ngFor="let units of unit" value="{{ units.unitId }}">
                       {{ units.unitName }}
                     </ng-option>
@@ -291,7 +192,7 @@
                   </p>
                   <ng-select formControlName="vendorId" [ngClass]="{
                       'is-invalid': submitted && f['vendorId'].errors
-                    }" [(ngModel)]="itemsData.vendor.vendorId" name="vendorId" id="vendorId" class="p-0 my-1 col-7">
+                    }" [(ngModel)]="itemsData.vendor.vendorId" name="vendorId" id="vendorId" class="p-0 my-2 col-7">
                     <ng-option *ngFor="let vendors of vendor" value="{{ vendors.vendorId }}">
                       {{ vendors.vendorName }}
                     </ng-option>
@@ -305,10 +206,11 @@
 
                 <div class="col-lg align-items-center row">
 
-                      <label for="" class="mg-b-10 tx-semibold col-lg-5">{{ 'expiryDate' | translate }}</label>
-                      <mat-form-field appearance="outline" class="col-md-7 p-0 my-1">
+                  <p class="mg-b-10 tx-semibold col-lg-5">
+                    {{ 'expiryDate' | translate }}</p>
+                      <mat-form-field appearance="fill" class="col-lg-7 p-0 my-2">
                         <mat-label>{{'DD/MM/YYYY' | translate}}</mat-label>
-                        <input id="expiryDate" name="expiryDate" #expiryDate  [(ngModel)]="itemsData.expiryDate" [ngModelOptions]="{standalone: true}" matInput [matDatepicker]="picker">
+                        <input  id="expiryDate" name="expiryDate" #expiryDate  [(ngModel)]="itemsData.expiryDate" [ngModelOptions]="{standalone: true}" matInput [matDatepicker]="picker">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                       </mat-form-field>
@@ -319,8 +221,8 @@
 
               </div>
               <div class="col-lg-6">
-                <div class="col-lg my-30 mg-t-10  row">
-                  <p class="mg-b-10 tx-semibold col-4">
+                <div class="col-lg my-2  row">
+                  <p  class="mg-b-10 tx-semibold col-lg-5">
                     {{ "quantity" | translate }}
                     <!-- <span class="tx-danger">*</span> -->
                   </p>
@@ -329,8 +231,8 @@
                   }" [(ngModel)]="itemsData.quantity" placeholder='{{ "quantity" | translate }}' />
 
                 </div>
-                <div class="col-lg my-30 mg-t-10 mg-t-10 row">
-                  <p class="mg-b-10 tx-semibold col-4">
+                <div class="col-lg my-2 row">
+                  <p  class="mg-b-10 tx-semibold col-lg-5">
                     {{ "sellingPrice" | translate }}
                     <!-- <span class="tx-danger">*</span> -->
                   </p>
@@ -339,8 +241,8 @@
                   }" [(ngModel)]="itemsData.sellingPrice" placeholder='{{ "sellingPrice" | translate }}' />
 
                 </div>
-                <div class="col-lg my-2 mg-t-10 mg-t-10 row">
-                  <p class="mg-b-10 tx-semibold col-4">
+                <div class="col-lg my-2 row">
+                  <p  class="mg-b-10 tx-semibold col-lg-5">
                     {{ "buyingPrice" | translate }}
                     <!-- <span class="tx-danger">*</span> -->
                   </p>
@@ -350,8 +252,8 @@
 
                 </div>
 
-                <div class="col-lg my-2 mg-t-10 mg-t-10 row">
-                  <p class="mg-b-10 tx-semibold col-4">
+                <div class="col-lg my-2 row">
+                  <p  class="mg-b-10 tx-semibold col-lg-5">
                     {{ "lastBuyingPrice" | translate }}
                     <!-- <span class="tx-danger">*</span> -->
                   </p>
@@ -374,7 +276,7 @@
                     {{ "taxfree" | translate}}<span class="tx-danger">*</span>
                   </p>
 
-                  <div class="row col-7" id="cbWrapper form-group">
+                  <div class="row col-lg-7" id="cbWrapper form-group">
                     <div class="col-xl-4">
                       <label class=" mg-b-5-f">
                         <input type="radio" formControlName="taxFree" [ngClass]="{
@@ -405,7 +307,7 @@
                       {{ "tax" | translate }}
                       <span class="tx-danger">*</span>
                     </p>
-                    <input class="form-control input col-7" formControlName="tax" [ngClass]="{
+                    <input class="form-control input col-lg-7" formControlName="tax" [ngClass]="{
                     'is-invalid': submitted && f['tax'].errors
                   }" [(ngModel)]="itemsData.tax" type="number" placeholder='{{ "tax" | translate }}' />
 
@@ -414,11 +316,11 @@
 
                 </div>
                 <div class="col-lg row">
-                  <p class="mg-b-10 my-1 tx-semibold col-5">
+                  <p class="mg-b-10 my-2 tx-semibold col-5">
                     {{ "netprice" | translate }}
                     <span class="tx-danger">*</span>
                   </p>
-                  <input class="form-control my-1 input col-7" formControlName="price" [ngClass]="{
+                  <input class="form-control my-2 input col-lg-7" formControlName="price" [ngClass]="{
                   'is-invalid': submitted && f['price'].errors
                 }" [(ngModel)]="itemsData.price" type="tex" placeholder='{{"netprice" | translate }}' />
                   <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
@@ -431,7 +333,114 @@
 
 
 
-              <div class="col-lg-6"></div>
+              <div class="col-lg-6">
+
+                <div class="col-lg row">
+
+
+                  <div class="form-inline">
+                    <p class="mg-b-10 my-2 tx-semibold col-5">
+                    {{ "barCode" | translate }}
+                  </p>
+                    <div class="input-group col-lg-7">
+                      <input type="text" class="form-control input" formControlName="barCode" [ngClass]="{
+                        'is-invalid': submitted && f['barCode'].errors}"
+                         [(ngModel)]="itemsData.barCode"  placeholder='{{ "barCode" | translate}}'>
+                      <div class="input-group-append">
+                        <button class="btn" style="background-color:#ddda66;" (click)="Select2Open(select2modal)" type="button">{{ "generate" | translate
+                        }}</button>
+                        <ng-template #select2modal let-modal>
+                          <!-- Select2 modal -->
+                          <div class="modal-header">
+                            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            </button>
+                          </div>
+
+                          <div class="col-lg my-2 mg-t-10 mg-t-10 row">
+                            <p class="mg-b-10 tx-semibold col-lg-5">
+                              {{ "itemCode" | translate
+                              }}<span class="tx-danger">*</span>
+                            </p>
+                            <input readonly class="form-control input col-lg-7" type="text" formControlName="itemCode" [ngClass]="{
+                                'is-invalid': submitted && f['itemCode'].errors
+                              }" [(ngModel)]="itemsData.itemCode" placeholder="Input box" placeholder='{{ "itemCode" | translate
+                            }}' />
+                            <div *ngIf="submitted && f['itemCode'].errors" class="invalid-feedback">
+                              <div class="text-end"  *ngIf="f['itemCode'].errors['required']">
+                                {{'isRequired'|translate}}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-lg my-2 mg-t-10 mg-t-10 row">
+                            <p class="mg-b-10 tx-semibold col-lg-5">
+                              {{ "itemNameAr" | translate
+                              }}<span class="tx-danger">*</span>
+                            </p>
+                            <input class="form-control input col-lg-7" type="text" name="itemName" id="itemName"
+                               type="text" formControlName="itemName" [ngClass]="{
+                                'is-invalid': submitted && f['itemName'].errors
+                              }" [(ngModel)]="itemsData.itemName" placeholder=' {{ "itemName" | translate
+                            }}' />
+                            <div *ngIf="submitted && f['itemName'].errors" class="invalid-feedback">
+                              <div class="text-end" *ngIf="f['itemName'].errors['required']">
+                                {{'isRequired'|translate}}
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg my-2 mg-t-10 mg-t-10 row">
+                            <p class="mg-b-10 tx-semibold col-lg-5">
+                              {{ "itemNameEn" | translate
+                              }}<span class="tx-danger">*</span>
+                            </p>
+                            <input class="form-control input col-lg-7" type="text" name="itemNameEn" id="itemNameEn"
+                               type="text" formControlName="itemNameEn" [ngClass]="{
+                                'is-invalid': submitted && f['itemNameEn'].errors
+                              }" [(ngModel)]="itemsData.itemNameEn" placeholder=' {{ "itemNameEn" | translate
+                            }}' />
+                            <div *ngIf="submitted && f['itemNameEn'].errors" class="invalid-feedback">
+                              <div class="text-end" *ngIf="f['itemNameEn'].errors['required']">
+                                {{'isRequired'|translate}}
+                              </div>
+                            </div>
+                          </div>
+
+
+
+                          <div class="col-lg my-2 mg-t-10 mg-t-10 row">
+                            <p class="mg-b-10 tx-semibold col-lg-5">
+                              {{ "sellingPrice" | translate }}
+                              <span class="tx-danger">*</span>
+                            </p>
+                            <input class="form-control input col-lg-7" type="tex" formControlName="sellingPrice" [ngClass]="{
+                              'is-invalid': submitted && f['sellingPrice'].errors
+                            }" [(ngModel)]="itemsData.sellingPrice" placeholder='{{ "sellingPrice" | translate }}' />
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">{{ "close" | translate }}</button>
+                            <button class="btn bg-black-8 text-white" (click)="barcodeAutoGenerate();modal.close()" type="button">{{ "save" | translate }}</button>
+                          </div>
+                        </ng-template>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="modal-body text-center col-lg-7">
+                  <ngx-barcode  [bc-value]="itemsData.barCode"   [bc-line-color]="lineColor"
+                        bc-element-type="svg"
+                       [bc-width]="width" [bc-height]="height" [bc-display-value]="displayValue" [bc-font-options]="fontOptions" [bc-font]="font"
+                       [bc-text-align]="textAlign" [bc-text-position]="textPosition" [bc-text-margin]="textMargin"
+                       [bc-font-size]="fontSize" [bc-background]="background"
+                       [bc-margin]="margin" [bc-margin-top]="marginTop"
+                       [bc-margin-bottom]="marginBottom" [bc-margin-left]="marginLeft"
+                       [bc-margin-right]="marginRight"></ngx-barcode>
+                       <span style="font:2px; color:rgb(23, 23, 23);">{{itemsData.barCode}}</span>
+                </div>
+
+              </div>
             </div>
           </div>
 
@@ -449,3 +458,4 @@
     </div>
   </div>
 </div>
+

@@ -156,8 +156,8 @@ export class UpdateItemRequestComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getAllItems();
-    this.count();
+    // this.getAllItems();
+    // this.count();
     this.getItemRequestById();
 
     this.form = this.fb.group(
@@ -290,8 +290,8 @@ export class UpdateItemRequestComponent implements OnInit {
   getItemRequestById=()=>{
 
     this.itemRequestService.getItemRequestDetailsByItemRequest(this.itemRequestId).subscribe(data=>{
-     this.items=data
-     console.log('lilia',this.items)
+     this.itemsDetails=data
+    //  console.log('lilia',this.itemsDetails)
     })
    }
 

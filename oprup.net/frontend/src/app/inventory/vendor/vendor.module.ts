@@ -36,13 +36,16 @@ import { QuillModule } from 'ngx-quill';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { AdvancedFormService } from 'src/app/components/forms/advanced-forms/advanced-form.service';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { searchFilterPipe } from './search-filter.pipe';
 
 
 @NgModule({
   declarations: [
     VendorComponent,
     CreateVendorComponent,
-    UpdateVendorComponent
+    UpdateVendorComponent,
+    searchFilterPipe,
   ],
   imports: [
     CommonModule,
@@ -94,10 +97,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
     QuillModule.forRoot(),
     CKEditorModule,
     AngularEditorModule,
-    
 
 
-    ReactiveFormsModule
+
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
   ],
   providers:[
     AdvancedFormService,

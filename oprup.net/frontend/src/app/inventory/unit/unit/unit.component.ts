@@ -24,6 +24,7 @@ import html2canvas from 'html2canvas';
   providers: [CountryService, DecimalPipe],
 })
 export class UnitComponent implements OnInit {
+  searchText:any;
   countries$: Observable<Country[]>;
   total$: Observable<number>;
   unit!: any;

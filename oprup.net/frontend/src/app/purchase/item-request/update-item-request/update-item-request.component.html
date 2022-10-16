@@ -8,7 +8,7 @@
                 <h4 class="main-content-label text-black tx-24 py-3">Add Vendor</h4>
             </div> -->
       <div class="card-body">
-        <form  *ngIf="items">
+        <form  *ngFor="let itemUpdate of itemsDetails">
 
           <div class="border m-2 p-2">
 
@@ -22,7 +22,7 @@
                   </p>
                   <input readonly class="form-control input col-lg-7 my-1" name="itemRequestId" id="itemRequestId"
                   placeholder="{{'requestNumber' | translate}}" type="text"
-                  [(ngModel)]='items.itemRequest.itemRequestId' [ngModelOptions]="{standalone: true}">
+                  [(ngModel)]='itemUpdate.itemRequest.itemRequestId' [ngModelOptions]="{standalone: true}">
 
                 </div>
                 </div>
@@ -32,10 +32,10 @@
 
 
                   <label for="" class="mg-b-10 tx-semibold col-lg-5">{{ 'itemRequestDate' | translate }}</label>
-                  <mat-form-field appearance="outline" class="col-md-6 p-0 my-1 ">
+                  <mat-form-field appearance="fill" class="col-md-6 p-0 my-1 ">
                     <mat-label>{{'DD/MM/YYYY' | translate}}</mat-label>
-                    <input id="itemRequestDate" name="itemRequestDate" #itemRequestDate
-                      [(ngModel)]="items.itemRequest.itemRequestDate" [ngModelOptions]="{standalone: true}" matInput
+                    <input readonly id="itemRequestDate" name="itemRequestDate" #itemRequestDate
+                      [(ngModel)]="itemUpdate.itemRequest.itemRequestDate" [ngModelOptions]="{standalone: true}" matInput
                       [matDatepicker]="picker">
                     <mat-datepicker-toggle matSuffix [for]="picker" class="input-mini"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
@@ -60,65 +60,12 @@
             </form>
 
 </div>
-      <div  class="card-body">
 
-
-          <div class="border m-2 p-2">
-
-
-
-                <div class="mb-2">
-
-                <div class="my-1">
-                  <button class="btn bg-black-8 text-white" style="background-color:#4ca86a;"  (click)="Select2Open(select2modal)"> {{'addItem' | translate}}</button>
-                </div>
-                <table class="table table-striped border">
-
-                  <tr class="text-center ">
-                    <td scope="col" >{{'quantityPackage' | translate}}</td>
-                    <td scope="col" >{{'itemName' | translate}}</td>
-                    <td scope="col" >{{'category' | translate}}</td>
-                    <td scope="col" >{{'unit' | translate}}</td>
-                    <td scope="col" >{{'vendor' | translate}}</td>
-                    <td scope="col" >{{'barCode' | translate}}</td>
-                    <td scope="col"  data-html2canvas-ignore="true" class="noPrint">{{'action' | translate}}</td>
-                  </tr>
-
-                  <tbody class="table-group-divider">
-                    <tr *ngFor="let item of items">
-                       <td>{{item.quantityPackage}}</td>
-                       <td>{{item.items.itemName}}</td>
-                      <td>{{item.items.category.categoryName}}</td>
-                      <td>{{item.items.unit.unitName}}</td>
-                      <td>{{item.items.vendor.vendorName}}</td>
-                      <td ><ngx-barcode  [bc-value]="item.items.barCode"   [bc-line-color]="lineColor"
-                        bc-element-type="svg"
-                       [bc-width]="width" [bc-height]="height" [bc-display-value]="displayValue" [bc-font-options]="fontOptions" [bc-font]="font"
-                       [bc-text-align]="textAlign" [bc-text-position]="textPosition" [bc-text-margin]="textMargin"
-                       [bc-font-size]="fontSize" [bc-background]="background"
-                       [bc-margin]="margin" [bc-margin-top]="marginTop"
-                       [bc-margin-bottom]="marginBottom" [bc-margin-left]="marginLeft"
-                       [bc-margin-right]="marginRight"></ngx-barcode>
-                       <span style="font:2px; color:rgb(23, 23, 23);">{{item.barCode}}</span></td>
-                      <td data-html2canvas-ignore="true" class="noPrint">
-                        <a class="btn btn-icon-text" (click)="Select2Update(select2modal2,item)"><i
-                          class="fe fe-edit text-dark bd-black"></i></a>
-                      <button class="btn btn-icon-text" (click)="deletePartner(item)"><i
-                          class="fe fe-trash-2 text-dark bd-black"></i></button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-</div>
-                </div>
-
-</div>
 </div>
               <hr class="" style="color:#ccc;height:1px">
 
 </div>
 </div>
-
 
 
 

@@ -27,10 +27,33 @@ import * as saveAs from 'file-saver';
   providers: [CountryService, DecimalPipe],
 })
 export class UpdateItemsComponent implements OnInit {
+  year:any;
+  isPrinting = true;
+  elementType = 'svg';
+  lineColor = '#000000';
+  width = 1;
+  height =30;
+  displayValue = true;
+  fontOptions = '';
+  format = 'CODE128';
+  font = 'monospace';
+  textAlign = 'right';
+  textPosition = 'bottom';
+  textMargin = 0;
+  fontSize = 1;
+  background = '#ffffff';
+  margin = 1;
+  marginTop = 1;
+  marginBottom = 0;
+  marginLeft = 0;
+  marginRight = 0;
+
+
+
 
   countryList:{name:String,code:String}[]=countries;
   countryListEn:{name:String,code:String}[]=countriesEn;
-  height = 50;
+  
   selectAFile: File = null as any;
   filesPreview: File[] = [];
   img: any;
