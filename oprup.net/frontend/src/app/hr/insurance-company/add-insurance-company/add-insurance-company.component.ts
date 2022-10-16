@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { InsuranceCompanyService } from '../insurance-company.service';
 
@@ -19,7 +20,9 @@ export class AddInsuranceCompanyComponent implements OnInit {
   constructor(
     public fb: FormBuilder, // Form Builder service for Reactive forms
     private insuranceCompanyService:InsuranceCompanyService,
-    private translate:TranslateService) { }
+    private translate:TranslateService,
+    private router: Router
+    ) { }
 
   insuranceCompanyData = {
     insuranceCompanyName: '',
@@ -58,7 +61,7 @@ export class AddInsuranceCompanyComponent implements OnInit {
       return;
     }
     this.insuranceCompanyService.addInsuranceCompany(this.insuranceCompanyData).subscribe(
-      () => {location.assign('../insurance-company/view')}
+      () => {this.router.navigate(['insurance-company/view'])}
     )
   }
 

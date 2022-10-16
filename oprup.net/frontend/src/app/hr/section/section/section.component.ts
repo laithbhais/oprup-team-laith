@@ -55,6 +55,7 @@ export class SectionComponent implements OnInit {
    getAllSections(){
      this.sectionService.getAllSections()
      .subscribe(data => this.sections = data)
+     console.log(this.sections)
    }
 
    public deleteSection(sectionId: Section){

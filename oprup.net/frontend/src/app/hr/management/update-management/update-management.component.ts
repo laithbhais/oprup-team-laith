@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ManagementService } from '../management.service';
 
@@ -26,7 +26,9 @@ export class UpdateManagementComponent implements OnInit {
     public fb: FormBuilder, // Form Builder service for Reactive forms
     private managementService: ManagementService,
     private activateRoute:ActivatedRoute,
-    private translate:TranslateService
+    private translate:TranslateService,
+    private router: Router
+
     ) { }
 
   ngOnInit(): void {
@@ -77,7 +79,7 @@ export class UpdateManagementComponent implements OnInit {
       return;
     }
     this.managementService.updateManagement(this.management).subscribe(
-      () => {location.assign('../management/view')}
+      () => {this.router.navigate(['management/view'])}
       )
   }
 }

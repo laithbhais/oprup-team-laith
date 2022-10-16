@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { InsuranceCompanyService } from '../insurance-company.service';
 
@@ -24,7 +24,8 @@ export class UpdateInsuranceCompanyComponent implements OnInit {
     public fb: FormBuilder,
     private insuranceCompanyService: InsuranceCompanyService,
     private activateRoute:ActivatedRoute,
-    private translat :TranslateService
+    private translat :TranslateService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -66,7 +67,7 @@ export class UpdateInsuranceCompanyComponent implements OnInit {
       return;
     }
     this.insuranceCompanyService.updateInsuranceCompany(this.insuranceCompany).subscribe(
-      () => {location.assign('../insurance-company/view')}
+      () => {this.router.navigate(['insurance-company/view'])}
     )
   }
 }

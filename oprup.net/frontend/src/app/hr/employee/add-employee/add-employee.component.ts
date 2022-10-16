@@ -7,6 +7,7 @@ import { EmployeeTypeService } from '../../employee-type/employee-type.service';
 import { EmployeeService } from '../employee.service';
 import countries  from '../../../files/countries.json';
 import countriesEn from '../../../files/countriesEn.json';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-employee',
   templateUrl: './add-employee.component.html',
@@ -26,7 +27,7 @@ export class AddEmployeeComponent implements OnInit {
 
   constructor(
     private employeeTypeService:EmployeeTypeService,
-
+    private router: Router,
     public fb: FormBuilder,
     public employeeService: EmployeeService
   ) { }
@@ -166,10 +167,11 @@ employee:any
       return element.employeeType.employeeTypeId == event && element.deleteFlag != 0;
     });
   };
-  
+
   public addEmployee(): void{
     this.employeeService.addEmployee(this.employeeData).subscribe(
-      () => {}
+      () => {this.router.navigate(['employee/view'])}
+
     )
     console.log(this.employeeData)
   }

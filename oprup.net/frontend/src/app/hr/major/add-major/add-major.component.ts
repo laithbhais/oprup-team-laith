@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { MajorService } from '../major.service';
 
@@ -18,7 +19,9 @@ export class AddMajorComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private majorService:MajorService,
-    private translate:TranslateService) {
+    private translate:TranslateService,
+    private router: Router
+    ) {
       
      }
 
@@ -59,7 +62,7 @@ export class AddMajorComponent implements OnInit {
       return;
     }
     this.majorService.addMajor(this.majorData).subscribe(
-      () => {location.assign('../major/view')}
+      () => {this.router.navigate(['major/view'])}
     )
   }
 

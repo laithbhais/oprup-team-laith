@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { JobTitleService } from '../job-title.service';
 
@@ -24,7 +24,8 @@ export class UpdateJobTitleComponent implements OnInit {
     public fb: FormBuilder,
     private jobTitleService: JobTitleService,
     private activateRoute:ActivatedRoute,
-    private translat :TranslateService
+    private translat :TranslateService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -66,7 +67,7 @@ export class UpdateJobTitleComponent implements OnInit {
       return;
     }
     this.jobTitleService.updateJobTitle(this.jobTitle).subscribe(
-      () => {location.assign('../job-title/view')}
+      () => {this.router.navigate(['job-title/view'])}
     )
   }
 }

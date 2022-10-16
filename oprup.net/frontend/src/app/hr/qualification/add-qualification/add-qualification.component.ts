@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { QualificationService } from '../qualification.service';
 
@@ -20,7 +21,9 @@ export class AddQualificationComponent implements OnInit {
 
   constructor(private qualificationService:QualificationService,
     private translat :TranslateService,
-    public fb: FormBuilder, ) { }
+    public fb: FormBuilder,
+    private router: Router
+    ) { }
 
   qualificationData = {
     qualificationName: '',
@@ -61,7 +64,7 @@ export class AddQualificationComponent implements OnInit {
       return;
     }
     this.qualificationService.addQualification(this.qualificationData).subscribe(
-      () => {location.assign('../qualification/view')}
+      () => {this.router.navigate(['qualification/view'])}
     )
     console.log(this.qualificationData)
 

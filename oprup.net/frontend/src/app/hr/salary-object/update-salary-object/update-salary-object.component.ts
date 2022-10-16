@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SalaryObjectService } from '../salary-object.service';
 
@@ -25,6 +25,7 @@ export class UpdateSalaryObjectComponent implements OnInit {
     private salaryObjectService: SalaryObjectService,
     private activateRoute:ActivatedRoute,
     public fb: FormBuilder,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -65,7 +66,7 @@ export class UpdateSalaryObjectComponent implements OnInit {
       return;
     }
     this.salaryObjectService.updateSalaryObject(this.salaryObject).subscribe(
-      () => {location.assign('../salary-object/view')}
+      () => {this.router.navigate(['salary-object/view'])}
     )
   }
 }

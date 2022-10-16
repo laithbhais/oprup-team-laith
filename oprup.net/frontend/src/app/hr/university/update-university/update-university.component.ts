@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { UniversityService } from '../university.service';
 
@@ -25,6 +25,7 @@ export class UpdateUniversityComponent implements OnInit {
     private universityService: UniversityService,
     private translate: TranslateService,
     private activateRoute:ActivatedRoute,
+    private router: Router
 
     ) { }
 
@@ -73,7 +74,7 @@ export class UpdateUniversityComponent implements OnInit {
       return;
     }
     this.universityService.updateUniversity(this.university).subscribe(
-      () => {location.assign('../university/view')}
+      () => {this.router.navigate(['university/view'])}
     )
   }
 }

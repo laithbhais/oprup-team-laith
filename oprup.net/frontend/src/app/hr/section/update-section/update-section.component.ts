@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SectionService } from '../section.service';
 
@@ -23,24 +23,23 @@ export class UpdateSectionComponent implements OnInit {
     public fb: FormBuilder,
     private sectionService: SectionService,
     private activateRoute:ActivatedRoute,
-    private translat :TranslateService
+    private translat :TranslateService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
+    this.getSectionById()
     this.form = this.fb.group(
       {
 
        
         sectionName: [null, Validators.compose([
-          Validators.required,
-        ])],
-       
-
+          Validators.required])],
 
       }
 
     )
-    this.getSectionById()
+   
   }
   submitted = false;
   get f(): { [key: string]: AbstractControl } {
@@ -50,8 +49,8 @@ export class UpdateSectionComponent implements OnInit {
   getSectionById=()=>{
    this.sectionService.getSectionById(this.sectionId).subscribe(data=>{
     this.section=data
-    
    })
+   console.log(this.section)
   }
 
   sectionUpdate=()=>{
@@ -60,7 +59,7 @@ export class UpdateSectionComponent implements OnInit {
       return;
     }
     this.sectionService.updateSection(this.section).subscribe(
-      () => {location.assign('../section/view')}
+      () => {this.router.navigate(['section/view'])}
     )
   }
 }

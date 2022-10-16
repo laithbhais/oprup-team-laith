@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SalaryObjectService } from '../salary-object.service';
 
@@ -20,6 +21,7 @@ export class AddSalaryObjectComponent implements OnInit {
   constructor(private translate: TranslateService,
     private salaryObjectService:SalaryObjectService, 
     public fb: FormBuilder,
+    private router: Router
     ) { }
 
   salaryObjectData = {
@@ -58,7 +60,7 @@ export class AddSalaryObjectComponent implements OnInit {
       return;
     }
     this.salaryObjectService.addSalaryObject(this.salaryObjectData).subscribe(
-      () => {location.assign('../salary-object/view')}
+      () => {this.router.navigate(['salary-object/view'])}
     )
     console.log(this.salaryObjectData)
 

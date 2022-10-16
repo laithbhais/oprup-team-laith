@@ -1,4 +1,6 @@
-<app-page-header  [items]="['section'|translate]" [active_item]="'update'|translate"></app-page-header>
+<app-page-header  [items]="['section '|translate]" [active_item]="'update'|translate"></app-page-header>
+<button (click)="getSectionById()">aaa</button>
+
 
 <div class="row row-sm">
     <div class="col-lg-12 col-md-12">
@@ -16,6 +18,7 @@
                             <div class="text-center" *ngIf="f['sectionName'].errors['pattern']">Enter only characters</div>
                           </div>
                     </div>
+
             </div>
             <hr  class="border border-3" style="color:#ccc;height:1px">
             <div class="">

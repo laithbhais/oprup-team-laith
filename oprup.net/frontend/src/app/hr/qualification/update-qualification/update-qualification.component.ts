@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { QualificationService } from '../qualification.service';
 
@@ -26,6 +26,7 @@ export class UpdateQualificationComponent implements OnInit {
     private activateRoute:ActivatedRoute, 
     private translat :TranslateService,
     public fb: FormBuilder,
+    private router: Router
     ) { }
 
     qualificationData = {
@@ -74,7 +75,7 @@ export class UpdateQualificationComponent implements OnInit {
       return;
     }
     this.qualificationService.updateQualification(this.qualification).subscribe(
-      () => {location.assign('../qualification/view')}
+      () => {this.router.navigate(['qualification/view'])}
     )
   }
 }
