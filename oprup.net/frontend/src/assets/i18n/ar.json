@@ -23,7 +23,6 @@
 
     "enterOnlyNumbers":"أرقام فقط",
     "errorwhiledeletingData" : "تم حذف البيانات",
-    "cancel" : "إلغاء",
     "store" : "المستودع",
     "success" : "تم ",
     
@@ -82,8 +81,6 @@
  
   "addBank":"اضافة بنك",
   "add":"اضافة",
-  "number":"الرقم التسلسلي",
-  "name":"الاسم",
   "gender":"الجنس",
   "city":"المدينة",
   "managment":"الادارة",
@@ -162,7 +159,51 @@
   "jobTitleName":"المسمى الوظيفي",
   "sections":"الاقسام",
   "section":"القسم",
-  "sectionName":"القسم "
+  "sectionName":"القسم ",
+  "cancel" : "إلغاء",
+  "name":"الاسم",
+  "number":"الرقم التسلسلي",
+  "moreDetails":"معلومات اضافية",
+  "banks":"البنوك",
+  "nameAr":"الاسم بالعربي",
+  "employeeCode":"الرمز الوظيفي ",
+  "address":"العنوان",
+  "jobInformation":"معلومات الوظيفة ",
+  "experience":"الخبرات",
+  "insurancePolicyNum":"رقم بوليصة التأمين ",
+  "insurancePolicyType":"نوع بوليصة التأمين  ",
+  "issueDate":"تاريخ الاصدار",
+  "expiryData":"تاريخ الانتهاء",
+  "insurancePolicyDegree":"درجة بوليصة التأمين  ",
+  "email":"البريد الالكتروني",
+  "phoneNumber":"رقم الهاتف",
+  "univarsitis":"الجامعات",
+  "company":"الشركة",
+  "position":"المنصب",
+  "addInsuranceCompany":"اضافة شركة تأمين ",
+  "addAddress":"اضافة عنوان",
+  "addQualification":"اضافة شركة تأمين ",
+  "addJobInformation":"اضافة معلومات الوظيفة  "
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
