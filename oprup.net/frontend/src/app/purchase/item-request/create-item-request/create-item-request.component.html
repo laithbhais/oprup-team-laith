@@ -14,23 +14,18 @@
 
             <div class="row">
               <div class="col-lg-6">
-
                 <div class="col-lg my-1 row align-items-center">
                   <p class="mg-b-10 tx-semibold col-lg-5">
-                    {{ "requestNumber" | translate
-                    }}
+                    {{ "requestNumber" | translate}}
                   </p>
                   <input readonly class="form-control input col-lg-7 my-1" name="itemRequestId" id="itemRequestId"
                   placeholder="{{'requestNumber' | translate}}" type="text"
                   [(ngModel)]='itemRequestData.itemRequestId' [ngModelOptions]="{standalone: true}">
-
                 </div>
                 </div>
 
                 <div class="col-lg-6">
                 <div class="col-lg row my-1 align-items-center">
-
-
                   <label for="" class="mg-b-10 tx-semibold col-lg-5">{{ 'itemRequestDate' | translate }}</label>
                   <mat-form-field appearance="fill" class="col-md-6 p-0 my-1 ">
                     <mat-label>{{'DD/MM/YYYY'| translate}}</mat-label>
@@ -40,25 +35,19 @@
                     <mat-datepicker-toggle matSuffix [for]="picker" class="input-mini"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
-
                   <!-- </div> -->
                 </div>
-
               </div>
-
-
 
 </div>
 </div>
               <hr class="" style="color:#ccc;height:1px">
-
               <div class="">
                 <button [disabled]="hiddenDiv" class="btn text-white" (click)="addItemRequest()" style="background-color:#4ca86a;" type="submit">{{'save' | translate}}</button>
                 <a [routerLink]="['/itemRequest/itemRequest']" class="btn text-white mx-2" style="background-color:#84ba95;"
                   type="submit">{{'cancel' | translate}}</a>
               </div>
             </form>
-
 </div>
       <div *ngIf="hiddenDiv" class="card-body">
 
@@ -126,18 +115,6 @@
 
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- End Row -->
 
   <ng-template #select2modal let-modal>
@@ -154,12 +131,12 @@
         <input hidden [(ngModel)]="itemRequestDetailsData.itemRequest.itemRequestId" [ngModelOptions]="{standalone: true}">
           <div class="col-lg my-1 row align-items-center">
             <p class="mg-b-10 tx-semibold col-lg-5">
-              {{ "itemCode" | translate}}
+              {{ "itemName" | translate}}
             </p>
             <ng-select (change)="getItemByItemCode($event)" [(ngModel)]="itemRequestDetailsData.items.itemsId" [ngModelOptions]="  {standalone: true}"
               name="itemsId" id="itemsId" class="p-0 my-1 col-7">
               <ng-option *ngFor="let item of items" value="{{item.itemsId}}">
-                {{item.itemCode}}
+                {{item.itemName}}
               </ng-option>
             </ng-select>
 
@@ -212,12 +189,24 @@
 
               </div>
             </div>
+
+            <div class="col-lg my-1 row align-items-center">
+              <p class="mg-b-10 tx-semibold col-lg-5">{{'itemCode' | translate}}</p>
+              <input class="form-control input col-lg-7 my-1" name="itemCode" id="itemCode"
+                placeholder="  {{'itemCode' | translate}}" type="text" readonly
+                [value]='itemsDetails.itemCode'>
+            </div>
+
+
             <div class="col-lg my-1 row align-items-center">
               <p class="mg-b-10 tx-semibold col-lg-5">{{'categoryName' | translate}}</p>
               <input class="form-control input col-lg-7 my-1" name="categoryName" id="categoryName"
                 placeholder="  {{'categoryName' | translate}}" type="text" readonly
                 [value]='itemsDetails.category.categoryName'>
             </div>
+
+
+
 
             <div class="col-lg my-1 row align-items-center">
               <p class="mg-b-10 tx-semibold col-lg-5">{{'vendorName' | translate}}</p>
@@ -256,16 +245,16 @@
           <input hidden [(ngModel)]="itemRequestDetailsData.itemRequest.itemRequestId" [ngModelOptions]="{standalone: true}">
             <div class="col-lg my-1 row align-items-center">
               <p class="mg-b-10 tx-semibold col-lg-5">
-                {{ "itemCode" | translate}}
+                {{ "itemName" | translate}}
               </p>
               <ng-select (change)="getItemByItemCode($event)" [(ngModel)]="itemRequestDetailsData.items.itemsId" [ngModelOptions]="  {standalone: true}"
                 name="itemsId" id="itemsId" class="p-0 my-1 col-7">
                 <ng-option *ngFor="let item of items" value="{{item.itemsId}}">
-                  {{item.itemCode}}
+                  {{item.itemName}}
                 </ng-option>
               </ng-select>
-
             </div>
+
             <div class="col-lg row my-1 align-items-center">
               <p class="mg-b-10 tx-semibold col-lg-5">{{'quantityPackage' | translate}}<span class="tx-danger">*</span>
               </p>
@@ -275,8 +264,6 @@
                 [(ngModel)]='itemRequestDetailsData.quantityPackage '>
               <div *ngIf="submitted && f['quantityPackage'].errors" class="invalid-feedback">
                 <div class="text-end" *ngIf="f['quantityPackage'].errors['required']">{{'isRequired'|translate}}</div>
-                <!-- <div *ngIf="f['quantityPackage '].errors['pattern']">Enter only characters</div> -->
-
               </div>
             </div>
 
@@ -288,20 +275,15 @@
                 [(ngModel)]='itemRequestDetailsData.quantity'>
                 <div *ngIf="submitted && f['quantity'].errors" class="invalid-feedback">
                 <div class="text-end" *ngIf="f['quantity'].errors['required']">{{'isRequired'|translate}}</div>
-                <!-- <div *ngIf="f['quantity '].errors['pattern']">{{'enterOnlyNumbers' |translate}}</div> -->
-
               </div>
-
             </div>
-
           </div>
+
           <div class="col-lg-12">
             <div *ngIf="!isLoggedIn">
               <div class="col-lg my-1 row align-items-center">
                 <p class="mg-b-10 tx-semibold col-lg-5">{{'barCode' | translate}}</p>
                 <div class="modal-body text-center col-lg-7 my-1">
-                  <!-- <ngx-barcode readonly [bc-value]="itemsDetails.barCode" [bc-display-value]="true" [bc-height]="height">
-                  </ngx-barcode> -->
                   <ngx-barcode  [bc-value]="itemsDetails.barCode" [bc-line-color]="lineColor"
                          bc-element-type="svg"
                          [bc-width]="1" [bc-height]="30" [bc-display-value]="displayValue" [bc-font-options]="fontOptions" [bc-font]="font"
@@ -310,10 +292,17 @@
                          [bc-margin]="margin" [bc-margin-top]="marginTop"
                          [bc-margin-bottom]="marginBottom" [bc-margin-left]="marginLeft"
                          [bc-margin-right]="marginRight"></ngx-barcode>
-                         <span style="font:2px; color:rgb(23, 23, 23);">{{itemsDetails.barCode}}</span>
-
+                         <!-- <span style="font:2px; color:rgb(23, 23, 23);">{{itemsDetails.barCode}}</span> -->
                 </div>
               </div>
+              <div class="col-lg my-1 row align-items-center">
+                <p class="mg-b-10 tx-semibold col-lg-5">{{'itemCode' | translate}}</p>
+                <input class="form-control input col-lg-7 my-1" name="itemCode" id="itemCode"
+                  placeholder="  {{'itemCode' | translate}}" type="text" readonly
+                  [value]='itemsDetails.itemCode'>
+              </div>
+
+
               <div class="col-lg my-1 row align-items-center">
                 <p class="mg-b-10 tx-semibold col-lg-5">{{'categoryName' | translate}}</p>
                 <input class="form-control input col-lg-7 my-1" name="categoryName" id="categoryName"

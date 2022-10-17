@@ -144,12 +144,12 @@
         <!-- <input hidden [(ngModel)]="ItemRequestDetails[0].itemRequest.itemRequestId" name="itemRequestId" id="itemRequestId" > -->
           <div class="col-lg my-1 row align-items-center">
             <p class="mg-b-10 tx-semibold col-lg-5">
-              {{ "itemCode" | translate}}
+              {{ "itemName" | translate}}
             </p>
             <ng-select (change)="getItemByItemCode($event)" [(ngModel)]="itemRequestDetailsData.items.itemsId"
               name="itemsId" id="itemsId" class="p-0 my-1 col-7">
               <ng-option *ngFor="let item of items" value="{{item.itemsId}}">
-                {{item.itemCode}}
+                {{item.itemName}}
               </ng-option>
             </ng-select>
 
@@ -194,6 +194,13 @@
               </div>
             </div>
             <div class="col-lg my-1 row align-items-center">
+              <p class="mg-b-10 tx-semibold col-lg-5">{{'itemCode' | translate}}</p>
+              <input class="form-control input col-lg-7 my-1" name="itemCode" id="itemCode"
+                placeholder="  {{'itemCode' | translate}}" type="text" readonly
+                [value]='itemsDetails.itemCode'>
+            </div>
+
+            <div class="col-lg my-1 row align-items-center">
               <p class="mg-b-10 tx-semibold col-lg-5">{{'categoryName' | translate}}</p>
               <input class="form-control input col-lg-7 my-1" name="categoryName" id="categoryName"
                 placeholder="  {{'categoryName' | translate}}" type="text" readonly
@@ -237,12 +244,12 @@
           <!-- <input hidden [(ngModel)]="ItemRequestDetails[0].itemRequest.itemRequestId" name="itemRequestId" id="itemRequestId" > -->
             <div class="col-lg my-1 row align-items-center">
               <p class="mg-b-10 tx-semibold col-lg-5">
-                {{ "itemCode" | translate}}
+                {{ "itemName" | translate}}
               </p>
               <ng-select (change)="getItemByItemCode($event)" [(ngModel)]="itemRequestDetailsData.items.itemsId"
                 name="itemsId" id="itemsId" class="p-0 my-1 col-7">
                 <ng-option *ngFor="let item of items" value="{{item.itemsId}}">
-                  {{item.itemCode}}
+                  {{item.itemName}}
                 </ng-option>
               </ng-select>
 
@@ -286,6 +293,14 @@
                          <!-- <span style="font:2px; color:rgb(23, 23,23);">{{itemsDetails.barCode}}</span> -->
                 </div>
               </div>
+
+              <div class="col-lg my-1 row align-items-center">
+                <p class="mg-b-10 tx-semibold col-lg-5">{{'itemCode' | translate}}</p>
+                <input class="form-control input col-lg-7 my-1" name="itemCode" id="itemCode"
+                  placeholder="  {{'itemCode' | translate}}" type="text" readonly
+                  [value]='itemsDetails.itemCode'>
+              </div>
+
               <div class="col-lg my-1 row align-items-center">
                 <p class="mg-b-10 tx-semibold col-lg-5">{{'categoryName' | translate}}</p>
                 <input class="form-control input col-lg-7 my-1" name="categoryName" id="categoryName"
