@@ -36,7 +36,11 @@ public class SectionController {
         return new ResponseEntity<>(departmentSection, HttpStatus.OK);
     }
 
-    
+    @GetMapping("/findSection/{id}")
+    public ResponseEntity<Section> getSectionById(@PathVariable("id") Long sectionId){
+        Section section = sectionService.findSectionBySectionId(sectionId);
+        return new ResponseEntity<>(section, HttpStatus.OK);
+    }
 
     @PostMapping("/add")
     public ResponseEntity<Section> addSection(@RequestBody Section section){
