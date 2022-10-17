@@ -208,7 +208,7 @@
                        [bc-margin]="margin" [bc-margin-top]="marginTop"
                        [bc-margin-bottom]="marginBottom" [bc-margin-left]="marginLeft"
                        [bc-margin-right]="marginRight"></ngx-barcode>
-                       <span style="font:2px; color:rgb(23, 23, 23);">{{itemsDetails.barCode}}</span>
+                       <!-- <span style="font:2px; color:rgb(23, 23, 23);">{{itemsDetails.barCode}}</span> -->
 
               </div>
             </div>
@@ -218,7 +218,7 @@
                 placeholder="  {{'categoryName' | translate}}" type="text" readonly
                 [value]='itemsDetails.category.categoryName'>
             </div>
-            
+
             <div class="col-lg my-1 row align-items-center">
               <p class="mg-b-10 tx-semibold col-lg-5">{{'vendorName' | translate}}</p>
               <input class="form-control input col-lg-7 my-1" name="vendorName" id="vendorName"
