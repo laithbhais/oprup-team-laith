@@ -188,6 +188,7 @@ export class CreateItemRequestComponent implements OnInit {
      () => {
 
       this.getAllItemsById(this.itemRequestDetailsData.itemRequest.itemRequestId);
+      console.log("dddddddddddddddd",this.itemRequestDetailsData)
       this.router.navigate(['/itemRequest/create-itemRequest'])}
 
    ),
