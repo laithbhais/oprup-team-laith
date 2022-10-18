@@ -19,8 +19,25 @@ import { ItemRequestService } from '../item-request.service';
   providers: [CountryService, DecimalPipe],
 })
 export class UpdateItemRequestComponent implements OnInit {
-  itemRequestId=this.activateRoute.snapshot.params['id'];
-  items!:any;
+
+
+  ItemRequestDetailsID=this.activateRoute.snapshot.params['id'];
+  ItemRequestDetails:any;
+
+  itemRequestDetailsData={
+    itemRequestDetailsId:'',
+    quantityPackage:'',
+    quantity:'',
+    itemRequest:{
+      itemRequestId:'',
+    },
+    items:{
+      itemsId:'',
+    },
+    deleteFlag: 1
+  }
+
+  items:any;
   year:any;
   itemsDetailsById:any;
   itemsDetails:any;
@@ -47,39 +64,6 @@ export class UpdateItemRequestComponent implements OnInit {
 
 
 
-  itemRequestData = {
-
-    itemRequestId:'',
-
-    itemRequestDate:'',
-
-    deleteFlag: 1
-  }
-
-  itemRequestDetailsData={
-    itemRequestDetailsId:'',
-    quantityPackage:'',
-    quantity:'',
-    itemRequest:{
-      itemRequestId:'',
-    },
-    items:{
-      itemsId:'',
-    },
-    deleteFlag: 1
-  }
-
-
-  form: FormGroup = new FormGroup({
-
-    quantityPackage:new FormControl(''),
-    quantity:new FormControl(''),
-    // itemRequestDate:new FormControl(''),
-
-  });
-
-
-
   constructor(
     public service: CountryService,
     private itemsService: ItemsService,
@@ -101,104 +85,37 @@ export class UpdateItemRequestComponent implements OnInit {
 
    }
 
-   public getAllItemsById(ItemRequest:any): void {
-
-    this.itemRequestService.getItemRequestDetailsByItemRequest(ItemRequest).subscribe(
-      (response) => {
-        this.itemsDetailsById = response;
-        console.log(response);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
-
-   public getAllItems(): void {
-    this.itemsService.getAllItems().subscribe(
-      (response: Items[]) => {
-        this.items = response;
-        console.log(response);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
-  isLoggedIn = true;
-  getItemByItemCode(event: any){
-
-    this.itemsService.getItemsById(event).subscribe(data=>{
-      this.itemsDetails=data
-      this.isLoggedIn = false;
-     console.log('ddddd',data)
-
-     })
-
-  }
-  count(){
-    this.itemRequestService.count().subscribe((data: number)=>{
-      this.itemRequestData.itemRequestId=`${data+1}`
-    })
-  }
-  count2(){
-    this.itemRequestService.count().subscribe((data: number)=>{
-      this.itemRequestDetailsData.itemRequest.itemRequestId=`${data}`
-    })
-  }
-
-
-
-
-
-
-
-
 
   ngOnInit(): void {
-    // this.getAllItems();
-    // this.count();
-    this.getItemRequestById();
+this.getAllItemsDetailsByItemRequest()
+this.getAllItems()
 
-    this.form = this.fb.group(
-      {
+  }
 
-        quantityPackage:[null, Validators.compose([
-          Validators.required,
+  public getAllItemsDetailsByItemRequest(): void {
 
-        ])],
-        quantity:[null, Validators.compose([
-          Validators.required,
 
-        ])],
-        // itemsId:[null, Validators.compose([Validators.required,])],
-        // itemRequestDate:[null, Validators.compose([Validators.required,])],
+    this.itemRequestService.getItemRequestDetailsByItemRequest(this.ItemRequestDetailsID).subscribe(
+      (response) => {
+
+        if(Object.keys(response).length != 0){
+          this.ItemRequestDetails = response;
+        }
+        else{
+          this.ItemRequestDetails = '';
+        }
+
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
       }
+    );
+  }
+  Select2Open(select2modal:any) {
 
-    )
+    this.modalService.open(select2modal);
 
   }
-
-  submitted = false;
-  get f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
-  }
-
-
-  addItemRequestDetails(){
-   this.itemRequestService.addItemRequestDetails(this.itemRequestDetailsData).subscribe(
-     () => {
-
-      this.getAllItemsById(this.itemRequestDetailsData.itemRequest.itemRequestId);
-      this.router.navigate(['/itemRequest/create-itemRequest'])}
-
-   ),
-   (error: HttpErrorResponse) => {
-     console.log("errrrrre",this.itemRequestDetailsData)
-   }
-
-  }
-
   Select2Update(select2modal:any,p:any) {
     this.itemRequestDetailsData=p
     this.modalService.open(select2modal);
@@ -221,7 +138,7 @@ export class UpdateItemRequestComponent implements OnInit {
           (response) => {
             Swal.fire(this.translate.instant('success'), this.translate.instant('dataisDeleted'), 'success')
 
-            this.getAllItemsById(p.itemRequest.itemRequestId);
+            this.getAllItemsDetailsByItemRequest();
 
           this.toaster.success(this.translate.instant('success'))
 
@@ -241,60 +158,45 @@ export class UpdateItemRequestComponent implements OnInit {
     })
    }
 
-   toggelHidden(){
-    if(this.hiddenDiv == false){
-      this.hiddenDiv = true
+   addItemRequestDetails(){
 
-    }
-   }
-
-  public addItemRequest(): void{
-
-    this.itemRequestService.addItemRequest(this.itemRequestData).subscribe(
-
+    this.itemRequestDetailsData.itemRequest.itemRequestId=this.activateRoute.snapshot.params['id'];
+    this.itemRequestService.addItemRequestDetails(this.itemRequestDetailsData).subscribe(
       () => {
-        this.toggelHidden()
-        this.count2();
-        this.router.navigate(['/itemRequest/create-itemRequest'])}
+       this.getAllItemsDetailsByItemRequest();
+       }),
+    (error: HttpErrorResponse) => {
+      console.log("errrrrre",this.itemRequestDetailsData)}}
 
-    )
+
+
+  isLoggedIn = true;
+  getItemByItemCode(event: any){
+
+    this.itemsService.getItemsById(event).subscribe(data=>{
+      this.itemsDetails=data
+      this.isLoggedIn = false;
+     console.log('ddddd',data)
+
+     })
+
+  }
+
+  public getAllItems(): void {
+    this.itemsService.getAllItems().subscribe(
+      (response: Items[]) => {
+        this.items = response;
+        console.log(response);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 
 
-
-  Select2Open(select2modal:any) {
-
-
-
-    this.modalService.open(select2modal);
-
-  }
-
-
-
-  public updateItemRequest(): void{
-    this.submitted = true;
-    if (this.form.invalid) {
-      return;
-    }
-    this.itemRequestService.updateItemRequest(this.items).subscribe(
-      () => {this.router.navigate(['/itemRequest/itemRequest'])}
-    )
-  }
-
-
-
-
-
-
-  getItemRequestById=()=>{
-
-    this.itemRequestService.getItemRequestDetailsByItemRequest(this.itemRequestId).subscribe(data=>{
-     this.itemsDetails=data
-    //  console.log('lilia',this.itemsDetails)
-    })
-   }
 
 
 }
+
 

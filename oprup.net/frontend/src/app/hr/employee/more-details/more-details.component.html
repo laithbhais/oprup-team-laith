@@ -11,19 +11,19 @@
           <div class="row border m-2 p-4">
             <div class="col-lg-10 row">
               <div class="mb-2 row mb-3 col-lg-6">
-                <p class="mg-b-10 tx-semibold col-lg-4"> الاسم بالعربية :</p>
+                <p class="mg-b-10 tx-semibold col-lg-4"> {{'nameAr'|translate}} :</p>
                 <input class="form-control col-lg-8" type="text" disabled [value]="employees.employeeNameAr">
               </div>
               <div class="mb-2 row col-lg-6">
-                <p class="mg-b-10 tx-semibold col-lg-4"> الاسم بالانجليزية : </p>
+                <p class="mg-b-10 tx-semibold col-lg-4"> {{'name'|translate}}  : </p>
                 <input class="form-control col-lg-8" type="text" disabled [value]="employees.employeeName">
               </div>
               <div class="mb-2 row mb-3 col-lg-6">
-                <p class="mg-b-10 tx-semibold col-lg-4">الرمز الوظيفي : </p>
+                <p class="mg-b-10 tx-semibold col-lg-4">{{'employeeCode'|translate}}  : </p>
                 <input class="form-control col-lg-8" type="text" disabled [value]="employees.employeeCode">
               </div>
               <div class="mb-2 row mb-3 col-lg-6">
-                <p class="mg-b-10 tx-semibold col-lg-4">الجنس : </p>
+                <p class="mg-b-10 tx-semibold col-lg-4">{{'gender'|translate}} : </p>
                 <input class="form-control col-lg-8" type="text" disabled [value]="employees.gender">
               </div>
             </div>
@@ -44,7 +44,7 @@
                         <!-- Tabs -->
                         <ul ngbNav #nav="ngbNav" [activeId]="1" class="panel-tabs main-nav-line">
                           <li [ngbNavItem]="1">
-                            <a ngbNavLink>Banks</a>
+                            <a ngbNavLink>{{'banks'|translate}}</a>
                             <ng-template ngbNavContent>
 
 
@@ -76,7 +76,7 @@
                             </ng-template>
                           </li>
                           <li [ngbNavItem]="2">
-                            <a ngbNavLink>insurance Company</a>
+                            <a ngbNavLink>{{'insuranceCompany'|translate}}</a>
                             <ng-template ngbNavContent>
                               <button class="btn bg-black-8 text-white mb-2 float-end"
                                 (click)="Select2Open(select2modal)" type="submit">{{'add'|translate}}</button>
@@ -115,15 +115,16 @@
                             </ng-template>
                           </li>
                           <li [ngbNavItem]="3">
-                            <a ngbNavLink> Address</a>
+                            <a ngbNavLink> {{'address'|translate}}</a>
                             <ng-template ngbNavContent>
                               <button class="btn bg-black-8 text-white mb-2 float-end"
                                 (click)="Select2Open(select3modal)" type="submit">{{'add'|translate}}</button>
                               <table class="table table-striped border">
                                 <tr class="p-4 text-center ">
-                                  <th scope="col">{{'addressName'|translate}}</th>
                                   <th scope="col">{{'number'|translate}}</th>
                                   <th scope="col" (sort)="onSort($event)">{{'address'|translate}}</th>
+                                  <th scope="col" (sort)="onSort($event)">{{'email'|translate}}</th>
+                                  <th scope="col" (sort)="onSort($event)">{{'phoneNumber'|translate}}</th>
                                   <th class="noprint" scope="col" (sort)="onSort($event)">{{'action'|translate}}</th>
                                 </tr>
                                 <tbody class="table-group-divider">
@@ -145,7 +146,7 @@
                             </ng-template>
                           </li>
                           <li [ngbNavItem]="4">
-                            <a ngbNavLink>Qualifications </a>
+                            <a ngbNavLink>{{'qualifications'|translate}} </a>
                             <ng-template ngbNavContent>
                               <button class="btn bg-black-8 text-white mb-2 float-end"
                                 (click)="Select2Open(select4modal)" type="submit">{{'add'|translate}}</button>
@@ -176,16 +177,16 @@
                             </ng-template>
                           </li>
                           <li [ngbNavItem]="5">
-                            <a ngbNavLink>Job Inforamtion</a>
+                            <a ngbNavLink>{{'jobInformation'|translate}} </a>
                             <ng-template ngbNavContent>
                               <button class="btn bg-black-8 text-white mb-2 float-end"
                                 (click)="Select2Open(select5modal)" type="submit">{{'add'|translate}}</button>
                               <table class="table table-striped border">
                                 <tr class="p-4 text-center ">
                                   <th scope="col">{{'number'|translate}}</th>
-                                  <th scope="col" (sort)="onSort($event)">{{'departments'|translate}}</th>
+                                  <th scope="col" (sort)="onSort($event)">{{'department'|translate}}</th>
                                   <th scope="col" (sort)="onSort($event)">{{'sections'|translate}}</th>
-                                  <th scope="col" (sort)="onSort($event)">{{'jobTitles'|translate}}</th>
+                                  <th scope="col" (sort)="onSort($event)">{{'jobTitle'|translate}}</th>
                                   <th class="noprint" scope="col" (sort)="onSort($event)">{{'action'|translate}}</th>
                                 </tr>
                                 <tbody class="table-group-divider">
@@ -207,7 +208,7 @@
                             </ng-template>
                           </li>
                           <li [ngbNavItem]="6">
-                            <a ngbNavLink> Experience</a>
+                            <a ngbNavLink> {{'experience'|translate}}</a>
                             <ng-template ngbNavContent>
                               <button class="btn bg-black-8 text-white mb-2 float-end"
                                 (click)="Select2Open(select6modal)" type="submit">{{'add'|translate}}</button>
@@ -303,9 +304,8 @@
           </div>
           <hr class="border border-3" style="color:#ccc;height:1px">
           <div class="">
-            <button class="btn bg-black-8 text-white" type="submit">{{'Save'|translate}}</button>
-            <a routerLink="/employee/view" class="btn bg-black-3 text-white mx-2"
-              type="submit">{{'Cancel'|translate}}</a>
+            <button class="btn bg-black-8 text-white" type="submit">{{'save'|translate}}</button>
+            <a routerLink="/employee/view" class="btn bg-black-3 text-white mx-2" type="submit">{{'cancel'|translate}}</a>
           </div>
         </form>
       </div>
@@ -314,7 +314,7 @@
   <ng-template #select1modal let-modal>
     <!-- Select2 modal -->
     <div class="modal-header">
-      <h6 class="modal-title">اضافة بنك للموظف</h6>
+      <h6 class="modal-title">  {{ "addBank" | translate }}</h6>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       </button>
     </div>
@@ -334,8 +334,8 @@
     </div>
 
     <div class="modal-footer">
-      <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
-      <button class="btn bg-black-8 text-white" type="button" (click)="addBank()">Save </button>
+      <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">{{"cancel" | translate }}</button>
+      <button class="btn bg-black-8 text-white" type="button" (click)="addBank()">{{"save" | translate }} </button>
     </div>
 
   </ng-template>
@@ -343,7 +343,7 @@
   <ng-template #select2modal let-modal>
     <!-- Select2 modal -->
     <div class="modal-header">
-      <h6 class="modal-title">اضافة شركة تامين للموظف</h6>
+      <h6 class="modal-title"> {{ "addInsuranceCompany" | translate }}  </h6>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       </button>
     </div>
@@ -420,8 +420,9 @@
     </div>
 
     <div class="modal-footer">
-      <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
-      <button class="btn bg-black-8 text-white" type="button" (click)="addInsuranceCompany()">Save </button>
+
+      <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">{{'cancel'|translate}}</button>
+      <button class="btn bg-black-8 text-white" type="button" (click)="addInsuranceCompany()">{{'save'|translate}} </button>
     </div>
 
   </ng-template>
@@ -429,50 +430,48 @@
   <ng-template #select3modal let-modal>
     <!-- Select2 modal -->
     <div class="modal-header">
-      <h6 class="modal-title">اضافة عنوان</h6>
+      <h6 class="modal-title"> {{'addAddress'|translate}}</h6>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       </button>
     </div>
     <div class="modal-body">
-      <div class="mb-2 row">
-        <p class="mg-b-10 tx-semibold col-lg-4"> العنوان</p>
-        <input class="form-control col-lg-8" 
-           [(ngModel)]='addressData.addressName'>
+      
+       <div class="mb-2 row">
+        <p class="mg-b-10 tx-semibold col-lg-4">  {{'address'|translate}}</p>
+        <input class="form-control col-lg-8" [(ngModel)]='addressData.addressName'>
         <div  class="invalid-feedback">
-          <div class="text-center">{{'isRequired'|translate}}
-          </div>
+          <div class="text-center">{{'isRequired'|translate}}</div>
         </div>
       </div>
+    
       <div class="mb-2 row">
-        <p class="mg-b-10 tx-semibold col-lg-4"> البريد الالكتروني</p>
-        <input class="form-control col-lg-8" 
-           [(ngModel)]='addressData.email'>
+        <p class="mg-b-10 tx-semibold col-lg-4">  {{'email'|translate}}</p>
+        <input class="form-control col-lg-8" [(ngModel)]='addressData.email'>
         <div  class="invalid-feedback">
-          <div class="text-center">{{'isRequired'|translate}}
-          </div>
+          <div class="text-center">{{'isRequired'|translate}}</div>
         </div>
       </div>
+    
       <div class="mb-2 row">
-        <p class="mg-b-10 tx-semibold col-lg-4"> رقم الهاتف</p>
+        <p class="mg-b-10 tx-semibold col-lg-4">  {{'phoneNumber'|translate}}</p>
         <input class="form-control col-lg-8"   [(ngModel)]='addressData.phoneNumber'>
         <div  class="invalid-feedback">
-          <div class="text-center">{{'isRequired'|translate}}
-          </div>
+          <div class="text-center">{{'isRequired'|translate}}</div>
         </div>
       </div>
-    </div>
+   
     <div class="modal-footer">
-
-      <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
-      <button class="btn bg-black-8 text-white" type="button" (click)="addAddress()">Save </button>
+      <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">{{'cancel'|translate}}</button>
+      <button class="btn bg-black-8 text-white" type="button" (click)="addAddress()">{{'save'|translate}} </button>
     </div>
 
   </ng-template>
   <!-- End Row -->
+    
   <ng-template #select4modal let-modal>
     <!-- Select2 modal -->
     <div class="modal-header">
-      <h6 class="modal-title">اضافة مؤهل للموظف</h6>
+      <h6 class="modal-title"> {{ "addQualification" | translate }} </h6>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       </button>
     </div>
@@ -529,8 +528,9 @@
     </div>
     <div class="modal-footer">
 
-      <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
-      <button class="btn bg-black-8 text-white" type="button" (click)="addQualification()">Save </button>
+
+      <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">{{'cancel'|translate}}</button>
+      <button class="btn bg-black-8 text-white" type="button" (click)="addQualification()">{{'save'|translate}} </button>
     </div>
 
   </ng-template>
@@ -538,9 +538,8 @@
   <ng-template #select5modal let-modal>
     <!-- Select2 modal -->
     <div class="modal-header">
-      <h6 class="modal-title">اضافة Job Info</h6>
-      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      </button>
+      <h6 class="modal-title"> {{ "addJobInformation" | translate }}</h6>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
 
@@ -595,9 +594,8 @@
       </div>
     </div>
     <div class="modal-footer">
-
-      <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
-      <button class="btn bg-black-8 text-white" type="button" (click)="addJobInfo()">Save </button>
+      <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">{{'cancel'|translate}}</button>
+      <button class="btn bg-black-8 text-white" type="button" (click)="addJobInfo()">{{'save'|translate}} </button>
     </div>
 
   </ng-template>
@@ -647,7 +645,6 @@
       </div>
     </div>
     <div class="modal-footer">
-
       <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
       <button class="btn bg-black-8 text-white" type="button" (click)="addExperience()">Save </button>
     </div>

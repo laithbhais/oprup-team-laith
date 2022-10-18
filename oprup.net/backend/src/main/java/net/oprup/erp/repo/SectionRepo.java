@@ -6,9 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface SectionRepo extends JpaRepository<Section, Long> {
 
+    Optional<Section> findBySectionId(Long sectionId);
 
     @Query(value = "select * from section as e where e.delete_flag =1 and e.department_id =:department_id",nativeQuery = true)
     List<Section> findSectionsByDepartmentId(@Param("department_id") Department department);

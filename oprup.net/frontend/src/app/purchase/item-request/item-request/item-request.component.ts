@@ -106,10 +106,14 @@ export class ItemRequestComponent implements OnInit {
     this.getAllItemRequest();
   }
 
+
+
   public getAllItemRequest(): void {
-    this.itemRequestService.getAllItemRequestDetails().subscribe(
+    this.itemRequestService.getAllItemRequest().subscribe(
       (response) => {
         this.itemRequest = response;
+        this.itemRequest = response;
+
         console.log(response);
       },
       (error: HttpErrorResponse) => {
@@ -118,35 +122,28 @@ export class ItemRequestComponent implements OnInit {
     );
   }
 
-  public deleteItemRequest(ItemRequestId:ItemRequestDetails){
+
+  public deleteItemRequest(ItemRequestId:ItemRequest){
     Swal.fire({
       icon: 'info',
       title: this.translate.instant('areyousuretodeletetherecord'),
       confirmButtonText:this.translate.instant('delete'),
-     showCancelButton: true,
- cancelButtonText: this.translate.instant('cancel'),
+      showCancelButton: true,
+      cancelButtonText: this.translate.instant('cancel'),
     }).then((result) => {
       if(result.isConfirmed){
-
-        this.itemRequestService.deleteItemRequestDetails(ItemRequestId).subscribe(
+        this.itemRequestService.deleteItemRequest(ItemRequestId).subscribe(
           (response) => {
             Swal.fire(this.translate.instant('success'), this.translate.instant('dataisDeleted'), 'success')
-
         this.toaster.success(this.translate.instant('success'))
         this.getAllItemRequest();
-
-
           },
           (error) => {
             Swal.fire(this.translate.instant('error'), this.translate.instant('errorwhiledeletingData'), 'error')
-
         this.toaster.error(this.translate.instant('error'))
-
           }
         );
       }
-
-
     })
   }
 

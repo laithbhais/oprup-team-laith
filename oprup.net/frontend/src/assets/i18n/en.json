@@ -55,7 +55,6 @@
     "S.No" : "S.No ",
     "areyousuretodeletetherecord" : "Are you sure to delete the record?",
     "qualification" : "ََQualification",
-    "insurance company" : "Insurance Company",
 
     "enterOnlyNumbers":"Only Numbers",
 
@@ -79,7 +78,7 @@
   
   "addBank":"Add Bank",
   "updateBank":"Update Bank",
-  "number":"S.No",
+  
   "Name":"Name",
   "Gender":"Gender",
   "City":"City",
@@ -158,7 +157,37 @@
   "jobTitleName":"Job Title Name",
   "sections":"Sections",
   "section":"Section",
-  "sectionName":"Section Name"
+  "sectionName":"Section Name",
+  "name":"name",
+  "number":"S.No",
+  "moreDetails":"More Details",
+  "banks":"Banks",
+  "nameAr":"Name Ar",
+  "employeeCode":"Employee Code",
+  "address":"Address",
+  "jobInformation":"Job Information",
+  "experience":"Experience",
+  "insurancePolicyNum":"Insurance Policy Num",
+  "insurancePolicyType":"Insurance Policy Type",
+  "issueDate":"Issue Date",
+  "expiryData":"Expiry Data",
+  "insurancePolicyDegree":"Insurance Policy Degree",
+  "email":"Email Address",
+  "phoneNumber":" Phone Number",
+  "univarsitis":"Univarsitis",
+  "company":"Company",
+  "position":"Position",
+  "addInsuranceCompany":"Add Insurance Company",
+  "addAddress":"Add Address",
+  "addQualification":"Add Qualification",
+  "addJobInformation":"Add Job Information"
+
+
+  
+
+
+  
+
 
 
   
