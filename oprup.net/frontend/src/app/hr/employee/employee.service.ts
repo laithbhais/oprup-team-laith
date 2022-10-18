@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 import { InsuranceCompany } from '../insurance-company/insurance-company';
 import { JobTitle } from '../job-title/job-title';
 import { Employee, EmployeeJobInformation } from './employee';
-import { EmployeeQualification, EmployeeBank, EmployeeInsuranceCompany, EmployeeJobTitle, EmployeeUniversity, EmployeeMajor, Address } from './employee';
+import { EmployeeQualification, EmployeeBank, EmployeeInsuranceCompany, EmployeeJobTitle, EmployeeUniversity, EmployeeMajor, Address, EmployeeExperience, EmployeeResidence } from './employee';
 
 @Injectable({
   providedIn: 'root'
@@ -87,6 +87,10 @@ export class EmployeeService {
   }
 
   
+  public addEmployeeExperience(employeeExperience: EmployeeExperience): Observable<EmployeeExperience[]>{
+    return this.http.post<EmployeeExperience[]>(`${this.apiServerUrl}/experience/add`,employeeExperience)
+  }
+
   public getBanksByEmployeeId(employeeId: any): Observable<EmployeeBank[]>{
     return this.http.get<EmployeeBank[]>(`${this.apiServerUrl}/employeeBank/find/${employeeId}`)
   }
@@ -103,12 +107,28 @@ export class EmployeeService {
     return this.http.get<EmployeeJobInformation[]>(`${this.apiServerUrl}/jobInfo/find/${employeeId}`)
   }
 
+  public getExperienceByEmployeeId(employeeId: any): Observable<EmployeeExperience[]>{
+    return this.http.get<EmployeeExperience[]>(`${this.apiServerUrl}/experience/find/${employeeId}`)
+  }
+
+  public getResidenceByEmployeeId(employeeId: any): Observable<EmployeeResidence[]>{
+    return this.http.get<EmployeeResidence[]>(`${this.apiServerUrl}/residence/find/${employeeId}`)
+  }
+
   public deleteEmpBank(empBankId: EmployeeBank): Observable<EmployeeBank>{
     return this.http.put<EmployeeBank>(`${this.apiServerUrl}/employeeBank/delete/${empBankId}`,empBankId);
   }
   
   public deleteAddress(addressId: Address): Observable<Address>{
     return this.http.put<Address>(`${this.apiServerUrl}/address/delete/${addressId}`,addressId);
+  }
+
+  public deleteExperience(experienceId: EmployeeExperience): Observable<EmployeeExperience>{
+    return this.http.put<EmployeeExperience>(`${this.apiServerUrl}/experience/delete/${experienceId}`,experienceId);
+  }
+
+  public deleteResidence(residenceId: EmployeeResidence): Observable<EmployeeResidence>{
+    return this.http.put<EmployeeResidence>(`${this.apiServerUrl}/residence/delete/${residenceId}`,residenceId);
   }
 
   public deleteEmpQualification(empQualificationId: EmployeeQualification): Observable<EmployeeQualification>{

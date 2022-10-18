@@ -12,10 +12,8 @@ import { BankService } from '../bank.service';
 export class AddBankComponent implements OnInit {
   
   form: FormGroup = new FormGroup({
-
     bankName:new FormControl(''),
     bankDescription:new FormControl(''),
-
   });
 
   
@@ -35,21 +33,9 @@ export class AddBankComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group(
       {
-
-        
-        bankName: [null, Validators.compose([
-          Validators.required,
-          // Validators.pattern('^([a-zA-Z\s]+)$')
-        ])],
-        bankDescription: [null, Validators.compose([
-          Validators.nullValidator,
-          // Validators.pattern('^([a-zA-Z\s]+)$')
-        ])],
-
-
-
+        bankName: [null, Validators.compose([Validators.required])],
+        bankDescription: [null, Validators.compose([Validators.nullValidator])],
       }
-
     )
   }
   submitted = false;
@@ -60,16 +46,12 @@ export class AddBankComponent implements OnInit {
   public addBank(): void{
     
     this.submitted = true;
-    if (this.form.invalid) {
-      return;
-    }
+    if (this.form.invalid)return
+
     this.bankService.addBank(this.bankData).subscribe(
-      () => {
-            }
+      () => {this.router.navigate(['bank/view'])}
     )
     console.log(this.bankData)
-
-
   }
 
 }

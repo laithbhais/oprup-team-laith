@@ -133,7 +133,7 @@ export class NavService implements OnDestroy {
       type: 'sub',
       active: true,
       children: [
-        { path: '/employee/view', titleEn: 'Employee',title: ' الموارد البشرية',  type: 'link' },
+        { path: '/employee/view', titleEn: 'Employee',title: ' الموظفين',  type: 'link' },
 
 
       ],

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { BankService } from '../bank.service';
 
@@ -24,7 +24,8 @@ export class UpdateBankComponent implements OnInit {
     public fb: FormBuilder, // Form Builder service for Reactive forms
     private bankService: BankService,
     private activateRoute:ActivatedRoute,
-    private translate:TranslateService
+    private translate:TranslateService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -40,12 +41,7 @@ export class UpdateBankComponent implements OnInit {
           Validators.nullValidator,
           // Validators.pattern('^([a-zA-Z\s]+)$')
         ])],
-        
-
-
-
       }
-
     )
     this.getBankById()
   }
@@ -67,7 +63,7 @@ export class UpdateBankComponent implements OnInit {
       return;
     }
     this.bankService.updateBank(this.bank).subscribe(
-      () => {}
+      () => {this.router.navigate(['bank/view'])}
       )
   }
 }

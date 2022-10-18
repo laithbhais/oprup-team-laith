@@ -61,18 +61,17 @@ export interface EmployeeBank  {
 }
 
 export interface EmployeeInsuranceCompany  {
-  employee: {
-    employeeId: string
-  },
-  insuranceCompany: {
-    insuranceCompanyId: string,
-    // insuranceCompanyName: string
-  },
-  insurancePolicyNum: string,
-  insurancePolicyType: string,
-  issueDate: string,
-  expiryData: string,
-  insurancePolicyDegree: string,
+    insurancePolicyNumber: string,
+    insurancePolicyType: string,
+    issueDate: string,
+    expiryDate: string,
+    insuranceDegree: string,
+    insuranceCompany: {
+        insuranceCompanyId: string
+    },
+    employee: {
+        employeeId: string
+    }
 }
 
 export interface EmployeeJobTitle  {
@@ -109,4 +108,26 @@ export interface Address{
   addressName: string,
   email: string,
   phoneNumber: string
+}
+
+export interface EmployeeExperience{
+  employee: {
+    employeeId: any
+  },
+  company: string,
+  startDate: string,
+  endDate: string,
+  position: string
+}
+
+export interface EmployeeResidence{
+  employee: {
+    employeeId: any
+  },
+  residenceNumber: number,
+  jobBYResidence: string,
+  residenceIssueDate: string,
+  residenceExpiryDate: string,
+  sponsorTransferDate: string,
+  hijriSponsorTransferDate: string
 }

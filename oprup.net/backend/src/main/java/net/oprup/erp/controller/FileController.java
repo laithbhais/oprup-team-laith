@@ -35,7 +35,8 @@ public class FileController {
 
     // define a location
     // public static final String DIRECTORY = System.getProperty("user.home") + "/Downloads/uploads/";
-    public static final String DIRECTORY = "../Front-end/src/assets/img/upload";
+    // public static final String DIRECTORY = "../frontend/src/assets/img/upload";
+    public static final String DIRECTORY = "http://23.88.112.13/assets/img/upload";
 
     // Define a method to upload files
     @PostMapping("/upload")

@@ -16,7 +16,7 @@ public class Address implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long addressId;
-    private Long addressName;
+    private String addressName;
     private String email;
     private String phoneNumber;
     private Integer deleteFlag;
@@ -29,11 +29,11 @@ public class Address implements Serializable {
         return addressId;
     }
 
-    public Long getAddressName() {
+    public String getAddressName() {
         return addressName;
     }
 
-    public void setAddressName(Long addressName) {
+    public void setAddressName(String addressName) {
         this.addressName = addressName;
     }
 

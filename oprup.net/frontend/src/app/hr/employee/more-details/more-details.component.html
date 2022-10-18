@@ -1,13 +1,13 @@
 <app-page-header title="معلومات اضافية" [items]="['الموظف']" [active_item]="'moreDetails'|translate"></app-page-header>
 
-<!-- <button (click)="getJobsInformationByEmployeeId()">aaaa</button> -->
+<!-- <button (click)="getResidenceByEmployeeId()">aaaa</button> -->
 
 <div class="row row-sm">
   <div class="col-lg-12 col-md-12">
     <div class="card custom-card">
       <div class="card-body">
 
-        <form [formGroup]="form" *ngIf="employees">
+        <form  *ngIf="employees">
           <div class="row border m-2 p-4">
             <div class="col-lg-10 row">
               <div class="mb-2 row mb-3 col-lg-6">
@@ -51,7 +51,7 @@
                               <button class="btn bg-black-8 text-white mb-2 float-end"
                                 (click)="Select2Open(select1modal)" type="submit">{{'add'|translate}}</button>
 
-                              <table class="table table-striped border" #TABLE #table id="bankprint" #bankprint>
+                              <table class="table table-striped border">
                                 <tr class="p-4 text-center ">
                                   <th scope="col">{{'number'|translate}}</th>
                                   <th scope="col" (sort)="onSort($event)">{{'banks'|translate}}</th>
@@ -80,7 +80,7 @@
                             <ng-template ngbNavContent>
                               <button class="btn bg-black-8 text-white mb-2 float-end"
                                 (click)="Select2Open(select2modal)" type="submit">{{'add'|translate}}</button>
-                              <table class="table table-striped border" #TABLE #table id="bankprint" #bankprint>
+                              <table class="table table-striped border">
                                 <tr class="p-4 text-center ">
                                   <th scope="col">{{'number'|translate}}</th>
                                   <th scope="col" (sort)="onSort($event)">{{'insuranceCompany'|translate}}</th>
@@ -95,16 +95,18 @@
                                   <tr *ngFor="let insuranceCompany of empInsuranceCompanies;let i = index">
                                     <td>{{i + 1}}</td>
                                     <td>{{insuranceCompany.insuranceCompany.insuranceCompanyName}}</td>
-                                    <td>{{insuranceCompany.insurancePolicyNum}}</td>
+                                    <td>{{insuranceCompany.insurancePolicyNumber}}</td>
                                     <td>{{insuranceCompany.insurancePolicyType}}</td>
                                     <td>{{insuranceCompany.issueDate}}</td>
-                                    <td>{{insuranceCompany.expiryData}}</td>
-                                    <td>{{insuranceCompany.insurancePolicyDegree}}</td>
+                                    <td>{{insuranceCompany.expiryDate}}</td>
+                                    <td>{{insuranceCompany.insuranceDegree}}</td>
                                     <td class="noprint">
                                       <!-- <a class="btn btn-icon-text" routerLink=""><i
                                           class="fe fe-edit text-dark bd-black "
                                           ngbTooltip="{{'Update'|translate}}"></i></a> -->
-                                      <button class="btn btn-icon-text" (click)="deleteInsuranceCompany(insuranceCompany.employeeInsuranceCompanyId)"><i class="fe fe-trash-2 text-dark bd-black"
+                                      <button class="btn btn-icon-text"
+                                        (click)="deleteInsuranceCompany(insuranceCompany.employeeInsuranceCompanyId)"><i
+                                          class="fe fe-trash-2 text-dark bd-black"
                                           ngbTooltip="{{'delete'|translate}}"></i></button>
                                     </td>
                                   </tr>
@@ -133,7 +135,8 @@
                                       <!-- <a class="btn btn-icon-text" routerLink=""><i
                                           class="fe fe-edit text-dark bd-black "
                                           ngbTooltip="{{'Update'|translate}}"></i></a> -->
-                                      <button class="btn btn-icon-text" (click)="deleteAddress(address.addressId)"><i class="fe fe-trash-2 text-dark bd-black"
+                                      <button class="btn btn-icon-text" (click)="deleteAddress(address.addressId)"><i
+                                          class="fe fe-trash-2 text-dark bd-black"
                                           ngbTooltip="{{'delete'|translate}}"></i></button>
                                     </td>
                                   </tr>
@@ -146,7 +149,7 @@
                             <ng-template ngbNavContent>
                               <button class="btn bg-black-8 text-white mb-2 float-end"
                                 (click)="Select2Open(select4modal)" type="submit">{{'add'|translate}}</button>
-                              <table class="table table-striped border" #TABLE #table id="bankprint" #bankprint>
+                              <table class="table table-striped border">
                                 <tr class="p-4 text-center ">
                                   <th scope="col">{{'number'|translate}}</th>
                                   <th scope="col" (sort)="onSort($event)">{{'qualifications'|translate}}</th>
@@ -162,7 +165,10 @@
                                     <td>{{empQualification.university.universityName}}</td>
                                     <td class="noprint">
                                       <!-- <a class="btn btn-icon-text" routerLink=""><i class="fe fe-edit text-dark bd-black "                                          ngbTooltip="{{'Update'|translate}}"></i></a> -->
-                                      <button class="btn btn-icon-text" (click)="deleteQualification(empQualification.employeeQualificationId)"><i class="fe fe-trash-2 text-dark bd-black" ngbTooltip="{{'delete'|translate}}"></i></button>
+                                      <button class="btn btn-icon-text"
+                                        (click)="deleteQualification(empQualification.employeeQualificationId)"><i
+                                          class="fe fe-trash-2 text-dark bd-black"
+                                          ngbTooltip="{{'delete'|translate}}"></i></button>
                                     </td>
                                   </tr>
                                 </tbody>
@@ -174,7 +180,7 @@
                             <ng-template ngbNavContent>
                               <button class="btn bg-black-8 text-white mb-2 float-end"
                                 (click)="Select2Open(select5modal)" type="submit">{{'add'|translate}}</button>
-                              <table class="table table-striped border" #TABLE #table id="bankprint" #bankprint>
+                              <table class="table table-striped border">
                                 <tr class="p-4 text-center ">
                                   <th scope="col">{{'number'|translate}}</th>
                                   <th scope="col" (sort)="onSort($event)">{{'departments'|translate}}</th>
@@ -190,7 +196,10 @@
                                     <td>{{empJobInfo.jobTitle.jobTitleName}}</td>
                                     <td class="noprint">
                                       <!-- <a class="btn btn-icon-text" routerLink=""><i class="fe fe-edit text-dark bd-black "                                          ngbTooltip="{{'Update'|translate}}"></i></a> -->
-                                      <button class="btn btn-icon-text" (click)="deleteJobInformation(empJobInfo.employeeJobInformationId)"><i class="fe fe-trash-2 text-dark bd-black" ngbTooltip="{{'delete'|translate}}"></i></button>
+                                      <button class="btn btn-icon-text"
+                                        (click)="deleteJobInformation(empJobInfo.jobInfoId)"><i
+                                          class="fe fe-trash-2 text-dark bd-black"
+                                          ngbTooltip="{{'delete'|translate}}"></i></button>
                                     </td>
                                   </tr>
                                 </tbody>
@@ -201,8 +210,8 @@
                             <a ngbNavLink> Experience</a>
                             <ng-template ngbNavContent>
                               <button class="btn bg-black-8 text-white mb-2 float-end"
-                                (click)="Select2Open(select5modal)" type="submit">{{'add'|translate}}</button>
-                              <table class="table table-striped border" #TABLE #table id="bankprint" #bankprint>
+                                (click)="Select2Open(select6modal)" type="submit">{{'add'|translate}}</button>
+                              <table class="table table-striped border">
                                 <tr class="p-4 text-center ">
                                   <th scope="col">{{'number'|translate}}</th>
                                   <th scope="col" (sort)="onSort($event)">{{'company'|translate}}</th>
@@ -212,18 +221,73 @@
                                   <th class="noprint" scope="col" (sort)="onSort($event)">{{'action'|translate}}</th>
                                 </tr>
                                 <tbody class="table-group-divider">
-                                  <tr *ngFor="let experience of empexperience;let i = index">
+                                  <tr *ngFor="let experience of empExperience;let i = index">
                                     <td>{{i + 1}}</td>
-                                    <td>{{experience.section.department.departmentName}}</td>
-                                    <td>{{experience.section.sectionName}}</td>
-                                    <td>{{experience.jobTitle.jobTitleName}}</td>
+                                    <td>{{experience.company}}</td>
+                                    <td>{{experience.startDate}}</td>
+                                    <td>{{experience.endDate}}</td>
+                                    <td>{{experience.position}}</td>
                                     <td class="noprint">
                                       <!-- <a class="btn btn-icon-text" routerLink=""><i class="fe fe-edit text-dark bd-black "                                          ngbTooltip="{{'Update'|translate}}"></i></a> -->
-                                      <button class="btn btn-icon-text" (click)="deleteJobInformation(experience.employeeJobInformationId)"><i class="fe fe-trash-2 text-dark bd-black" ngbTooltip="{{'delete'|translate}}"></i></button>
+                                      <button class="btn btn-icon-text"
+                                        (click)="deleteExperience(experience.experienceId)"><i
+                                          class="fe fe-trash-2 text-dark bd-black"
+                                          ngbTooltip="{{'delete'|translate}}"></i></button>
                                     </td>
                                   </tr>
                                 </tbody>
                               </table>
+                            </ng-template>
+                          </li>
+                          <li [ngbNavItem]="7">
+                            <a ngbNavLink> Residence</a>
+                            <ng-template ngbNavContent>
+                              <button class="btn bg-black-8 text-white mb-2 float-end"
+                                (click)="Select2Open(select7modal)" type="submit">{{'add'|translate}}</button>
+                                <table class="table table-striped border">
+                                  <tr class="p-4 text-center ">
+                                    <th scope="col">{{'number'|translate}}</th>
+                                    <th scope="col" (sort)="onSort($event)">{{'residenceNumber'|translate}}</th>
+                                    <th scope="col" (sort)="onSort($event)">{{'jobBYResidence'|translate}}</th>
+                                    <th scope="col" (sort)="onSort($event)">{{'residenceIssueDate'|translate}}</th>
+                                    <th scope="col" (sort)="onSort($event)">{{'residenceExpiryDate'|translate}}</th>
+                                    <th scope="col" (sort)="onSort($event)">{{'sponsorTransferDate'|translate}}</th>
+                                    <th scope="col" (sort)="onSort($event)">{{'HijriSponsorTransferDate'|translate}}</th>
+                                    <th class="noprint" scope="col" (sort)="onSort($event)">{{'action'|translate}}</th>
+                                  </tr>
+                                  <tbody class="table-group-divider">
+                                    <tr *ngFor="let residence of empResidence;let i = index">
+                                      <td>{{i + 1}}</td>
+                                      <td>{{residence.residenceNumber}}</td>
+                                      <td>{{residence.jobBYResidence}}</td>
+                                      <td>{{residence.residenceIssueDate}}</td>
+                                      <td>{{residence.residenceExpiryDate}}</td>
+                                      <td>{{residence.sponsorTransferDate}}</td>
+                                      <td>{{residence.hijriSponsorTransferDate}}</td>
+                                      <td class="noprint">
+                                        <!-- <a class="btn btn-icon-text" routerLink=""><i class="fe fe-edit text-dark bd-black "                                          ngbTooltip="{{'Update'|translate}}"></i></a> -->
+                                        <button class="btn btn-icon-text"
+                                          (click)="deleteResidence(residence.residenceId)"><i
+                                            class="fe fe-trash-2 text-dark bd-black"
+                                            ngbTooltip="{{'delete'|translate}}"></i></button>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </ng-template>
+                          </li>
+                          <li [ngbNavItem]="8">
+                            <a ngbNavLink> Visa</a>
+                            <ng-template ngbNavContent>
+                              <button class="btn bg-black-8 text-white mb-2 float-end"
+                                (click)="Select2Open(select8modal)" type="submit">{{'add'|translate}}</button>
+                            </ng-template>
+                          </li>
+                          <li [ngbNavItem]="9">
+                            <a ngbNavLink> Medical Test</a>
+                            <ng-template ngbNavContent>
+                              <button class="btn bg-black-8 text-white mb-2 float-end"
+                                (click)="Select2Open(select9modal)" type="submit">{{'add'|translate}}</button>
                             </ng-template>
                           </li>
                         </ul>
@@ -241,7 +305,7 @@
           <div class="">
             <button class="btn bg-black-8 text-white" type="submit">{{'Save'|translate}}</button>
             <a routerLink="/employee/view" class="btn bg-black-3 text-white mx-2"
-            type="submit">{{'Cancel'|translate}}</a>
+              type="submit">{{'Cancel'|translate}}</a>
           </div>
         </form>
       </div>
@@ -258,18 +322,22 @@
       <p class="mg-b-10 tx-semibold col-lg-5">
         {{ "bank" | translate }}<span class="tx-danger">*</span>
       </p>
-      <ng-select [(ngModel)]="employeeBankData.bank.bankId" class="p-0 my-1 col-7 ">
+      <ng-select 
+        [(ngModel)]="employeeBankData.bank.bankId" class="p-0 my-1 col-7 ">
         <ng-option *ngFor="let bank of banks" value={{bank.bankId}}>
           {{bank.bankName}}
         </ng-option>
       </ng-select>
+      <div  class="invalid-feedback">
+        <div class="text-center">{{'isRequired'|translate}}</div>
+      </div>
     </div>
-    
+
     <div class="modal-footer">
       <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
-      <button class="btn bg-black-8 text-white" type="button" (click)="addBank();modal.close('Close click')">Save </button>
+      <button class="btn bg-black-8 text-white" type="button" (click)="addBank()">Save </button>
     </div>
-    
+
   </ng-template>
   <!-- End Row -->
   <ng-template #select2modal let-modal>
@@ -280,51 +348,80 @@
       </button>
     </div>
     <div class="py-4">
-    <div class="col-lg row">
-      <p class="mg-b-10 tx-semibold col-lg-5">
-        {{ "insuranceCompany" | translate }}<span class="tx-danger">*</span>
-      </p>
-      <ng-select [(ngModel)]="employeeInsuranceCompanyData.insuranceCompany.insuranceCompanyId" class="p-0 my-1 col-7 ">
-        <ng-option *ngFor="let insuranceCompany of insuranceCompanies" value={{insuranceCompany.insuranceCompanyId}}>
-          {{insuranceCompany.insuranceCompanyName}}
-        </ng-option>
-      </ng-select>
+      <div class="col-lg row">
+        <p class="mg-b-10 tx-semibold col-lg-5">
+          {{ "insuranceCompany" | translate }}<span class="tx-danger">*</span>
+        </p>
+        <ng-select 
+          
+          [(ngModel)]="employeeInsuranceCompanyData.insuranceCompany.insuranceCompanyId" class="p-0 my-1 col-7 ">
+          <ng-option *ngFor="let insuranceCompany of insuranceCompanies" value={{insuranceCompany.insuranceCompanyId}}>
+            {{insuranceCompany.insuranceCompanyName}}
+          </ng-option>
+        </ng-select>
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}</div>
+        </div>
+      </div>
+      <div class="col-lg row">
+        <p class="mg-b-10 tx-semibold col-lg-5">
+          {{ "insurancePolicyNum" | translate }}<span class="tx-danger">*</span>
+        </p>
+        <input 
+           type="text"
+          [(ngModel)]="employeeInsuranceCompanyData.insurancePolicyNumber" class="form-control my-1 col-7 ">
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}</div>
+        </div>
+      </div>
+      <div class="col-lg row">
+        <p class="mg-b-10 tx-semibold col-lg-5">
+          {{ "insurancePolicyType" | translate }}<span class="tx-danger">*</span>
+        </p>
+        <input 
+           type="text"
+          [(ngModel)]="employeeInsuranceCompanyData.insurancePolicyType" class="form-control my-1 col-7 ">
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}</div>
+        </div>
+      </div>
+      <div class="col-lg row">
+        <p class="mg-b-10 tx-semibold col-lg-5">
+          {{ "issueDate" | translate }}<span class="tx-danger">*</span>
+        </p>
+        <input   type="text"
+          [(ngModel)]="employeeInsuranceCompanyData.issueDate" class="form-control my-1 col-7 ">
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}</div>
+        </div>
+      </div>
+      <div class="col-lg row">
+        <p class="mg-b-10 tx-semibold col-lg-5">
+          {{ "expiryData" | translate }}<span class="tx-danger">*</span>
+        </p>
+        <input  
+          type="text" [(ngModel)]="employeeInsuranceCompanyData.expiryDate" class="form-control my-1 col-7 ">
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}</div>
+        </div>
+      </div>
+      <div class="col-lg row">
+        <p class="mg-b-10 tx-semibold col-lg-5">
+          {{ "insurancePolicyDegree" | translate }}<span class="tx-danger">*</span>
+        </p>
+        <input 
+           type="text"
+          [(ngModel)]="employeeInsuranceCompanyData.insuranceDegree" class="form-control my-1 col-7 ">
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-lg row">
-      <p class="mg-b-10 tx-semibold col-lg-5">
-        {{ "insurancePolicyNum" | translate }}<span class="tx-danger">*</span>
-      </p>
-      <input type="text" [(ngModel)]="employeeInsuranceCompanyData.insurancePolicyNum" class="form-control p-0 my-1 col-7 ">
-    </div>
-  <div class="col-lg row">
-    <p class="mg-b-10 tx-semibold col-lg-5">
-      {{ "insurancePolicyType" | translate }}<span class="tx-danger">*</span>
-    </p>
-    <input type="text" [(ngModel)]="employeeInsuranceCompanyData.insurancePolicyType" class="form-control p-0 my-1 col-7 ">
-  </div>
-  <div class="col-lg row">
-    <p class="mg-b-10 tx-semibold col-lg-5">
-      {{ "issueDate" | translate }}<span class="tx-danger">*</span>
-    </p>
-    <input type="text" [(ngModel)]="employeeInsuranceCompanyData.issueDate" class="form-control p-0 my-1 col-7 ">
-  </div>
-  <div class="col-lg row">
-    <p class="mg-b-10 tx-semibold col-lg-5">
-      {{ "expiryData" | translate }}<span class="tx-danger">*</span>
-    </p>
-    <input type="text" [(ngModel)]="employeeInsuranceCompanyData.expiryData" class="form-control p-0 my-1 col-7 ">
-  </div>
-  <div class="col-lg row">
-    <p class="mg-b-10 tx-semibold col-lg-5">
-      {{ "insurancePolicyDegree" | translate }}<span class="tx-danger">*</span>
-    </p>
-    <input type="text" [(ngModel)]="employeeInsuranceCompanyData.insurancePolicyDegree" class="form-control p-0 my-1 col-7 ">
-  </div>
-</div>
 
     <div class="modal-footer">
       <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
-      <button class="btn bg-black-8 text-white" type="button" (click)="addInsuranceCompany();modal.close('Close click')">Save </button>
+      <button class="btn bg-black-8 text-white" type="button" (click)="addInsuranceCompany()">Save </button>
     </div>
 
   </ng-template>
@@ -339,16 +436,30 @@
     <div class="modal-body">
       <div class="mb-2 row">
         <p class="mg-b-10 tx-semibold col-lg-4"> العنوان</p>
-        <input class="form-control col-lg-8" [(ngModel)]='addressData.addressName'>
+        <input class="form-control col-lg-8" 
+           [(ngModel)]='addressData.addressName'>
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}
+          </div>
+        </div>
       </div>
       <div class="mb-2 row">
         <p class="mg-b-10 tx-semibold col-lg-4"> البريد الالكتروني</p>
-        <input class="form-control col-lg-8" [(ngModel)]='addressData.email'>
+        <input class="form-control col-lg-8" 
+           [(ngModel)]='addressData.email'>
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}
+          </div>
+        </div>
       </div>
       <div class="mb-2 row">
         <p class="mg-b-10 tx-semibold col-lg-4"> رقم الهاتف</p>
-        <input class="form-control col-lg-8" [(ngModel)]='addressData.phoneNumber'>
-      </div>      
+        <input class="form-control col-lg-8"   [(ngModel)]='addressData.phoneNumber'>
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}
+          </div>
+        </div>
+      </div>
     </div>
     <div class="modal-footer">
 
@@ -376,6 +487,10 @@
             {{qualification.qualificationName}}
           </ng-option>
         </ng-select>
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}
+          </div>
+        </div>
       </div>
 
 
@@ -384,11 +499,15 @@
         <p class="mg-b-10 tx-semibold col-lg-5">
           {{ "university" | translate }}<span class="tx-danger">*</span>
         </p>
-        <ng-select [(ngModel)]="employeeQualificationData.university.universityId" class="p-0 my-1 col-7 ">
+        <ng-select   [(ngModel)]="employeeQualificationData.university.universityId" class="p-0 my-1 col-7 ">
           <ng-option *ngFor="let university of universities " value={{university.universityId}}>
             {{university.universityName}}
           </ng-option>
         </ng-select>
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}
+          </div>
+        </div>
       </div>
 
 
@@ -397,17 +516,21 @@
         <p class="mg-b-10 tx-semibold col-lg-5">
           {{ "major" | translate }}<span class="tx-danger">*</span>
         </p>
-        <ng-select [(ngModel)]="employeeQualificationData.major.majorId" class="p-0 my-1 col-7 ">
+        <ng-select   [(ngModel)]="employeeQualificationData.major.majorId" class="p-0 my-1 col-7 ">
           <ng-option *ngFor="let major of majors " value={{major.majorId}}>
             {{major.majorName}}
           </ng-option>
         </ng-select>
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal-footer">
 
       <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
-      <button class="btn bg-black-8 text-white" type="button" (click)="addQualification();modal.close('Close click')">Save </button>
+      <button class="btn bg-black-8 text-white" type="button" (click)="addQualification()">Save </button>
     </div>
 
   </ng-template>
@@ -425,11 +548,16 @@
         <p class="mg-b-10 tx-semibold col-lg-5">
           {{ "department" | translate }}<span class="tx-danger">*</span>
         </p>
-        <ng-select [(ngModel)]="employeeJobInfoData.department.departmentId" (change)="getSectionByDepartment($event)" class="p-0 my-1 col-7 ">
+        <ng-select   [(ngModel)]="employeeJobInfoData.department.departmentId" (change)="getSectionByDepartment($event)"
+          class="p-0 my-1 col-7 ">
           <ng-option *ngFor="let department of departments " value={{department.departmentId}}>
             {{department.departmentName}}
           </ng-option>
         </ng-select>
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}
+          </div>
+        </div>
       </div>
 
 
@@ -443,6 +571,10 @@
             {{section.sectionName}}
           </ng-option>
         </ng-select>
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}
+          </div>
+        </div>
       </div>
 
 
@@ -456,13 +588,117 @@
             {{jobTitle.jobTitleName}}
           </ng-option>
         </ng-select>
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal-footer">
 
       <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
-      <button class="btn bg-black-8 text-white" type="button" (click)="addJobInfo();modal.close('Close click')">Save </button>
+      <button class="btn bg-black-8 text-white" type="button" (click)="addJobInfo()">Save </button>
     </div>
 
+  </ng-template>
+  <!-- End Row -->
+
+  <ng-template #select6modal let-modal>
+    <!-- Select2 modal -->
+    <div class="modal-header">
+      <h6 class="modal-title">اضافة experience</h6>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="mb-2 row">
+        <p class="mg-b-10 tx-semibold col-lg-4"> الشركة</p>
+        <input class="form-control col-lg-8" 
+           [(ngModel)]='experienceData.company'>
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}
+          </div>
+        </div>
+      </div>
+      <div class="mb-2 row">
+        <p class="mg-b-10 tx-semibold col-lg-4"> تاريخ البداية</p>
+        <input class="form-control col-lg-8" 
+           [(ngModel)]='experienceData.startDate'>
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}
+          </div>
+        </div>
+      </div>
+      <div class="mb-2 row">
+        <p class="mg-b-10 tx-semibold col-lg-4"> تاريخ الانتهاء</p>
+        <input class="form-control col-lg-8"   [(ngModel)]='experienceData.endDate'>
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}
+          </div>
+        </div>
+      </div>
+      <div class="mb-2 row">
+        <p class="mg-b-10 tx-semibold col-lg-4"> position</p>
+        <input class="form-control col-lg-8"   [(ngModel)]='experienceData.position'>
+        <div  class="invalid-feedback">
+          <div class="text-center">{{'isRequired'|translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+
+      <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
+      <button class="btn bg-black-8 text-white" type="button" (click)="addExperience()">Save </button>
+    </div>
+
+  </ng-template>
+  <!-- End Row -->
+
+  <ng-template #select7modal let-modal>
+    <!-- Select2 modal -->
+    <div class="modal-header">
+      <h6 class="modal-title">اضافة Residence</h6>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      </button>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
+      <button class="btn bg-black-8 text-white" type="button">Save </button>
+    </div>
+  </ng-template>
+  <!-- End Row -->
+
+  <ng-template #select8modal let-modal>
+    <!-- Select2 modal -->
+    <div class="modal-header">
+      <h6 class="modal-title">اضافة Visa</h6>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      </button>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
+      <button class="btn bg-black-8 text-white" type="button">Save </button>
+    </div>
+  </ng-template>
+  <!-- End Row -->
+
+  <ng-template #select9modal let-modal>
+    <!-- Select2 modal -->
+    <div class="modal-header">
+      <h6 class="modal-title">اضافة medical test</h6>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      </button>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn bg-black-3 text-white" (click)="modal.close('Close click')">Close</button>
+      <button class="btn bg-black-8 text-white" type="button">Save </button>
+    </div>
   </ng-template>
   <!-- End Row -->

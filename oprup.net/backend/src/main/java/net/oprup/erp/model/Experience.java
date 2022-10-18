@@ -16,7 +16,7 @@ public class Experience implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long experienceId;
-    private Long company;
+    private String company;
     private String startDate;
     private String endDate;
     private String position;
@@ -34,11 +34,11 @@ public class Experience implements Serializable {
         this.experienceId = experienceId;
     }
 
-    public Long getCompany() {
+    public String getCompany() {
         return company;
     }
 
-    public void setCompany(Long company) {
+    public void setCompany(String company) {
         this.company = company;
     }
 

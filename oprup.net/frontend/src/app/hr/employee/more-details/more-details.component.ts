@@ -1,6 +1,6 @@
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as saveAs from 'file-saver';
 import { SortEvent } from 'src/app/shared/directives/soratable.directive';
@@ -12,7 +12,7 @@ import { DepartmentService } from '../../department/department.service';
 import { SectionService } from '../../section/section.service';
 import { InsuranceCompanyService } from '../../insurance-company/insurance-company.service';
 import { ActivatedRoute } from '@angular/router';
-import { EmployeeBank, EmployeeInsuranceCompany, EmployeeQualification, Address, EmployeeJobInformation } from '../employee';
+import { EmployeeBank, EmployeeInsuranceCompany, EmployeeQualification, Address, EmployeeJobInformation, EmployeeExperience, EmployeeResidence } from '../employee';
 import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
@@ -38,7 +38,6 @@ export class MoreDetailsComponent implements OnInit {
   }
 
   constructor(
-    public fb: FormBuilder,
     public employeeService: EmployeeService,
     private modalService: NgbModal,
     private activateRoute:ActivatedRoute,
@@ -51,13 +50,9 @@ export class MoreDetailsComponent implements OnInit {
     private translate: TranslateService,
     private toaster:ToastrService,
     private majorService: MajorService,
-    
-
-
-
-
-
   ) { }
+
+
   employeeData = {
     employeeNameAr: '',
     employeeName: '',
@@ -66,7 +61,6 @@ export class MoreDetailsComponent implements OnInit {
     image: '',
     BOD: ''
   }
-
   employeeQualificationData = {
     employee: {
       employeeId: this.employeeId
@@ -81,7 +75,6 @@ export class MoreDetailsComponent implements OnInit {
         majorId: ''
     }
   }
-
   employeeJobInfoData = {
     employee: {
       employeeId: this.employeeId
@@ -96,7 +89,6 @@ export class MoreDetailsComponent implements OnInit {
       jobTitleId: ''
     }
   }
-
   employeeBankData = {
     employee: {
       employeeId: this.employeeId
@@ -106,18 +98,17 @@ export class MoreDetailsComponent implements OnInit {
     }
   }
   employeeInsuranceCompanyData = {
-    employee: {
-      employeeId: this.employeeId
-    },
-    insuranceCompany: {
-      insuranceCompanyId: ''
-    },
-    insurancePolicyNum: '',
-    insurancePolicyType: '',
-    issueDate: '',
-    expiryData: '',
-    insurancePolicyDegree: ''
-
+      insurancePolicyNumber: '',
+      insurancePolicyType: '',
+      issueDate: '',
+      expiryDate: '',
+      insuranceDegree: '',
+      insuranceCompany: {
+          insuranceCompanyId: ''
+      },
+      employee: {
+          employeeId: this.employeeId
+      }
   }
   employeeJobTitleData = {
     employee: {
@@ -143,7 +134,6 @@ export class MoreDetailsComponent implements OnInit {
       majorId: ''
     }
   }
-
   addressData= {
     employee: {
       employeeId: this.employeeId
@@ -152,20 +142,20 @@ export class MoreDetailsComponent implements OnInit {
     email: '',
     phoneNumber: ''
   }
-
   experienceData= {
     employee: {
       employeeId: this.employeeId
     },
     company: '',
     startDate: '',
-    endDate: ''
+    endDate: '',
+    position: ''
   }
 
   qualification!: any;
-  banks!:any;
+  banks:any;
   empBanks:any;
-  insuranceCompanies!:any;
+  insuranceCompanies:any;
   empInsuranceCompanies:any;
   jobTitles:any;
   qualifications:any;
@@ -177,7 +167,9 @@ export class MoreDetailsComponent implements OnInit {
   addresses: any;
   departments: any;
   sections: any;
-  empexperience:any;
+  empExperience:any;
+  empResidence: any;
+  sectionByDepartment:any;
 
   
 
@@ -217,7 +209,6 @@ export class MoreDetailsComponent implements OnInit {
   filenames: string[] = [];
   fileStatus = { status: '', requestType: '', percent: 0 };
   
-// $event.target.files
   // define a function to upload files
   onUploadFiles(files: File[]): void {
     const formData = new FormData();
@@ -256,18 +247,6 @@ export class MoreDetailsComponent implements OnInit {
   }
 // upload img
 
-
-  form: FormGroup = new FormGroup({
-
-    bankName:new FormControl(''),
-    
-
-  });
-
-  submitted = false;
-  get f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
-  }
   
   ngOnInit(): void {
     this.getAllQualifications()
@@ -284,12 +263,15 @@ export class MoreDetailsComponent implements OnInit {
     this.getQualificationsByEmployeeId()
     this.getJobsInformationByEmployeeId()
     this.getAddressById()
+    this.getExperienceByEmployeeId()
+    this.getResidenceByEmployeeId()
   }
 
   addQualification(){
     console.log(this.employeeQualificationData);
     this.employeeService.addEmployeeQualification(this.employeeQualificationData).subscribe(() => {
-    }),
+        this.getQualificationsByEmployeeId()
+      }),
       (error: HttpErrorResponse) => {     };
   }
 
@@ -309,17 +291,8 @@ export class MoreDetailsComponent implements OnInit {
       (error: HttpErrorResponse) => {     };
   }
 
-  addJobTitle(){
-    console.log(this.employeeJobTitleData);
-    this.employeeService.addEmployeeJobTitle(this.employeeJobTitleData).subscribe(() => {
-    }),
-      (error: HttpErrorResponse) => {     };
-  }
-
-
   addBank(){
     this.employeeService.addEmployeeBank(this.employeeBankData).subscribe(() => {
-      // this.router.navigate(['/items/items']);
       this.getBanksByEmployeeId()
     }),
     (error: HttpErrorResponse) => {
@@ -330,7 +303,6 @@ export class MoreDetailsComponent implements OnInit {
   
   addInsuranceCompany(){
     this.employeeService.addEmployeeInsuranceCompany(this.employeeInsuranceCompanyData).subscribe(() => {
-      // this.router.navigate(['/items/items']);
       this.getInsuranceCompaniesByEmployeeId()
     }),
     (error: HttpErrorResponse) => {
@@ -338,6 +310,17 @@ export class MoreDetailsComponent implements OnInit {
     };
     console.log(this.employeeInsuranceCompanyData);
   }
+
+  addExperience(){
+    console.log(this.experienceData);
+    this.employeeService.addEmployeeExperience(this.experienceData).subscribe(() => {
+      this.getExperienceByEmployeeId()
+    }),
+    (error: HttpErrorResponse) => {     
+    };
+  }
+
+
   getBanksByEmployeeId=()=>{
     this.employeeService.getBanksByEmployeeId(this.employeeId).subscribe(data=>{
      this.empBanks=data   
@@ -365,6 +348,7 @@ export class MoreDetailsComponent implements OnInit {
     })
     console.log(this.empBanks)
    }
+
    getInsuranceCompaniesByEmployeeId=()=>{
     this.employeeService.getInsuranceCompaniesByEmployeeId(this.employeeId).subscribe(data=>{
      this.empInsuranceCompanies=data   
@@ -372,16 +356,30 @@ export class MoreDetailsComponent implements OnInit {
     console.log(this.empInsuranceCompanies)
    }
 
+   getExperienceByEmployeeId(){
+    this.employeeService.getExperienceByEmployeeId(this.employeeId)
+    .subscribe(data => this.empExperience = data)
+    console.log(this.empExperience)
+  }
+
+  getResidenceByEmployeeId(){
+    this.employeeService.getResidenceByEmployeeId(this.employeeId)
+    .subscribe(data => this.empResidence = data)
+    console.log(this.empResidence)
+  }
+
   getAllQualifications(){
     this.qualificationService.getAllQualifications()
     .subscribe(data => this.qualification = data)
     console.log(this.qualification)
   }
+
   getAllJobTitles(){
     this.employeeService.getAllJobTitles()
     .subscribe(data => this.jobTitles = data)
     console.log(this.jobTitles)
   }
+
   getAllUniversities(){
      this.universityService.getAllUniversities()
      .subscribe(data => this.universities = data)
@@ -409,6 +407,7 @@ export class MoreDetailsComponent implements OnInit {
     .subscribe(data => this.sections = data)
     console.log(this.sections)
   }
+
   getAddressById(){
     this.employeeService.getAddressById()
     .subscribe(data => this.addresses = data)
@@ -420,14 +419,16 @@ export class MoreDetailsComponent implements OnInit {
     .subscribe(data => this.insuranceCompanies = data)
     console.log(this.insuranceCompanies)
   }
-  sectionByDepartment:any;
+
   getSectionByDepartment = (event: any) => {
     this.sectionByDepartment = this.sections.filter((element: any) => {
       return element.department.departmentId == event && element.deleteFlag != 0;
     });
   };
 
-  public deleteJobInformation(employeeJobInformationId: EmployeeJobInformation){
+
+
+  deleteJobInformation(jobInfoId: EmployeeJobInformation){
     Swal.fire({
       icon: 'info',
       title: this.translate.instant('Are you Sure to delete The Record'),
@@ -435,7 +436,7 @@ export class MoreDetailsComponent implements OnInit {
       showCancelButton: true,
     }).then((result) => {
       if(result.isConfirmed){
-        this.employeeService.deleteJobInformation(employeeJobInformationId).subscribe(
+        this.employeeService.deleteJobInformation(jobInfoId).subscribe(
           (response) => {
             Swal.fire(this.translate.instant('success'), this.translate.instant('Data Is Deleted'), 'success')
            this.toaster.success('success')
@@ -449,7 +450,7 @@ export class MoreDetailsComponent implements OnInit {
       }
     })
 }
-  public deleteQualification(employeeQualificationId: EmployeeQualification){
+  deleteQualification(employeeQualificationId: EmployeeQualification){
     Swal.fire({
       icon: 'info',
       title: this.translate.instant('Are you Sure to delete The Record'),
@@ -471,8 +472,7 @@ export class MoreDetailsComponent implements OnInit {
       }
     })
 }
-
-  public deleteInsuranceCompany(insuranceCompanyId: EmployeeInsuranceCompany){
+  deleteInsuranceCompany(insuranceCompanyId: EmployeeInsuranceCompany){
     Swal.fire({
       icon: 'info',
       title: this.translate.instant('Are you Sure to delete The Record'),
@@ -494,8 +494,7 @@ export class MoreDetailsComponent implements OnInit {
       }
     })
 }
-
-public deleteBank(empBankId: EmployeeBank){
+  deleteBank(empBankId: EmployeeBank){
   Swal.fire({
     icon: 'info',
     title: this.translate.instant('Are you Sure to delete The Record'),
@@ -519,8 +518,7 @@ public deleteBank(empBankId: EmployeeBank){
 
   })
 }
-
-public deleteAddress(addressId: Address){
+  deleteAddress(addressId: Address){
   Swal.fire({
     icon: 'info',
     title: this.translate.instant('Are you Sure to delete The Record'),
@@ -544,6 +542,49 @@ public deleteAddress(addressId: Address){
 
   })
 }
-
+  deleteExperience(experienceId: EmployeeExperience){
+  Swal.fire({
+    icon: 'info',
+    title: this.translate.instant('Are you Sure to delete The Record'),
+    confirmButtonText:  'Delete',
+    showCancelButton: true,
+  }).then((result) => {
+    if(result.isConfirmed){
+      this.employeeService.deleteExperience(experienceId).subscribe(
+        (response) => {
+          Swal.fire(this.translate.instant('success'), this.translate.instant('Data Is Deleted'), 'success')
+         this.toaster.success('success')
+         this.getExperienceByEmployeeId()
+        },
+        (error) => {
+          Swal.fire(this.translate.instant('Error'), this.translate.instant('Error while Deleting Data'), 'error')
+          this.toaster.error('Error')
+        }
+      );
+    }
+  })
+}
+deleteResidence(residenceId: EmployeeResidence){
+  Swal.fire({
+    icon: 'info',
+    title: this.translate.instant('Are you Sure to delete The Record'),
+    confirmButtonText:  'Delete',
+    showCancelButton: true,
+  }).then((result) => {
+    if(result.isConfirmed){
+      this.employeeService.deleteResidence(residenceId).subscribe(
+        (response) => {
+          Swal.fire(this.translate.instant('success'), this.translate.instant('Data Is Deleted'), 'success')
+         this.toaster.success('success')
+         this.getResidenceByEmployeeId()
+        },
+        (error) => {
+          Swal.fire(this.translate.instant('Error'), this.translate.instant('Error while Deleting Data'), 'error')
+          this.toaster.error('Error')
+        }
+      );
+    }
+  })
+}
 
 }
